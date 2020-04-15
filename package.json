@@ -1,0 +1,24 @@
+{
+  "name": "knights-bn-frontend",
+  "version": "1.0.0",
+  "description": "## Vision #### Making company travel and accommodation easy and convenient.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andela/knights-bn-frontend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andela/knights-bn-frontend/issues"
+  },
+  "homepage": "https://github.com/andela/knights-bn-frontend#readme",
+  "dependencies": {
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5"
+  }
+}
