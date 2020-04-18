@@ -30,7 +30,9 @@ module.exports = {
   },
   plugins: [
     // Generate a base html file and injects all generated css and js files
-    new HtmlWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      template: 'public/index.html',
+    }),
     // File loader configuration for .gif .jpg .jpeg .png and .svg files
     new ImagesConfigWebpackPlugin(),
     // Multi threading babel loader configuration with caching for .js and .jsx files

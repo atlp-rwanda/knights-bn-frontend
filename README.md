@@ -13,7 +13,7 @@ Make company global travel and accommodation easy and convenient for the strong 
 - SASS
 - Node JS
 - Jest
-- Enzyme
+- React-testing-library
 
 ## Setting up the application :wrench:
 
