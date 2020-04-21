@@ -10,6 +10,6 @@ module.exports = {
   ],
   transform: {
     '^.+\\.[t|j]sx?$': 'babel-jest',
-    '^.+\\.scss$': 'sass-jest',
+    '^.+\\.scss$': '<rootDir>/node_modules/jest-css-modules-transform',
   },
 };
