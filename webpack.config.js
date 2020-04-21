@@ -3,6 +3,7 @@ const ImagesConfigWebpackPlugin = require('image-config-webpack-plugin');
 const JsConfigWebpackPlugin = require('js-config-webpack-plugin');
 const ScssConfigWebpackPlugin = require('scss-config-webpack-plugin');
 const path = require('path');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: ['@babel/polyfill', './src/index.js'],
@@ -39,6 +40,8 @@ module.exports = {
     new JsConfigWebpackPlugin({ babelConfigFile: './.babelrc' }),
     // SCSS Configuration for .css .module.css and .scss .module.scss files
     new ScssConfigWebpackPlugin(),
+    // Clean up the dist folder automatically before each build
+    new CleanWebpackPlugin(),
   ],
   devServer: {
     historyApiFallback: true,
