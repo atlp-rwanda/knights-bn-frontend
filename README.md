@@ -23,11 +23,16 @@ Make company global travel and accommodation easy and convenient for the strong 
 1. From your computer, open terminal. 
 2. Run `git clone https://github.com/andela/knights-bn-frontend.git` to clone the repository OR [Download](https://codeload.github.com/andela/knights-bn-frontend/zip/develop) the project.
 
-### Run commandss
+### Run commands
 
 1. Run `npm install` to install all dependencies.
 2. Run `npm test` to test automatically if the app is functioning properly as expected.
 3. Run `npm start` to run the app in development environment. 
+
+### Deployment 🚀
+
+[Heroku](https://knights-bn-frontend.herokuapp.com/)
+
 
 ### Raising an issue
 Click [here](https://github.com/andela/knights-bn-frontend/issues/new) to create an issue about this app.
