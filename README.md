@@ -1,7 +1,7 @@
 # Barefoot Nomad Front-end
-[![CircleCI](https://circleci.com/gh/andela/knights-bn-frontend.svg?style=svg)](https://circleci.com/gh/andela/knights-bn-frontend)
-[![Coverage Status](https://coveralls.io/repos/github/andela/knights-bn-frontend/badge.svg?branch=ch-test-coverage-170947600)](https://coveralls.io/github/andela/knights-bn-frontend?branch=ch-test-coverage-170947600)
-[![Maintainability](https://api.codeclimate.com/v1/badges/3c85f10b06158911a9bf/maintainability)](https://codeclimate.com/github/andela/knights-bn-frontend/maintainability) 
+[![CircleCI](https://circleci.com/gh/Stackup-Rwanda/knights-bn-frontend/tree/develop.svg?style=svg)](https://circleci.com/gh/Stackup-Rwanda/knights-bn-frontend/tree/develop)
+[![Coverage Status](https://coveralls.io/repos/github/Stackup-Rwanda/knights-bn-frontend/badge.svg?branch=ch-add-status-badges-on-readme-170947600)](https://coveralls.io/github/Stackup-Rwanda/knights-bn-frontend?branch=ch-add-status-badges-on-readme-170947600)
+[![Maintainability](https://api.codeclimate.com/v1/badges/cec0c3f45dcf5c65408e/maintainability)](https://codeclimate.com/github/Stackup-Rwanda/knights-bn-frontend/maintainability)
 ## Vision :telescope:
 #### Making company travel and accommodation easy and convenient.
 
