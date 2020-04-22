@@ -7,9 +7,9 @@ import App from './route/App';
 //   <LandingPage />,
 //   document.getElementById('root')
 
-  ReactDOM.render(
-    <BrowserRouter>
-      <App />,
-    </BrowserRouter>,
-    document.getElementById('root')
+ReactDOM.render(
+  <BrowserRouter>
+    <App />,
+  </BrowserRouter>,
+  document.getElementById('root'),
 );
