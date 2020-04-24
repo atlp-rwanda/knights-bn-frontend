@@ -6,9 +6,8 @@ import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import LandingPage from '../containers/LandingPage';
 
-const App = () => {
-  return (
-    <div>
+const App = () => (
+  <div>
       <Route>
         <Nav />
         <Switch>
@@ -18,8 +17,7 @@ const App = () => {
         </Switch>
         <Footer />
       </Route>
-    </div>
-  );
-};
+  </div>
+);
 
 export default App;
