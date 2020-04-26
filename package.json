@@ -55,6 +55,7 @@
     "jest-css-modules-transform": "^4.0.0",
     "js-config-webpack-plugin": "^2.0.0",
     "prettier": "^2.0.4",
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0",
     "react-dom": "^16.13.1",

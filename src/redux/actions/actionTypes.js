@@ -1,0 +1,3 @@
+export const REGISTER_USER = 'REGISTER_USER';
+export const HANDLE_CHANGE = 'HANDLE_CHANGE';
+// export const VALIDATE_INPUT = 'VALIDATE_INPUT';
