@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import '../assets/styles/containers/landingPage.scss';
 
 
-
 class Login extends Component {
   render() {
     return (

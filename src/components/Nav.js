@@ -1,24 +1,18 @@
 import React from 'react';
-import '../assets/styles/styles.css'
-
+import '../assets/styles/components/navigationlinks.scss';
 import { Link } from 'react-router-dom';
 
-const Nav = () => {
-  return (
-    <div className="nav ">
-      <Link to="/">
-        <h3 className="text-center pt-2 li">Logo</h3>
-      </Link>
-      <ul className="nav-link">
-        <Link to="/login">
-          <li className="li">Login</li>
-        </Link>
-        <Link to="/">
-          <li className="li">Home</li>
-        </Link>
-      </ul>
+const Nav = () => (
+  <div className="nav">
+    <div className="logo">
+      <Link to="/" className="nav-link">Logo</Link>
     </div>
-  );
-};
-
+    <ul className="right-menu">
+      <li><Link to="/login" className="nav-link">Login</Link></li>
+      <li><Link to="/signup" className="nav-link">sign up</Link></li>
+      <li><Link to="/kiny" className="nav-link">Kinya</Link></li>
+      <li><Link to="/en" className="nav-link">Eng</Link></li>
+    </ul>
+  </div>
+);
 export default Nav;
