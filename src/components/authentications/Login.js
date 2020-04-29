@@ -2,20 +2,24 @@ import React, { Component } from "react";
 import { Button, Form, Image, Alert } from "react-bootstrap";
 import "../../assets/styles/containers/loginPage.scss";
 import { connect } from "react-redux";
-import { fetchUsers } from '../../redux/actions/index';
 import { Redirect } from 'react-router-dom';
+import {postThunk} from '../../redux/thunk/index';
+import {loginUsersSuccess } from '../../redux/actions/userActions';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Login extends Component {
     constructor(props) {
     super(props);
-    this.state = { data: { email: '', password: '' } };
+    this.state =  { email: '', password: '', error:' ', loggedIn:false};
   }
   render() {
+    const {error, loggedIn} = this.state;
+    console.log(error)
     return (
       <div className="login-page">
         <Form>
           <h1>Sign in</h1>
+        <span className="error">{error? error :' '}</span>
           <p>Login with so social media</p>
           <div className="Google-login-btn">
             {/* <Image src="../../assets/images/google.jpeg" rounded /> */}
@@ -44,6 +48,7 @@ class Login extends Component {
               onChange={this.onChangeHandler}
             />
           </Form.Group>
+            <p>{loggedIn ? <Redirect to="home" /> : null}</p>
           <Form.Group >
             <Form.Control
               type="password"
@@ -53,8 +58,6 @@ class Login extends Component {
               id="password"
             />
           </Form.Group>
-          <p>{this.props.token ? <Redirect to="home" /> : null}</p>
-          <p>{this.props.error}</p>
           <Button
             onClick={(e) => this.login(e)}
             variant="primary"
@@ -66,35 +69,39 @@ class Login extends Component {
           </Button>
           <a id="forgotPassword" href="#"><p>Forgot Password?</p></a>
         </Form>
+       
       </div>
+
     );
   }
-  onChangeHandler = (event) => {
-    console.log(event);
-    this.setState({
-      data: {
-        ...this.state.data,
+   onChangeHandler = (event) => {
+        this.setState({
+        ...this.state,
         [event.target.name]: event.target.value,
-      },
     });
   };
-  login = (e) => {
+  login = async (e) => {
     e.preventDefault();
-    this.props.fetchUsers(this.state.data);
+   await this.props.postThunk('post','/auth/login',loginUsersSuccess,this.state);
+   const {isLoggedIn}=this.props.userData.data;
+  isLoggedIn? this.setState({
+    ...this.state,
+    loggedIn:isLoggedIn
+
+}):
+    this.setState({
+      ...this.state,
+      error: this.props.userData.data.message || this.props.userData.data.error,
+
+  });
   };
 }
 
 const mapStateToProps = (state) => {
   return {
-    token: state.user.token,
-    error: state.user.message,
+    userData: state.user
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchUsers: (request) => dispatch(fetchUsers(request)),
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps,{postThunk})(Login);

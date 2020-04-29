@@ -1,32 +1,13 @@
-import {
-  FETCH_USERS_REQUEST,
-  FETCH_USERS_SUCCESS,
-  FETCH_USERS_FAILURE,
-} from '../actions/userTypes';
+import { USER_LOGIN_SUCCESS } from '../actions/userTypes';
 
 const initialState = {
-  loading: false,
-  token: '',
-  error: '',
 };
 const reduce = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_USERS_REQUEST:
+    case USER_LOGIN_SUCCESS:
       return {
         ...state,
-        loading: true,
-      };
-    case FETCH_USERS_SUCCESS:
-      return {
-        loading: false,
-        token: action.payload,
-        error: '',
-      };
-    case FETCH_USERS_FAILURE:
-      return {
-        loading: false,
-        token: '',
-        error: action.payload,
+        data: action.payload,
       };
     default:
       return state;

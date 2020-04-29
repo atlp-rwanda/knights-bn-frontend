@@ -7,14 +7,17 @@ import { Redirect } from 'react-router-dom';
 import Textbox from '../components/Textbox';
 import Button from '../components/Button';
 import Line from '../components/line';
+import {postThunk} from '../redux/thunk/index';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Login extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: { email: '', password: '' } };
+    this.state =  { email: '', password: '', error:''};
   }
   render() {
+    const {error} = this.state;
+    console.log(error);
     return (
       <div className="login-page">
         <Form>
@@ -45,8 +48,8 @@ class Login extends Component {
             name="password"
             onChange={this.onChangeHandler}
           />
-          <p>{this.props.token ? <Redirect to="home" /> : null}</p>
-          <p>{this.props.error}</p>
+          {/* <p>{this.props.token ? <Redirect to="home" /> : null}</p>
+          <p>{this.props.error}</p> */}
           <Button onClick={(e) => this.login(e)} id="loginBtn" label="Login" />
           <a id="forgotPassword" href="#">
             <p>Forgot Password?</p>
@@ -56,31 +59,31 @@ class Login extends Component {
     );
   }
   onChangeHandler = (event) => {
-    console.log(event);
     this.setState({
-      data: {
-        ...this.state.data,
-        [event.target.name]: event.target.value,
-      },
-    });
+      ...this.state,
+      [event.target.name]: event.target.value,
+  });
   };
   login = (e) => {
     e.preventDefault();
-    this.props.fetchUsers(this.state.data);
+    await this.props.postThunk('post','/auth/login',loginUsersSuccess,this.state);
+    const {isLoggedIn} = this.props.userDtata;
+       if(isLoggedIn){
+        this.context.router.push('/home');
+       }
+       this.setState({
+        ...this.state,
+        error: this.props.userDtata.error
+    });
+
   };
 }
 
 const mapStateToProps = (state) => {
   return {
-    token: state.user.token,
-    error: state.user.message,
+     userDtata: state.data
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchUsers: (request) => dispatch(fetchUsers(request)),
-  };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, {postThunk})(Login);
