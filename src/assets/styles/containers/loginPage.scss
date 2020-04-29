@@ -37,7 +37,6 @@
 #email,
 #password,
 .Facebook-login-btn,
-.Google-login-btn,
 #loginBtn {
   width: 90%;
   margin-top: 1rem;
@@ -167,17 +166,33 @@ p {
   margin-top: 1rem;
   margin-bottom: 1rem;
   margin-left: 0.8rem;
-  padding: 5px 20px;
+  font-weight: 100;
+  padding: 10px;
   border-radius: 10px;
   text-align: center;
   color: rgba(146, 150, 153, 1);
   width: 90%;
+  cursor: pointer;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
-
+.social-login-btn:hover {
+  border: none;
+  background: #404040;
+  color: #ffffff !important;
+  font-weight: 100;
+  transition: all 0.3s ease 0s;
+}
 .btnStyle {
   color: rgba(146, 150, 153, 1);
   cursor: pointer;
   background-color: transparent;
-  border: none;
+  border-color: transparent;
   border-radius: 0.25rem;
+}
+.SocialFacebook {
+  background-color: #3b5998;
+  padding: 1px 0px;
+}
+.social-login-btn:focus {
+  outline: 0;
 }

@@ -9,15 +9,15 @@ const SocialLogin = ({ googleAction, facebookAction }) => (
     <SocialLoginIcon
       icon={FcGoogle}
       label={googleAction}
-      class="mr-2 color"
+      class="mr-2 "
       formClass="social-login-btn"
-      buttonClass="btnStyle"
+      buttonClass="btnStyle "
       action="https://knights-bn-backnd.herokuapp.com/api/v1/auth/login/google"
     />
     <SocialLoginIcon
       icon={FaFacebookF}
       label={facebookAction}
-      class="mr-2 ml-3 text-light bg-info"
+      class="mr-2 ml-3 text-light SocialFacebook"
       formClass="social-login-btn"
       buttonClass="btnStyle"
       action="https://knights-bn-backnd.herokuapp.com/api/v1/auth/login/facebook"

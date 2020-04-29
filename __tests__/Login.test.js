@@ -30,8 +30,6 @@ describe('<Login />....', () => {
     </MemoryRouter>
   );
   it('Should render <LoginComponet />  component', () => {
-    console.log('<<<<<</////>>>>', wrapper.props());
-    console.log('.......>>>>', wrapper.find('Button').simulate('click'));
     expect(wrapper.find('TextBox').length).toBe(2);
   });
 });

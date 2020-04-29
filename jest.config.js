@@ -5,6 +5,7 @@ module.exports = {
   coverageDirectory: 'coverage',
   moduleFileExtensions: ['js', 'jsx', 'scss'],
   testPathIgnorePatterns: ['./__tests__/setup/', './cypress/'],
+  snapshotSerializers: ['enzyme-to-json/serializer'],
   transform: {
     '^.+\\.[t|j]sx?$': 'babel-jest',
     '^.+\\.scss$': '<rootDir>/node_modules/jest-css-modules-transform',

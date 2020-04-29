@@ -29,7 +29,8 @@ const reduce = (state = initialState, action) => {
         ...state,
         data: action.payload,
       };
-    default: return state;
+    default:
+      return state;
   }
 };
 export default reduce;
