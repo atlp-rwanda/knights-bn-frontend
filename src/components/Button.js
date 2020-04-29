@@ -8,6 +8,7 @@ function SubmitButton(props) {
       id={props.id}
       label={props.label}
       onClick={props.onClick}
+      data-testid="button"
     >
       {props.label}
     </Button>

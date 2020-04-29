@@ -67,6 +67,7 @@ class Login extends Component {
             onChange={validateInput}
             validation={emailValidation}
             errorMsg="invalid email"
+            dataTestid="email"
           />
           <Textbox
             type="password"
@@ -76,6 +77,7 @@ class Login extends Component {
             onChange={validateInput}
             validation={passwordValidation}
             errorMsg="password can't be empty."
+            dataTestid="password"
           />
           <p>{this.props.token ? <Redirect to="home" /> : null}</p>
           <p>{this.props.error}</p>
