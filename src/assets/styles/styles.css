@@ -4,7 +4,9 @@
   align-items: center;
   min-height: 10vh;
   color: white;
-  background: rgb(73, 79, 82);
+  background: rgb(255, 255, 255);
+  border-bottom: 1px solid rgb(219, 219, 219);
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.3);
 }
 body {
   display: block;
@@ -25,7 +27,7 @@ body {
   font-size: 15px;
 }
 .li {
-  color: white;
+  color: rgb(48, 48, 48);
 }
 
 h1,
