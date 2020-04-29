@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import App from './route/App';
 import configureStore from './redux';
 
+
 const store = configureStore();
 
 ReactDOM.render(
