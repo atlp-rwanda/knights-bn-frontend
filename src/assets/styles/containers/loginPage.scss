@@ -22,6 +22,7 @@
   border-radius: 5px;
   border: 1px solid rgba($color: #ffffff, $alpha: 0.3);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  background-color: #FFFFFF;
 }
 
 #email,
@@ -72,6 +73,9 @@ p {
 
 #forgotPassword {
   text-align: center;
+}
+
+#forgotPassword p{
   color: #5890cc;
 }
 
@@ -128,7 +132,7 @@ p {
 }
 
 .login-page h1{
-  margin-bottom: 0.5em;
+  margin-top: 0.2em;
+  margin-bottom: 0.8em;
   font-size: 2rem;
-  
 }
