@@ -1,0 +1,136 @@
+@import "~bootstrap/scss/bootstrap";
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.loginContainer {
+  margin: auto;
+  width: 100%;
+  height: 70vh;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-page {
+  width: 100%;
+  max-width: 25%;
+  height: 80%;
+  padding: 1rem 1rem;
+  margin: auto;
+  border-radius: 5px;
+  border: 1px solid rgba($color: #ffffff, $alpha: 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+#email,
+#password,
+.Facebook-login-btn,
+.Google-login-btn,
+#loginBtn {
+  width: 90%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 0.8rem;
+  white-space: nowrap;
+  font-family: Roboto-Regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: rgba(146,150,153,1);
+}
+
+#password,#email{
+  color: rgb(0, 0, 0);
+}
+
+#loginBtn {
+  display: block;
+  height: calc(1.5em + 0.75rem + 2px);
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #ffffff;
+  background-color: #5890cc;
+  background-clip: padding-box;
+  border: 1px solid #5890cc;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  font-weight: 400;
+}
+
+p {
+  text-align: center;
+  font-weight: 400;
+  color: rgb(105, 105, 105);
+  font-family: Roboto-Regular;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+#forgotPassword {
+  text-align: center;
+  color: #5890cc;
+}
+
+.Google-login-btn,
+.Facebook-login-btn {
+  border: 1px solid rgba($color: #d1d1d1, $alpha: 1);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 0.8rem;
+  padding: 5px 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: rgba(146, 150, 153, 1);
+}
+
+#or {
+  position: relative;
+  width: 296.5px;
+  height: 19px;
+  overflow: visible;
+  margin: 1rem auto;
+}
+.Line {
+  overflow: visible;
+  position: absolute;
+  width: 121.5px;
+  height: 1px;
+  left: 0px;
+  top: 11px;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+}
+#or_ {
+  position: absolute;
+  left: 121px;
+  top: 0px;
+  overflow: visible;
+  width: 56px;
+  height: 19px;
+  text-align: center;
+  font-family: Roboto-Regular;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  color: rgba(146, 150, 153, 1);
+}
+.Line_ {
+  overflow: visible;
+  position: absolute;
+  width: 121.5px;
+  height: 1px;
+  left: 176px;
+  top: 11px;
+  transform: matrix(1, 0, 0, 1, 0, 0);
+}
+
+.login-page h1{
+  margin-bottom: 0.5em;
+  font-size: 2rem;
+  
+}
