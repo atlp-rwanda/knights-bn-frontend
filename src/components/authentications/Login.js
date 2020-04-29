@@ -2,16 +2,38 @@ import React, { Component } from "react";
 import { Button, Form, Image, Alert } from "react-bootstrap";
 import "../../assets/styles/containers/loginPage.scss";
 import { connect } from "react-redux";
-import { fetchUsers } from '../../redux/actions/index';
+import { fetchUsers, validateInput } from '../../redux/actions/index';
 import { Redirect } from 'react-router-dom';
-
 // eslint-disable-next-line react/prefer-stateless-function
 class Login extends Component {
     constructor(props) {
     super(props);
     this.state = { data: { email: '', password: '' } };
   }
+  onChangeHandler = (event) => {
+    this.setState({
+      data: {
+        ...this.state.data,
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
+  login = (e) => {
+    e.preventDefault();
+    const {validations: validatedFields} = this.props;
+    const invalidFields = Object.keys(validatedFields).filter((field)=> validatedFields[field] === 'is-invalid');
+    let validatedFieldsToArray =  Object.keys(validatedFields);
+    if(validatedFieldsToArray.length && invalidFields.length === 0) {
+      this.props.fetchUsers(this.state.data);
+    }
+    else {
+      //console.log('invalidFields : ', invalidFields);
+    }
+  };
   render() {
+    const emailValidation = this.props.validations.email;
+    const passwordValidation = this.props.validations.password;
+    const {validateInput, validation} = this.props;
     return (
       <div className="login-page">
         <Form>
@@ -35,23 +57,31 @@ class Login extends Component {
 			    	  </path>
 		      	</svg>
 		      </div>
-          <Form.Group>
+          <Form.Group >
             <Form.Control
               type="email"
               placeholder="email"
               id="email"
               name="email"
-              onChange={this.onChangeHandler}
+              onChange={(event) => validateInput(event.target)}
+              className={emailValidation}
             />
+            <Form.Control.Feedback type="invalid">
+              invalid email
+            </Form.Control.Feedback>
           </Form.Group>
           <Form.Group >
             <Form.Control
               type="password"
               placeholder="password"
-              name="password"
-              onChange={this.onChangeHandler}
               id="password"
+              name="password"
+              onChange={(event) => validateInput(event.target)}
+              className={passwordValidation}
             />
+            <Form.Control.Feedback type="invalid">
+              password can't be empty.
+            </Form.Control.Feedback>
           </Form.Group>
           <p>{this.props.token ? <Redirect to="home" /> : null}</p>
           <p>{this.props.error}</p>
@@ -69,32 +99,20 @@ class Login extends Component {
       </div>
     );
   }
-  onChangeHandler = (event) => {
-    console.log(event);
-    this.setState({
-      data: {
-        ...this.state.data,
-        [event.target.name]: event.target.value,
-      },
-    });
-  };
-  login = (e) => {
-    e.preventDefault();
-    this.props.fetchUsers(this.state.data);
-  };
 }
 
 const mapStateToProps = (state) => {
+  const { validations } = state.eventHandler;
   return {
     token: state.user.token,
     error: state.user.message,
+    validations
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    fetchUsers: (request) => dispatch(fetchUsers(request)),
-  };
+const mapDispatchToProps = {
+    fetchUsers,
+    validateInput,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
