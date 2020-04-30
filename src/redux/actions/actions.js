@@ -1,21 +1,16 @@
 import axios from 'axios';
-import {
-  FETCH_USERS_REQUEST,
-  FETCH_USERS_SUCCESS,
-  FETCH_USERS_FAILURE,
-  VALIDATE_INPUT,
-  USER_LOGIN_SUCCESS,
-} from './actionTypes';
+import * as types from './actionTypes';
+
 
 export const fetchUsersRequest = () => ({
-  type: FETCH_USERS_REQUEST,
+  type: types.FETCH_USERS_REQUEST,
 });
 export const fetchUsersSuccess = (users) => ({
-  type: FETCH_USERS_SUCCESS,
+  type: types.FETCH_USERS_SUCCESS,
   payload: users,
 });
 export const fetchUsersFailure = (error) => ({
-  type: FETCH_USERS_FAILURE,
+  type: types.FETCH_USERS_FAILURE,
   payload: error,
 });
 
@@ -38,7 +33,7 @@ export const fetchUsers = (data) => (dispatch) => {
     });
 };
 export const validateInput = (target) => ({
-  type: VALIDATE_INPUT,
+  type: types.VALIDATE_INPUT,
   payload: {
     key: target.name,
     value: target.value,
@@ -46,6 +41,16 @@ export const validateInput = (target) => ({
 });
 
 export const loginUsersSuccess = (users) => ({
-  type: USER_LOGIN_SUCCESS,
+  type: types.USER_LOGIN_SUCCESS,
   payload: users,
+});
+
+export const handleError = (error) => ({
+  type: types.HANDLE_ERROR,
+  error,
+});
+
+export const setLoadingStatus = (status) => ({
+  type: types.SET_LOADING_STATUS,
+  status,
 });

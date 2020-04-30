@@ -1,9 +1,10 @@
-import {
-  FETCH_USERS_REQUEST,
-  FETCH_USERS_SUCCESS,
-  FETCH_USERS_FAILURE,
-  USER_LOGIN_SUCCESS,
-} from '../actions/actionTypes';
+// import {
+//   FETCH_USERS_REQUEST,
+//   FETCH_USERS_SUCCESS,
+//   FETCH_USERS_FAILURE,
+//   USER_LOGIN_SUCCESS,
+// } from '../actions/actionTypes';
+import * as types from '../actions/actionTypes';
 
 const initialState = {
   loading: false,
@@ -12,30 +13,29 @@ const initialState = {
 };
 const reduce = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_USERS_REQUEST:
+    case types.FETCH_USERS_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case FETCH_USERS_SUCCESS:
+    case types.FETCH_USERS_SUCCESS:
       return {
         loading: false,
         token: action.payload,
         error: '',
       };
-    case FETCH_USERS_FAILURE:
+    case types.FETCH_USERS_FAILURE:
       return {
         loading: false,
         token: '',
         error: action.payload,
       };
-    case USER_LOGIN_SUCCESS:
+    case types.USER_LOGIN_SUCCESS:
       return {
         ...state,
         data: action.payload,
       };
-    default:
-      return state;
+    default: return state;
   }
 };
 export default reduce;

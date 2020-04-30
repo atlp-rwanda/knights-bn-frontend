@@ -1,55 +1,70 @@
 import React, { Component } from "react";
-import { Form, Image, Alert } from "react-bootstrap";
+import { Form,Spinner } from "react-bootstrap";
 import "../assets/styles/containers/loginPage.scss";
 import { connect } from "react-redux";
-import {
-  fetchUsers,
-  validateInput,
-  loginUsersSuccess,
-} from "../redux/actions/index";
+import {fetchUsers,validateInput,loginUsersSuccess,handleError,setLoadingStatus} from "../redux/actions/index";
 import { Redirect } from "react-router-dom";
-import Textbox from "../components/Textbox";
+import TextBox from "../components/Textbox";
 import Button from "../components/Button";
 import Line from "../components/line";
 import { postThunk } from "../redux/thunk/index";
 import { withRouter } from "react-router";
+import AlertComponent from '../components/Alert';
 
 class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+    state = {
       data: { email: "", password: "" },
       error: " ",
       loggedIn: false,
     };
-  }
+    
+    login = async (e) => {
+      e.preventDefault();
+      this.props.handleError('')
+      const { validations: validatedFields } = this.props;
+      const invalidFields = Object.keys(validatedFields).filter(
+        (field) => validatedFields[field] === "is-invalid"
+      );
+      let validatedFieldsToArray = Object.keys(validatedFields);
+      if ((validatedFieldsToArray.length > 1) && (invalidFields.length === 0)) {
+        this.props.setLoadingStatus(true);
+        await this.props.postThunk(
+          "post",
+          "/auth/login",
+          loginUsersSuccess,
+          this.props.user
+        );
+        this.props.setLoadingStatus(false);
+        const { isLoggedIn } = this.props.userData;
+        isLoggedIn
+          ? this.props.history.push("/home")
+          : this.props.handleError('Incorrect email or password. Please try again.')
+
+      } else {
+        const errorMsg = (validatedFieldsToArray.length === 0)
+        ? 'Please fill in the required fields.'
+        : this.props.validations.email === 'is-valid' && !this.props.validations.password
+        ? 'Please enter your password.'
+        : 'Wrong email address.'
+        this.props.handleError(errorMsg);
+      }
+    };
+
   render() {
-    const { validateInput } = this.props;
-    const emailValidation = this.props.validations.email;
-    const passwordValidation = this.props.validations.password;
-    const { error } = this.state;
+    const { validateInput,error,isLoading } = this.props;
     return (
       <div className="login-page">
+        <Spinner animation="border" variant="primary" className={isLoading ? 'spinner--position__center' : 'hide'}/>
         <Form>
           <h1>Sign in</h1>
-          <span>
-            <p className="text-danger">
-              {error ? error : " "}
-            </p>
-          </span>
-          <p>Login with so social media</p>
+          <AlertComponent isError={error ? true : false} errorMsg={error}/>
+          <p>Login with social media</p>
           <div className="Google-login-btn">
-            <img
-              className="facebookLogo"
-              src={require("../assets/images/google.png")}
-            />
+            <img className="facebookLogo" src={require("../assets/images/google.png")}/>
             Sign in with Google
           </div>
           <div className="Facebook-login-btn">
-            <img
-              className="GoogleLogo"
-              src={require("../assets/images/facebook.png")}
-            />
+            <img className="GoogleLogo" src={require("../assets/images/facebook.png")}/>
             Sign in with Facebook
           </div>
           <div id="or">
@@ -59,26 +74,23 @@ class Login extends Component {
             </div>
             <Line className="Line_" />
           </div>
-          <Textbox
+          <TextBox
             type="email"
             placeholder="email"
             id="email"
             name="email"
             onChange={validateInput}
-            validation={emailValidation}
-            errorMsg="invalid email"
+            dataTestid="email"
           />
-          <Textbox
+          <TextBox
             type="password"
             placeholder="password"
             id="password"
             name="password"
             onChange={validateInput}
-            validation={passwordValidation}
-            errorMsg="password can't be empty."
+            dataTestid="password"
           />
           <p>{this.props.token ? <Redirect to="home" /> : null}</p>
-          <p>{this.props.error}</p>
           <Button onClick={(e) => this.login(e)} id="loginBtn" label="Login" />
           <a id="forgotPassword" href="#">
             <p>Forgot Password?</p>
@@ -87,38 +99,16 @@ class Login extends Component {
       </div>
     );
   }
-  login = async (e) => {
-    e.preventDefault();
-    const { validations: validatedFields } = this.props;
-    const invalidFields = Object.keys(validatedFields).filter(
-      (field) => validatedFields[field] === "is-invalid"
-    );
-    let validatedFieldsToArray = Object.keys(validatedFields);
-    if (validatedFieldsToArray.length && invalidFields.length === 0) {
-      await this.props.postThunk(
-        "post",
-        "/auth/login",
-        loginUsersSuccess,
-        this.props.user
-      );
-      const { isLoggedIn } = this.props.userData;
-      isLoggedIn
-        ? this.props.history.push("/home")
-        : this.setState({
-            ...this.state,
-            error: this.props.userData.message || this.props.userData.error,
-          });
-    }
-  };
 }
 
 const mapStateToProps = (state) => {
   return {
     token: state.user.token,
-    error: state.user.message,
+    error: state.errorHandler.error,
     validations: state.eventHandler.validations,
     user: state.eventHandler.user,
     userData: state.user.data,
+    isLoading: state.eventHandler.isLoading
   };
 };
 
@@ -126,6 +116,8 @@ const mapDispatchToProps = {
   fetchUsers,
   validateInput,
   postThunk,
+  handleError,
+  setLoadingStatus
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

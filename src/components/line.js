@@ -1,5 +1,5 @@
 import React from 'react';
-import '../assets/styles/styles.css';
+import '../assets/styles/styles.scss';
 
 const Line = (props) => (
   <svg className={props.className} viewBox="0 1 120.5 1">

@@ -5,13 +5,15 @@
   "main": "src/index.js",
   "scripts": {
     "dev-start": "webpack-dev-server --mode development --open --hot",
-    "test": "jest --coverage",
+    "test": "jest --no-cache --maxWorkers=2 --config jest.config.js --coverage --collectCoverageFrom=src/**/*.js",
     "build": "webpack --mode production",
     "storybook": "start-storybook -p 6006",
     "start": "node server.js",
-    "coveralls": "jest --coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "coveralls": "npm run test && cat ./coverage/lcov.info | coveralls",
     "heroku-postbuild": "npm run build",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "lint": "eslint .",
+    "lint-fix": "eslint ./ --fix"
   },
   "repository": {
     "type": "git",
@@ -48,6 +50,7 @@
     "@babel/polyfill": "^7.8.7",
     "@babel/preset-env": "^7.9.5",
     "@babel/preset-react": "^7.9.4",
+    "@testing-library/user-event": "^10.1.0",
     "axios": "^0.19.2",
     "babel-loader": "^8.1.0",
     "bootstrap": "^4.4.1",

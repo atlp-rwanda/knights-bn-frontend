@@ -1,17 +1,18 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-function SubmitButton(props) {
-  return (
-    <Button
-      size={props.size}
-      id={props.id}
-      label={props.label}
-      onClick={props.onClick}
-    >
-      {props.label}
-    </Button>
-  );
-}
+const SubmitButton = ({
+  size, id, label, onClick,
+}) => (
+  <Button
+    size={size}
+    id={id}
+    label={label}
+    onClick={onClick}
+    data-testid="button"
+  >
+    {label}
+  </Button>
+);
 
 export default SubmitButton;

@@ -26,5 +26,9 @@ module.exports = {
     indent: [2],
     "eol-last":["error", "always"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "global-require": 0,
+    "jsx-a11y/alt-text": 0,
+    "react/prop-types": 0,
+    "react/destructuring-assignment": 0
   },
 };

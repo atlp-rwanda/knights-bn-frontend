@@ -1,9 +1,10 @@
-import { VALIDATE_INPUT } from '../actions/actionTypes';
+import { VALIDATE_INPUT, SET_LOADING_STATUS } from '../actions/actionTypes';
 import inputValidation from '../../util/validations';
 
 const initialState = {
   user: {},
   validations: {},
+  isLoading: false,
 };
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -24,6 +25,12 @@ export default (state = initialState, action) => {
           ...state.validations,
           [action.payload.key]: validationStatus,
         },
+      };
+    }
+    case SET_LOADING_STATUS: {
+      return {
+        ...state,
+        isLoading: action.status,
       };
     }
     default: return state;
