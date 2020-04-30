@@ -10,8 +10,12 @@ const Textbox = (props) => {
         placeholder={props.placeholder}
         id={props.id}
         name={props.name}
-        onChange={props.onChange}
+        onChange={(event) => props.onChange(event.target)}
+        className={props.validation}
       />
+      <Form.Control.Feedback type="invalid">
+              {props.errorMsg}
+            </Form.Control.Feedback>
     </Form.Group>
   );
 };
