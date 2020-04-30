@@ -1,6 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
-import { Provider } from "react-redux";
+import { Route, Switch , BrowserRouter } from "react-router-dom";
 import Home from "../containers/Home";
 import Login from "../views/LoginPage";
 import Nav from "../components/Nav";
@@ -10,7 +9,7 @@ import HomePage from "../views/Home";
 
 const App = () => (
   <div>
-    <Route>
+    <BrowserRouter>
       <Nav />
       <Switch>
         <Route path="/login" exact component={Login} />
@@ -19,7 +18,7 @@ const App = () => (
         <Route path="/Home" exact component={HomePage} />
       </Switch>
       <Footer />
-    </Route>
+    </BrowserRouter>
   </div>
 );
 
