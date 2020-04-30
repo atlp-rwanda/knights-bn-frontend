@@ -2,6 +2,7 @@ import {
   FETCH_USERS_REQUEST,
   FETCH_USERS_SUCCESS,
   FETCH_USERS_FAILURE,
+  USER_LOGIN_SUCCESS,
 } from '../actions/actionTypes';
 
 const initialState = {
@@ -27,6 +28,11 @@ const reduce = (state = initialState, action) => {
         loading: false,
         token: '',
         error: action.payload,
+      };
+    case USER_LOGIN_SUCCESS:
+      return {
+        ...state,
+        data: action.payload,
       };
     default:
       return state;

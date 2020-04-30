@@ -21,3 +21,9 @@ jobs:
     - run:
         name: coveralls
         command: npm run coveralls
+workflows:
+  version: 2
+  workflow:
+    jobs:
+    - build
+    

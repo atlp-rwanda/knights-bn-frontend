@@ -4,6 +4,7 @@ import {
   FETCH_USERS_SUCCESS,
   FETCH_USERS_FAILURE,
   VALIDATE_INPUT,
+  USER_LOGIN_SUCCESS,
 } from './actionTypes';
 
 export const fetchUsersRequest = () => ({
@@ -32,7 +33,6 @@ export const fetchUsers = (data) => (dispatch) => {
       dispatch(fetchUsersSuccess(response));
     })
     .catch((error) => {
-      console.log('--catch--', JSON.stringify(error.response.data.error));
       const errorMsg = error;
       dispatch(fetchUsersFailure(errorMsg));
     });
@@ -43,4 +43,9 @@ export const validateInput = (target) => ({
     key: target.name,
     value: target.value,
   },
+});
+
+export const loginUsersSuccess = (users) => ({
+  type: USER_LOGIN_SUCCESS,
+  payload: users,
 });
