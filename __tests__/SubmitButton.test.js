@@ -18,14 +18,14 @@ describe('Test the submit button ', () => {
   });
   it.skip('should render button correctly', () => {
     const { getByTestId } = render(
-      <SubmitButton id="button" label="log out" />,
+      <SubmitButton id="button" label="log out" />
     );
     expect(getByTestId('button')).toHaveTextContent('log out');
   });
 
   it.skip('matches snapshot', () => {
     const tree = ReactTestRenderer.create(
-      <SubmitButton id="button" label="log in" />,
+      <SubmitButton id="button" label="log in" />
     );
     expect(tree).toMatchSnapshot();
   });

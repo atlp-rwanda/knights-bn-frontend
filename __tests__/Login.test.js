@@ -27,7 +27,7 @@ describe('<Login />....', () => {
   wrapper = mount(
     <MemoryRouter>
       <View {...props} />
-    </MemoryRouter>,
+    </MemoryRouter>
   );
   it('Should render <LoginComponet />  component', () => {
     console.log('<<<<<</////>>>>', wrapper.props());
