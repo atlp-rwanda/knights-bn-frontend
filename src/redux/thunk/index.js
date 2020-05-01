@@ -1,10 +1,10 @@
 import axios from 'axios';
 
-export const axiosInstance = axios.create({
+const axiosInstance = axios.create({
   baseURL: 'https://knights-bn-backnd.herokuapp.com/api/v1',
 });
 
-const postThunk = (
+const thunk = (
   method,
   path,
   action,
@@ -17,19 +17,7 @@ const postThunk = (
     dispatch(action({ ...error.response.data, isLoggedIn: false }));
   });
 
-const getThunk = (method,
-  path,
-  action) => (dispatch) => axiosInstance[method](path)
-  .then((response) => {
-    dispatch(action(response.data));
-  })
-  .catch((error) => {
-    dispatch(action({
-      errors: error,
-    }));
-  });
-
 
 export {
-  getThunk, postThunk,
+  axiosInstance, thunk,
 };
