@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`===== Test Header ===== renders 1`] = `
+<DocumentFragment>
+  <div>
+    <h1
+      class="box position__center"
+      data-testid="header"
+    >
+      Barefoot Nomad
+    </h1>
+  </div>
+</DocumentFragment>
+`;
