@@ -9,7 +9,7 @@ const SubmitButton = ({
     id={id}
     label={label}
     onClick={onClick}
-    data-testid="button"
+    aria-label={label}
   >
     {label}
   </Button>
