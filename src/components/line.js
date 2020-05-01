@@ -1,8 +1,8 @@
 import React from 'react';
 import '../assets/styles/styles.scss';
 
-const Line = (props) => (
-  <svg className={props.className} viewBox="0 1 120.5 1">
+const Line = ({ className }) => (
+  <svg className={className} viewBox="0 1 120.5 1">
     <path
       fill="transparent"
       stroke="rgba(231,231,231,1)"
