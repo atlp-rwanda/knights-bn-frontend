@@ -1,70 +1,89 @@
-import React, { Component } from "react";
-import { Form,Spinner } from "react-bootstrap";
-import "../assets/styles/containers/loginPage.scss";
-import { connect } from "react-redux";
-import {fetchUsers,validateInput,loginUsersSuccess,handleError,setLoadingStatus} from "../redux/actions/index";
-import { Redirect } from "react-router-dom";
-import TextBox from "../components/Textbox";
-import Button from "../components/Button";
-import Line from "../components/line";
-import { postThunk } from "../redux/thunk/index";
-import { withRouter } from "react-router";
+import React, { Component } from 'react';
+import { Form, Spinner } from 'react-bootstrap';
+import '../assets/styles/containers/loginPage.scss';
+import { connect } from 'react-redux';
+import {
+  fetchUsers,
+  validateInput,
+  loginUsersSuccess,
+  handleError,
+  setLoadingStatus,
+} from '../redux/actions/index';
+import { Redirect } from 'react-router-dom';
+import TextBox from '../components/Textbox';
+import Button from '../components/Button';
+import Line from '../components/line';
+import { postThunk } from '../redux/thunk/index';
+import { withRouter } from 'react-router';
 import AlertComponent from '../components/Alert';
 
 class Login extends Component {
-    state = {
-      data: { email: "", password: "" },
-      error: " ",
-      loggedIn: false,
-    };
-    
-    login = async (e) => {
-      e.preventDefault();
-      this.props.handleError('')
-      const { validations: validatedFields } = this.props;
-      const invalidFields = Object.keys(validatedFields).filter(
-        (field) => validatedFields[field] === "is-invalid"
-      );
-      let validatedFieldsToArray = Object.keys(validatedFields);
-      if ((validatedFieldsToArray.length > 1) && (invalidFields.length === 0)) {
-        this.props.setLoadingStatus(true);
-        await this.props.postThunk(
-          "post",
-          "/auth/login",
-          loginUsersSuccess,
-          this.props.user
-        );
-        this.props.setLoadingStatus(false);
-        const { isLoggedIn } = this.props.userData;
-        isLoggedIn
-          ? this.props.history.push("/home")
-          : this.props.handleError('Incorrect email or password. Please try again.')
+  state = {
+    data: { email: '', password: '' },
+    error: ' ',
+    loggedIn: false,
+  };
 
-      } else {
-        const errorMsg = (validatedFieldsToArray.length === 0)
-        ? 'Please fill in the required fields.'
-        : this.props.validations.email === 'is-valid' && !this.props.validations.password
-        ? 'Please enter your password.'
-        : 'Wrong email address.'
-        this.props.handleError(errorMsg);
-      }
-    };
+  login = async (e) => {
+    e.preventDefault();
+    this.props.handleError('');
+    const { validations: validatedFields } = this.props;
+    const invalidFields = Object.keys(validatedFields).filter(
+      (field) => validatedFields[field] === 'is-invalid'
+    );
+    let validatedFieldsToArray = Object.keys(validatedFields);
+    if (validatedFieldsToArray.length > 1 && invalidFields.length === 0) {
+      this.props.setLoadingStatus(true);
+      await this.props.postThunk(
+        'post',
+        '/auth/login',
+        loginUsersSuccess,
+        this.props.user
+      );
+      this.props.setLoadingStatus(false);
+      const { isLoggedIn } = this.props.userData;
+      isLoggedIn
+        ? this.props.history.push('/home')
+        : this.props.handleError(
+            'Incorrect email or password. Please try again.'
+          );
+    } else {
+      const errorMsg =
+        validatedFieldsToArray.length === 0
+          ? 'Please fill in the required fields.'
+          : this.props.validations.email === 'is-valid' &&
+            !this.props.validations.password
+          ? 'Please enter your password.'
+          : 'Wrong email address.';
+      this.props.handleError(errorMsg);
+    }
+  };
 
   render() {
-    const { validateInput,error,isLoading } = this.props;
+    const { validateInput, error, isLoading } = this.props;
     return (
-      <div className="login-page">
-        <Spinner animation="border" variant="primary" className={isLoading ? 'spinner--position__center' : 'hide'}/>
+      <div className="login-page loginContainer">
+        <Spinner
+          animation="border"
+          variant="primary"
+          className={isLoading ? 'spinner--position__center' : 'hide'}
+        />
         <Form>
           <h1>Sign in</h1>
-          <AlertComponent isError={error ? true : false} errorMsg={error}/>
+          <AlertComponent isError={error ? true : false} errorMsg={error} />
           <p>Login with social media</p>
           <div className="Google-login-btn">
-            <img className="facebookLogo" src={require("../assets/images/google.png")}/>
+            <img
+              className="facebookLogo"
+              src={require('../assets/images/google.png')}
+            />
             Sign in with Google
           </div>
           <div className="Facebook-login-btn">
-            <img className="GoogleLogo" src={require("../assets/images/facebook.png")}/>
+            <img
+              className="GoogleLogo"
+              src={require('../assets/images/facebook.png')}
+            />
             Sign in with Facebook
           </div>
           <div id="or">
@@ -80,7 +99,8 @@ class Login extends Component {
             id="email"
             name="email"
             onChange={validateInput}
-            dataTestid="email"
+            label="email"
+            value={this.props.user.email}
           />
           <TextBox
             type="password"
@@ -88,10 +108,17 @@ class Login extends Component {
             id="password"
             name="password"
             onChange={validateInput}
-            dataTestid="password"
+            label="password"
+            value={this.props.user.password}
           />
           <p>{this.props.token ? <Redirect to="home" /> : null}</p>
-          <Button onClick={(e) => this.login(e)} id="loginBtn" label="Login" />
+          <Button
+            aria-label="login"
+            onClick={(e) => this.login(e)}
+            id="loginBtn"
+            label="Login"
+            
+          />
           <a id="forgotPassword" href="#">
             <p>Forgot Password?</p>
           </a>
@@ -108,7 +135,7 @@ const mapStateToProps = (state) => {
     validations: state.eventHandler.validations,
     user: state.eventHandler.user,
     userData: state.user.data,
-    isLoading: state.eventHandler.isLoading
+    isLoading: state.eventHandler.isLoading,
   };
 };
 
@@ -117,7 +144,7 @@ const mapDispatchToProps = {
   validateInput,
   postThunk,
   handleError,
-  setLoadingStatus
+  setLoadingStatus,
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Login));

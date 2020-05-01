@@ -1,7 +1,6 @@
 import axios from 'axios';
 import * as types from './actionTypes';
 
-
 export const fetchUsersRequest = () => ({
   type: types.FETCH_USERS_REQUEST,
 });

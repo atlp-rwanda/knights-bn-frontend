@@ -4,7 +4,7 @@ import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Line from '../src/components/line';
 
-describe('<Line />', () => {
+describe('===============> Line <=============', () => {
   afterEach(cleanup);
   it('renders without crushing', () => {
     const div = document.createElement('div');
