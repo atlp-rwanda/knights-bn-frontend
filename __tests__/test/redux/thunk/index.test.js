@@ -24,7 +24,6 @@ describe('test thunk', () => {
     store
       .dispatch(reduxThunk('post', '/auth/login', loginUsersSuccess, {}))
       .then((d) => {
-        console.log('.....ddd', d);
       });
   });
   it('test get thunk error', async () => {
@@ -35,7 +34,6 @@ describe('test thunk', () => {
     store
       .dispatch(reduxThunk('post', '/auth/login', loginUsersSuccess, {}))
       .then((d) => {
-        console.log('.....ddd', d);
       });
   });
 });

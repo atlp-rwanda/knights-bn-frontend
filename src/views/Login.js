@@ -127,7 +127,7 @@ export class Login extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
+export const mapStateToProps = (state) => {
   return {
     token: state.user.token,
     error: state.errorHandler.error,

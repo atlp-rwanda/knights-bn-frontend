@@ -4,9 +4,14 @@ import TextBox from '../src/components/Textbox';
 
 
 describe('<TextBox />', () => {
-  test('renders without crashing', () => {
-    const component = mount(<TextBox />);
-    const input = component.find('TextBox');
+  it('renders without crashing', () => {
+    const props = {
+      onChange: jest.fn(),
+      name: 'email',
+      value: 'value',
+    };
+    const component = mount(<TextBox {...props} />);
+    const input = component.find('input');
     input.simulate('change', { target: { value: 'alain' } });
     expect(component).toHaveLength(1);
   });

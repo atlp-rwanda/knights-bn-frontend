@@ -3,7 +3,7 @@ import { MemoryRouter } from 'react-router-dom';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { mount, shallow } from '../setupTests';
-import Login, { Login as View } from '../src/views/Login';
+import Login, { mapStateToProps, Login as View } from '../src/views/Login';
 
 let wrapper;
 
@@ -105,6 +105,7 @@ describe('<Login />....', () => {
   const props = {
     handleError: jest.fn(),
     setLoadingStatus: jest.fn(),
+    token: 'abc',
     user: {
       email: 'efwhjh@bmwef.com',
       password: 'Fofo188',
@@ -128,6 +129,53 @@ describe('<Login />....', () => {
     wrapper.find('Button').simulate('click');
     expect(wrapper.find('TextBox').length).toBe(2);
     wrapper.unmount();
+  });
+  it('Should render <LoginComponet />  component', () => {
+    const props1 = {
+      isLoading: true,
+      handleError: jest.fn(),
+      setLoadingStatus: jest.fn(),
+      user: {
+        email: 'efwhjh@bmwef.com',
+        password: 'Fofo188',
+      },
+      userData: {
+        isLoggedIn: false,
+      },
+      thunk: jest.fn(async () => ({})),
+      validations: {
+        email: 'is-valid',
+        password: 'is-valid',
+      },
+    };
+
+    wrapper = mount(
+      <MemoryRouter>
+        <View {...props1} />
+      </MemoryRouter>,
+    );
+    wrapper.props();
+    wrapper.find('Button').simulate('click');
+    expect(wrapper.find('TextBox').length).toBe(2);
+    wrapper.unmount();
+  });
+
+  it('test mapStateToProps', () => {
+    const state = {
+      user: {
+        token: 'abc',
+        data: {}
+      },
+      errorHandler: {
+        error: ''
+      },
+      eventHandler: {
+        validations: {},
+        user: {},
+        isLoading: false,
+      },
+    };
+    expect(mapStateToProps(state).isLoading).toBe(false);
   });
 });
 
