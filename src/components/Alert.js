@@ -1,11 +1,18 @@
 import React from 'react';
-import '../assets/styles/containers/loginPage.scss';
+// import '../assets/styles/containers/loginPage.scss';
+import '../assets/styles/components/alert.scss';
 
 const AlertComponent = (props) => (
   <span>
-    <p className={props.isError ? 'text-danger' : 'hide'} id="loginError">
-      <img className="alertIcon" src={require('../assets/images/alert.png')} />
-      {props.errorMsg}
+    <p
+      className={` ${
+        props.isError ? 'alert alert__error text-danger'
+          : props.isSuccess ? 'alert alert__success text-success '
+            : 'hide'
+      }`}
+    >
+      <img className={props.isError ? 'alertIcon' : 'hide'} src={require('../assets/images/alert.png')} />
+      {props.message}
     </p>
   </span>
 );

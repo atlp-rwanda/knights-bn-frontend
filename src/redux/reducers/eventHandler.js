@@ -1,10 +1,20 @@
-import { VALIDATE_INPUT, SET_LOADING_STATUS } from '../actions/actionTypes';
+import {
+  VALIDATE_INPUT, SET_LOADING_STATUS, RESET_INPUT_FIELDS, VALIDATE_FORM,
+} from '../actions/actionTypes';
 import inputValidation from '../../util/validations';
 
 const initialState = {
   user: {},
-  validations: {},
+  validations: {
+    firstName: 'is-invalid',
+    lastName: 'is-invalid',
+    email: 'is-invalid',
+    password: 'is-invalid',
+    confirmPassword: 'is-invalid',
+    gender: 'is-invalid',
+  },
   isLoading: false,
+  isValidated: false,
 };
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -31,6 +41,15 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: action.status,
+      };
+    }
+    case RESET_INPUT_FIELDS: {
+      return initialState;
+    }
+    case VALIDATE_FORM: {
+      return {
+        ...state,
+        isValidated: action.status,
       };
     }
     default: return state;

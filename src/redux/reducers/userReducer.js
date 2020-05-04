@@ -1,9 +1,3 @@
-// import {
-//   FETCH_USERS_REQUEST,
-//   FETCH_USERS_SUCCESS,
-//   FETCH_USERS_FAILURE,
-//   USER_LOGIN_SUCCESS,
-// } from '../actions/actionTypes';
 import * as types from '../actions/actionTypes';
 
 const initialState = {

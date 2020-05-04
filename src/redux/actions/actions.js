@@ -1,4 +1,3 @@
-import axios from 'axios';
 import * as types from './actionTypes';
 
 export const fetchUsersRequest = () => ({
@@ -12,25 +11,6 @@ export const fetchUsersFailure = (error) => ({
   type: types.FETCH_USERS_FAILURE,
   payload: error,
 });
-
-export const fetchUsers = (data) => (dispatch) => {
-  dispatch(fetchUsersRequest());
-  axios
-    .post('https://knights-bn-backnd.herokuapp.com/api/v1/auth/login', data, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
-    .then((res) => {
-      const response = res.data.token;
-      dispatch(fetchUsersSuccess(response));
-    })
-    .catch((error) => {
-      const errorMsg = error;
-      dispatch(fetchUsersFailure(errorMsg));
-    });
-};
 export const validateInput = (target) => ({
   type: types.VALIDATE_INPUT,
   payload: {
@@ -51,5 +31,16 @@ export const handleError = (error) => ({
 
 export const setLoadingStatus = (status) => ({
   type: types.SET_LOADING_STATUS,
+  status,
+});
+
+export const handleSuccess = (message) => ({
+  type: types.HANDLE_SUCCESS,
+  message,
+});
+
+export const resetInputFields = () => ({ type: types.RESET_INPUT_FIELDS });
+export const validateForm = (status) => ({
+  type: types.VALIDATE_FORM,
   status,
 });
