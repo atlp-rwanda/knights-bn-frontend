@@ -1,13 +1,22 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { cleanup } from '@testing-library/react';
+import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from 'react-router-dom';
 import Nav from '../src/components/Nav';
+import store from '../src/redux/store';
 
-describe('<Nav />', () => {
+const NavComponent = () => render(
+  <Provider store={store}>
+    <Router>
+      <Nav />
+    </Router>
+  </Provider>,
+);
+describe('Test Nav component', () => {
   afterEach(cleanup);
-  it('renders without crushing', async () => {
-    const div = document.createElement('div');
-    ReactDOM.render(<Nav />, div);
+  it('should render Nav component', () => {
+    const { asFragment } = NavComponent();
+    expect(asFragment(<Nav />)).toMatchSnapshot();
   });
 });

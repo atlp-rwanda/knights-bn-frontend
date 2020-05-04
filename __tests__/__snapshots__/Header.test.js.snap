@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`===== Test Header ===== renders 1`] = `
+exports[`Test Header component renders 1`] = `
 <DocumentFragment>
   <div>
     <h1

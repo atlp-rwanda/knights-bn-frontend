@@ -9,6 +9,8 @@ const TextBox = (props) => (
       id={props.id}
       name={props.name}
       onChange={(event) => props.onChange(event.target)}
+      aria-label={props.label}
+      value={props.value}
     />
   </Form.Group>
 );

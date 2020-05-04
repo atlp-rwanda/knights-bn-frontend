@@ -4,7 +4,7 @@ import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Header from '../src/components/Header';
 
-describe('===== Test Header =====', () => {
+describe('Test Header component', () => {
   afterEach(cleanup);
   it('renders without crushing', () => {
     const div = document.createElement('div');
