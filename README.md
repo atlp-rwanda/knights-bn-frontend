@@ -8,6 +8,9 @@
 ## Description
 Make company global travel and accommodation easy and convenient for the strong workforce of savvy members of staff, by leveraging the modern web.
 
+## Design mockup 
+[Link](https://xd.adobe.com/view/ddb6dde0-8b48-4220-6a0f-493993ea9646-ab87/)
+
 ## Technologies used :gear:
 - React JS
 - Webpack

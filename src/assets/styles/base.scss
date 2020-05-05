@@ -1,5 +1,5 @@
-*{
-    font-family: Josefin Sans;
+.hide{
+    display:none;
 }
 .position__top--center{
     position: relative;
@@ -13,9 +13,9 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
-.box{
-    border: 0.1rem solid white;
-    border-radius: 0.5rem;
-    padding: 0.5rem;
-    color: white;
+.spinner--position__center {
+    position: fixed;
+    top:-100%; right:-100%; left:-100%; bottom:-100%;
+    margin:auto;
+    z-index:0;
 }

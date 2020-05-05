@@ -5,15 +5,14 @@ import { Provider } from 'react-redux';
 import App from './route/App';
 import configureStore from './redux';
 
+
 const store = configureStore();
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <App />
-      ,
     </BrowserRouter>
-    ,
   </Provider>,
   document.getElementById('root'),
 );

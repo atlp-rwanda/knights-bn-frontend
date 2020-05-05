@@ -66,3 +66,13 @@ typings/
 
 #vs code config
 .vscode/
+
+.DS_Store/
+
+-"src/.DS_Store"
+
+-"src/assets/.DS_Store"
+
+-"src/assets/images/.DS_Store"
+
+./__tests__/__snapshots__

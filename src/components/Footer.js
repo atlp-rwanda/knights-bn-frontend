@@ -1,11 +1,16 @@
 import React from 'react';
-import '../assets/styles/styles.css'
+import '../assets/styles/styles.scss';
 
 const Footer = () => {
-  var date = new Date();
+  const date = new Date();
   return (
     <footer className="text-center pt-3 footer">
-      <h3>&copy; Copyright {date.getFullYear()} knights-barefoot-nomad.com</h3>
+      <h3>
+        &copy; Copyright
+        {date.getFullYear()}
+        {' '}
+        knights-barefoot-nomad.com
+      </h3>
     </footer>
   );
 };
