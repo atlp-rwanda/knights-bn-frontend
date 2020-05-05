@@ -19,7 +19,7 @@ export default class UserInfo extends Component {
   render() {
     return (
       <div>
-        <h1>Request loading error</h1>
+        <h1>Loading ...</h1>
       </div>
     );
   }

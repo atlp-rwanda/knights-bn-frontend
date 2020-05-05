@@ -1,8 +1,16 @@
 import axios from 'axios';
 import * as types from './actionTypes';
 
-export const validateInput = (target) => ({
-  type: types.VALIDATE_INPUT,
+export const validateLoginInput = (target) => ({
+  type: types.VALIDATE_LOGIN_INPUT,
+  payload: {
+    key: target.name,
+    value: target.value,
+  },
+});
+
+export const validateSignupInput = (target) => ({
+  type: types.VALIDATE_SIGNUP_INPUT,
   payload: {
     key: target.name,
     value: target.value,
@@ -22,4 +30,23 @@ export const handleError = (error) => ({
 export const setLoadingStatus = (status) => ({
   type: types.SET_LOADING_STATUS,
   status,
+});
+
+export const handleSuccess = (message) => ({
+  type: types.HANDLE_SUCCESS,
+  message,
+});
+
+export const resetInputFields = () => ({ type: types.RESET_INPUT_FIELDS });
+
+export const validateForm = (status) => ({
+  type: types.VALIDATE_FORM,
+  status,
+});
+
+export const clearErrorMsg = () => ({
+  type: types.CLEAR_ERROR_MSG,
+});
+export const clearSuccessMsg = () => ({
+  type: types.CLEAR_SUCCESS_MSG,
 });

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ReactTestRenderer from 'react-test-renderer';
-import SubmitButton from '../src/components/Button';
+import SubmitButton from '../../src/components/Button';
 
 describe('Test the submit button ', () => {
   afterEach(cleanup);

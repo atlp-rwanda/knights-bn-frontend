@@ -1,10 +1,9 @@
 .hide{
     display:none;
 }
-.position__top--center{
+.position--center{
     position: relative;
     text-align: center;
-    margin-top: 2rem;
 }
 .position__center{
     text-align: center;
@@ -18,4 +17,9 @@
     top:-100%; right:-100%; left:-100%; bottom:-100%;
     margin:auto;
     z-index:0;
+}
+.flex--items {
+  display: flex;
+  margin: 1px 1px 1px 1px;
+  padding-right: 1rem;
 }

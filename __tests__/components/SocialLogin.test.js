@@ -1,8 +1,8 @@
 import React from 'react';
-import { shallow } from '../setupTests';
-import SocialLogin from '../src/components/SocialLogin';
-import UserInfo from '../src/helpers/UserInfo';
-import Login from '../src/views/Login';
+import { shallow } from '../../setupTests';
+import SocialLogin from '../../src/components/SocialLogin';
+import UserInfo from '../../src/helpers/UserInfo';
+import Login from '../../src/views/Login';
 
 describe('testing Social Login', () => {
   it('Login should render correctly in "debug" mode without', () => {

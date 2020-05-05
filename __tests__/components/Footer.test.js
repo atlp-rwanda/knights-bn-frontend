@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Home from '../src/views/Home';
+import Footer from '../../src/components/Footer';
 
-describe('<Home />', () => {
+describe('Test Footer component', () => {
   afterEach(cleanup);
   it('renders without crushing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Home />, div);
+    ReactDOM.render(<Footer />, div);
   });
 });

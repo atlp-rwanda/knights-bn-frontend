@@ -1,6 +1,6 @@
 
-import errorHandler from '../../../../src/redux/reducers/errorHandler';
-import { HANDLE_ERROR } from '../../../../src/redux/actions/actionTypes';
+import errorHandler from '../../../src/redux/reducers/errorHandler';
+import { HANDLE_ERROR } from '../../../src/redux/actions/actionTypes';
 
 describe('Test errorHandler test', () => {
   const initialState = {

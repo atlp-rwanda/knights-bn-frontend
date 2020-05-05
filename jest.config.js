@@ -13,5 +13,6 @@ module.exports = {
       '<rootDir>/__mocks__/index.js',
     '\\.(css|less|scss)$': '<rootDir>/__mocks__/index.js',
   },
-  setupFilesAfterEnv: ['<rootDir>/setupTests.js'],
+  setupFilesAfterEnv: ['<rootDir>/setupTests.js', './node_modules/jest-enzyme/lib/index.js'],
+
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { render, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Header from '../src/components/Header';
+import Header from '../../src/components/Header';
 
 describe('Test Header component', () => {
   afterEach(cleanup);

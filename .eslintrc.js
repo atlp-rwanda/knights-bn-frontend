@@ -27,5 +27,7 @@ module.exports = {
     'react/destructuring-assignment': 0,
     'import/no-named-as-default': 0,
     'import/no-named-as-default-member': 0,
+    'no-nested-ternary': 0,
+    'react/jsx-props-no-spreading': 0
   },
 };
