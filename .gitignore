@@ -75,4 +75,5 @@ typings/
 
 -"src/assets/images/.DS_Store"
 
-./__tests__/__snapshots__
+#ignore Test screenshots
+__tests__/__snapshots__
