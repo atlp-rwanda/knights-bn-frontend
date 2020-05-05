@@ -14,7 +14,8 @@
   transform: translate(-50%, -50%);
 }
 
-.facebookLogo, .GoogleLogo{
+.facebookLogo,
+.GoogleLogo {
   height: 1rem;
   width: 1rem;
   margin-right: 10px;
@@ -29,8 +30,8 @@
   border-radius: 5px;
   border: 1px solid rgba($color: #ffffff, $alpha: 0.3);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-  background-color: #FFFFFF;
-  height:auto !important;
+  background-color: #ffffff;
+  height: auto !important;
 }
 
 #email,
@@ -47,10 +48,11 @@
   font-style: normal;
   font-weight: normal;
   font-size: 14px;
-  color: rgba(146,150,153,1);
+  color: rgba(146, 150, 153, 1);
 }
 
-#password,#email{
+#password,
+#email {
   color: rgb(0, 0, 0);
 }
 
@@ -83,7 +85,7 @@ p {
   text-align: center;
 }
 
-#forgotPassword p{
+#forgotPassword p {
   color: #5890cc;
 }
 
@@ -139,24 +141,59 @@ p {
   transform: matrix(1, 0, 0, 1, 0, 0);
 }
 
-.login-page h1{
+.login-page h1 {
   margin-top: 0.2em;
   margin-bottom: 0.8em;
   font-size: 2rem;
 }
 
-#loginError{
-  background-color: #FBEFF0;
+#loginError {
+  background-color: #fbeff0;
   padding: 7px !important;
   border-radius: 5px;
-  border-left: 3px solid #D36969;
+  border-left: 3px solid #d36969;
   font-size: 14px;
 }
 
-.alertIcon{
+.alertIcon {
   height: 13px;
   width: 13px;
   float: left;
   margin-top: 3px;
   margin-left: 4px;
+}
+.social-login-btn {
+  border: 1px solid rgba($color: #d1d1d1, $alpha: 1);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 0.8rem;
+  font-weight: 100;
+  padding: 10px;
+  border-radius: 10px;
+  text-align: center;
+  color: rgba(146, 150, 153, 1);
+  width: 90%;
+  cursor: pointer;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.social-login-btn:hover {
+  border: none;
+  background: #404040;
+  color: #ffffff !important;
+  font-weight: 100;
+  transition: all 0.3s ease 0s;
+}
+.btnStyle {
+  color: rgba(146, 150, 153, 1);
+  cursor: pointer;
+  background-color: transparent;
+  border-color: transparent;
+  border-radius: 0.25rem;
+}
+.SocialFacebook {
+  background-color: #3b5998;
+  padding: 1px 0px;
+}
+.social-login-btn:focus {
+  outline: 0;
 }

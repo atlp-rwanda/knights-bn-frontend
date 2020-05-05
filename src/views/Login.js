@@ -1,41 +1,42 @@
-import React, { Component } from "react";
-import { Form, Spinner } from "react-bootstrap";
-import "../assets/styles/containers/loginPage.scss";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { Form, Spinner } from 'react-bootstrap';
+import '../assets/styles/containers/loginPage.scss';
+import { connect } from 'react-redux';
 import {
   validateInput,
   loginUsersSuccess,
   handleError,
   setLoadingStatus,
-} from "../redux/actions/index";
-import { Redirect } from "react-router-dom";
-import TextBox from "../components/Textbox";
-import Button from "../components/Button";
-import Line from "../components/line";
-import { thunk } from "../redux/thunk/index";
-import { withRouter } from "react-router";
-import AlertComponent from "../components/Alert";
+} from '../redux/actions/index';
+import { Redirect } from 'react-router-dom';
+import TextBox from '../components/Textbox';
+import Button from '../components/Button';
+import Line from '../components/line';
+import { thunk } from '../redux/thunk/index';
+import { withRouter } from 'react-router';
+import AlertComponent from '../components/Alert';
+import SocialLogin from '../components/SocialLogin';
 
 export class Login extends Component {
   state = {
-    data: { email: "", password: "" },
-    error: " ",
+    data: { email: '', password: '' },
+    error: ' ',
     loggedIn: false,
   };
 
   login = async (e) => {
     e.preventDefault();
-    this.props.handleError("");
+    this.props.handleError('');
     const { validations: validatedFields } = this.props;
     const invalidFields = Object.keys(validatedFields).filter(
-      (field) => validatedFields[field] === "is-invalid"
+      (field) => validatedFields[field] === 'is-invalid'
     );
     let validatedFieldsToArray = Object.keys(validatedFields);
     if (validatedFieldsToArray.length > 1 && invalidFields.length === 0) {
       this.props.setLoadingStatus(true);
       await this.props.thunk(
-        "post",
-        "/auth/login",
+        'post',
+        '/auth/login',
         loginUsersSuccess,
         this.props.user
       );
@@ -43,18 +44,18 @@ export class Login extends Component {
 
       const { isLoggedIn } = this.props.userData;
       isLoggedIn
-        ? this.props.history.push("/home")
+        ? this.props.history.push('/home')
         : this.props.handleError(
-            "Incorrect email or password. Please try again."
+            'Incorrect email or password. Please try again.'
           );
     } else {
       const errorMsg =
         validatedFieldsToArray.length === 0
-          ? "Please fill in the required fields."
-          : this.props.validations.email === "is-valid" &&
+          ? 'Please fill in the required fields.'
+          : this.props.validations.email === 'is-valid' &&
             !this.props.validations.password
-          ? "Please enter your password."
-          : "Wrong email address.";
+          ? 'Please enter your password.'
+          : 'Wrong email address.';
       this.props.handleError(errorMsg);
     }
   };
@@ -66,26 +67,16 @@ export class Login extends Component {
         <Spinner
           animation="border"
           variant="primary"
-          className={isLoading ? "spinner--position__center" : "hide"}
+          className={isLoading ? 'spinner--position__center' : 'hide'}
         />
         <Form className="form">
           <h1>Sign in</h1>
           <AlertComponent isError={error ? true : false} errorMsg={error} />
           <p>Login with social media</p>
-          <div className="Google-login-btn">
-            <img
-              className="facebookLogo"
-              src={require("../assets/images/google.png")}
-            />
-            Sign in with Google
-          </div>
-          <div className="Facebook-login-btn">
-            <img
-              className="GoogleLogo"
-              src={require("../assets/images/facebook.png")}
-            />
-            Sign in with Facebook
-          </div>
+          <SocialLogin
+            googleAction="Sign in with Google"
+            facebookAction="Sign in with Facebook"
+          />
           <div id="or">
             <Line className="Line" />
             <div id="or_">
