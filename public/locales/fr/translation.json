@@ -1,0 +1,46 @@
+{
+    "welcome": {
+        "1": "Bienvenue"
+    },
+    "slogan": {
+        "1": "Rendez les voyages et l'hébergement à l'échelle mondiale faciles et pratiques pour la main-d'œuvre solide de membres du personnel avertis, en tirant parti du Web moderne."
+    },
+    "Sign up": {"1": "S'incrire", "2": "S'INCRIRE"},
+    "GET STARTED NOW": {"1": "CREER UN COMPTE"},
+    "Login": {"1": "Se connecter"},
+    "Sign in": {"1": "Se connecter"},
+    "Login with social media": {"1": "Connectez-vous avec les médias sociaux"},
+    "Sign in with Google": {"1": "Connectez-vous avec Google"},
+    "Sign in with Facebook": {"1": "Connectez-vous avec Facebook"},
+    "Forgot Password": {"1": "Mot de passe oublié ?"},
+    "Sign up with social media": {"1": "Inscrivez-vous avec les médias sociaux"},
+    "Sign up with Google": {"1": "Inscrivez-vous avec Google"},
+    "Sign up with Facebook": {"1": "Inscrivez-vous avec Facebook"},
+    "first name": {"1": "Prénom"},
+    "first name can't be empty": {"1": "le prénom ne peut pas être vide."},
+    "last name": {"1": "Autre nom "},
+    "last name can't be empty": {"1": "le nom ne peut pas être vide."},
+    "email": {"1": "email"},
+    "invalid email" : {"1": "email invalide."},
+    "password": {"1": "password"},
+    "invalid-email error message": {"1": "8 caractères avec au moins une minuscule, une majuscule, un chiffre et un symbole."},
+    "confirm password": {"1": "Confirmez le mot de passe"},
+    "password confirmation has to match password": {"1": "la confirmation du mot de passe doit correspondre au mot de passe."},
+    "Male": {"1": "Mâle"},
+    "Female": {"1": "Femelle"},
+    "Already have an account? Login here": {"1": "Vous avez déjà un compte? Connectez-vous ici "},
+    "Incorrect email or password, please try again": {"1": "E-mail ou mot de passe incorrect, veuillez réessayer."},
+    "Please fill in the required fields": {"1": "S'il vous plaît remplir les champs de saisie obligatoires."},
+    "Please enter your password": {"1": "S'il vous plait entrez votre mot de passe."},
+    "Wrong email address": {"1": "Mauvaise adresse email."},
+    "Please check the email sent to your inbox to finish registration": {"1": "Veuillez vérifier l'e-mail envoyé à votre boîte de réception pour terminer l'enregistrement."},
+    "Email already exists": {"1" : "L'email existe déjà."},
+    "Email has already taken": {"1": "L'email existe déjà."},
+    "Email must be a valid address": {"1": "L'e-mail doit être une adresse valide, ex: me@mydomain.com"},
+    "Type your email": {"1": "Tapez votre email"},
+    "Submit": {"1": "Soumettre"},
+    "invalid user email": {"1": "e-mail non valide."},
+    "Choose language": {"1": "Choisir la langue"}
+
+    
+}

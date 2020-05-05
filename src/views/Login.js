@@ -2,65 +2,56 @@ import React, { Component } from 'react';
 import { Form, Spinner } from 'react-bootstrap';
 import '../assets/styles/containers/loginPage.scss';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router';
+import { useTranslation } from 'react-i18next';
 import {
   validateLoginInput,
   loginUsersSuccess,
   handleError,
   setLoadingStatus,
 } from '../redux/actions/index';
-import { Redirect } from 'react-router-dom';
 import TextBox from '../components/Textbox';
 import Button from '../components/Button';
 import Line from '../components/line';
 import { callApiThunk as thunk } from '../redux/thunk/index';
-import { withRouter } from 'react-router';
 import AlertComponent from '../components/Alert';
 import SocialLogin from '../components/SocialLogin';
+import 'react-universal-hooks';
 
 export class Login extends Component {
-  state = {
-    data: { email: '', password: '' },
-    error: ' ',
-    loggedIn: false,
-  };
-
-  login = async (e) => {
-    e.preventDefault();
+  async handleClick(translate) {
     this.props.handleError('');
     const { validations: validatedFields } = this.props;
     const invalidFields = Object.keys(validatedFields).filter(
-      (field) => validatedFields[field] === 'is-invalid'
+      (field) => validatedFields[field] === 'is-invalid',
     );
-    let validatedFieldsToArray = Object.keys(validatedFields);
+    const validatedFieldsToArray = Object.keys(validatedFields);
     if (validatedFieldsToArray.length === 2 && invalidFields.length === 0) {
       this.props.setLoadingStatus(true);
       await this.props.thunk(
         'post',
         '/auth/login',
         loginUsersSuccess,
-        this.props.user
+        this.props.user,
       );
       this.props.setLoadingStatus(false);
-
       const { isLoggedIn } = this.props.userData;
       isLoggedIn
         ? this.props.history.push('/home')
-        : this.props.handleError(
-            'Incorrect email or password. Please try again.'
-          );
+        : this.props.handleError(translate('Incorrect email or password, please try again.1'));
     } else {
-      const errorMsg =
-        validatedFieldsToArray.length === 0
-          ? 'Please fill in the required fields.'
-          : this.props.validations.email === 'is-valid' &&
-            !this.props.validations.password
-          ? 'Please enter your password.'
-          : 'Wrong email address.';
+      const errorMsg = (validatedFieldsToArray.length === 0)
+        ? translate('Please fill in the required fields.1')
+        : (this.props.validations.email === 'is-valid') && (!this.props.validations.password)
+			  ? translate('Please enter your password.1')
+          : translate('Wrong email address.1');
       this.props.handleError(errorMsg);
     }
-  };
+  }
 
   render() {
+    const { t: translate } = useTranslation();
     const { validateInput, error, isLoading } = this.props;
     return (
       <div className="login-page loginContainer">
@@ -70,12 +61,12 @@ export class Login extends Component {
           className={isLoading ? 'spinner--position__center' : 'hide'}
         />
         <Form className="form">
-          <h1>Sign in</h1>
-          <AlertComponent isError={error ? true : false} message={error} />
-          <p>Login with social media</p>
+          <h1>{translate('Sign in.1')}</h1>
+          <AlertComponent isError={!!error} message={error} />
+          <p>{translate('Login with social media.1')}</p>
           <SocialLogin
-            googleAction="Sign in with Google"
-            facebookAction="Sign in with Facebook"
+            googleAction={translate('Sign in with Google.1')}
+            facebookAction={translate('Sign in with Facebook.1')}
           />
           <div id="or">
             <Line className="Line" />
@@ -86,7 +77,7 @@ export class Login extends Component {
           </div>
           <TextBox
             type="email"
-            placeholder="email"
+            placeholder={translate('email.1')}
             id="email"
             name="email"
             onChange={validateInput}
@@ -95,7 +86,7 @@ export class Login extends Component {
           />
           <TextBox
             type="password"
-            placeholder="password"
+            placeholder={translate('password.1')}
             id="password"
             name="password"
             onChange={validateInput}
@@ -105,29 +96,26 @@ export class Login extends Component {
           <p>{this.props.token ? <Redirect to="home" /> : null}</p>
           <Button
             aria-label="login"
-            onClick={(e) => this.login(e)}
+            onClick={() => this.handleClick(translate)}
             id="loginBtn"
-            label="Login"
+            label={translate('Login.1')}
           />
           <a id="forgotPassword" href="/forgetpassword">
-            <p>Forgot Password?</p>
+            <p>{translate('Forgot Password.1')}</p>
           </a>
         </Form>
       </div>
     );
   }
 }
-
-export const mapStateToProps = (state) => {
-  return {
-    token: state.user.token,
-    error: state.errorHandler.error,
-    validations: state.eventHandler.validations.login,
-    user: state.eventHandler.user,
-    userData: state.user.data,
-    isLoading: state.eventHandler.isLoading,
-  };
-};
+export const mapStateToProps = (state) => ({
+  token: state.user.token,
+  error: state.errorHandler.error,
+  validations: state.eventHandler.validations.login,
+  user: state.eventHandler.user,
+  userData: state.user.data,
+  isLoading: state.eventHandler.isLoading,
+});
 
 const mapDispatchToProps = {
   validateInput: validateLoginInput,

@@ -2,8 +2,8 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import configureMockStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
-import { mount, shallow } from '../../setupTests';
-import Login, { mapStateToProps, Login as View } from '../../src/views/Login';
+import { mount } from '../../setupTests';
+import { mapStateToProps, Login as View } from '../../src/views/Login';
 
 let wrapper;
 
@@ -28,7 +28,6 @@ describe('Empty Inputs', () => {
         <View {...props} />
       </MemoryRouter>,
     );
-    wrapper.props();
     wrapper.find('Button').simulate('click');
     expect(wrapper.find('AlertComponent').text()).toBe(
       'Please fill in the required fields.',
@@ -164,10 +163,10 @@ describe('<Login />....', () => {
     const state = {
       user: {
         token: 'abc',
-        data: {}
+        data: {},
       },
       errorHandler: {
-        error: ''
+        error: '',
       },
       eventHandler: {
         validations: {},

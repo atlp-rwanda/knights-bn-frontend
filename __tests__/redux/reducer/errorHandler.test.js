@@ -8,4 +8,16 @@ describe('Error handler reducer', () => {
     };
     expect(errorHandler({}, action)).toEqual({ error: '' });
   });
+  it('should return  current state by default', () => {
+    const action = {};
+    const initialState = {
+      error: '',
+    };
+    expect(errorHandler(initialState, action)).toEqual(initialState);
+  });
+  it('should return current state by default', () => {
+    const action = {};
+    const initialState = { error: '' };
+    expect(errorHandler(null, action)).toEqual(initialState);
+  });
 });

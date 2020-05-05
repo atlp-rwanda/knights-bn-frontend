@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Languages component renders correctly 1`] = `
+<select
+  className="lang lang--list"
+  onChange={[Function]}
+>
+  <option>
+    Choose language.1
+  </option>
+  <option
+    value="ki"
+  >
+    ikinyarwanda 
+  </option>
+  <option
+    value="en"
+  >
+    english
+  </option>
+  <option
+    value="fr"
+  >
+    français
+  </option>
+</select>
+`;

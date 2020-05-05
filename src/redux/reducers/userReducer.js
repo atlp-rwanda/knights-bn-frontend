@@ -1,11 +1,6 @@
 import * as types from '../actions/actionTypes';
 
-const initialState = {
-  loading: false,
-  token: '',
-  error: '',
-};
-const reduce = (state = initialState, action) => {
+const reduce = (state, action) => {
   switch (action.type) {
     case types.USER_LOGIN_SUCCESS:
       return {
@@ -17,7 +12,11 @@ const reduce = (state = initialState, action) => {
         ...state,
         message: action.payload,
       };
-    default: return state;
+    default: return state || {
+      loading: false,
+      token: '',
+      error: '',
+    };
   }
 };
 export default reduce;

@@ -1,0 +1,48 @@
+{
+    "welcome": {
+        "1": "Murakaza neza."
+    },
+    "slogan": {
+        "1": "Koresha urubuga rugezweho, worohereza abakozi bawe mu ngendo no kubona amacumbi meza ku isi hose."
+    },
+    "Sign up": {"1": "Kwiyandikisha", "2": "IYANDIKISHE"},
+    "GET STARTED NOW": {"1": "IYANDIKISHE"},
+    "Login": {"1": "Kwinjira"},
+    "Sign in": {"1": "Kwinjira"},
+    "Login with social media": {"1": "Injira ukoresheje imbuga nkoranyambaga"},
+    "Sign in with Google": {"1": "Injira ukoresheje Google"},
+    "Sign in with Facebook": {"1": "Injira ukoresheje Facebook"},
+    "Forgot Password": {"1": "Wibagiwe umubara w'ibanga?"},
+    "Sign up with social media": {"1": "Iyandikishe ukoresheje imbuga nkoranyambaga"},
+    "Sign up with Google": {"1": "Iyandikishe ukoresheje Google"},
+    "Sign up with Facebook": {"1": "Iyandikishe ukoresheje Facebook"},
+    "first name": {"1": "izina rya mbere"},
+    "first name can't be empty": {"1": "izina rya mbere ntirishobora kuba ubusa."},
+    "last name": {"1": "izina rya nyuma"},
+    "last name can't be empty": {"1": "izina rya nyuma ntirishobora kuba ubusa."},
+    "email": {"1": "imeri"},
+    "invalid email" : {"1": "imeri ntiyuzuye."},
+    "password": {"1": "ijambo ry' ibanga "},
+    "invalid-email error message": {"1": "Inyuguti 8 zifite byibuze inyuguti ntoya, inyuguti nkuru, umubare nikimenyetso."},
+    "confirm password": {"1": "emeza ijambo ry'ibanga"},
+    "password confirmation has to match password": {"1": "kwemeza ijambo ryibanga bigomba guhuza n' ijambo ryibanga"},
+    "Male": {"1": "Umugabo"},
+    "Female": {"1": "Umugore"},
+    "Already have an account? Login here": {"1": "Ufite konti? Injira hano"},
+    "Incorrect email or password, please try again": {"1": "Wibeshye imeri cyangwa ijambo ry'ibanga, ongera ugerageze."},
+    "Please fill in the required fields": {"1": "Nyamuneka, uzuza ahabugenewe hose."},
+    "Please enter your password": {"1": "Injiza umubare w'ibanga."},
+    "Wrong email address": {"1": "Emeri ntabwo ariyo."},
+    "Please check the email sent to your inbox to finish registration": {"1": "Murebe ubutumwa bwoherejwe muri imeri yanyu kugirango murangize kwiyandikisha."},
+    "Email already exists": {"1" : "Imeri yarakoreshejwe."},
+    "Email has already taken": {"1": "Imeri yarakoreshejwe."},
+    "Email must be a valid address": {"1": "Imeri igomba kuba iyemewe, urugero: me@mydomain.com"},
+    "Type your email": {"1": "Injiza imeri yawe"},
+    "Submit": {"1": "Ohereza"},
+    "invalid user email": {"1": "imeri ntibaho."},
+    "Choose language": {"1": "Hitamo ururimi"}
+
+
+    
+    
+}

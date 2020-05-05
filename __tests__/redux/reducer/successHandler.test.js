@@ -18,4 +18,16 @@ describe('Test reducer : success handler', () => {
     };
     expect(successHandler({}, action)).toEqual(initialState);
   });
+  it('should return current state by default', () => {
+    const action = {};
+    const initialState = {
+      message: '',
+    };
+    expect(successHandler(initialState, action)).toEqual(initialState);
+  });
+  it('should return current state by default', () => {
+    const action = {};
+    const initialState = { message: '' };
+    expect(successHandler(null, action)).toEqual(initialState);
+  });
 });

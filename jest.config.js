@@ -1,5 +1,5 @@
 module.exports = {
-  verbose: true,
+  verbose: false,
   clearMocks: true,
   coverageDirectory: 'coverage',
   moduleFileExtensions: ['js', 'jsx', 'scss'],
