@@ -12,6 +12,11 @@ const reduce = (state = initialState, action) => {
         ...state,
         data: action.payload,
       };
+    case types.RESET_PASSWORD:
+      return {
+        ...state,
+        message: action.payload,
+      };
     default: return state;
   }
 };

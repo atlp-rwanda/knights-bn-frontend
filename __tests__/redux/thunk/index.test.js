@@ -1,7 +1,7 @@
 import MockAdapter from 'axios-mock-adapter';
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
-import { thunk as reduxThunk, axiosInstance } from '../../../src/redux/thunk/index';
+import { callApiThunk as reduxThunk, axiosInstance } from '../../../src/redux/thunk/index';
 import { loginUsersSuccess } from '../../../src/redux/actions/actions';
 
 describe('test thunk', () => {

@@ -12,7 +12,7 @@ import { Redirect } from 'react-router-dom';
 import TextBox from '../components/Textbox';
 import Button from '../components/Button';
 import Line from '../components/line';
-import { thunk } from '../redux/thunk/index';
+import { callApiThunk as thunk } from '../redux/thunk/index';
 import { withRouter } from 'react-router';
 import AlertComponent from '../components/Alert';
 import SocialLogin from '../components/SocialLogin';
@@ -109,7 +109,7 @@ export class Login extends Component {
             id="loginBtn"
             label="Login"
           />
-          <a id="forgotPassword" href="#">
+          <a id="forgotPassword" href="/forgetpassword">
             <p>Forgot Password?</p>
           </a>
         </Form>
