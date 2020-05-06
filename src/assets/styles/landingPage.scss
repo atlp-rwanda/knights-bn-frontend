@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+.loginContainer{
+    height: 85vh;
+    width: 100%;
+    position: absolute;
+    margin-top: 2.9vh;
+}
+
+.description{
+    width: 50%;
+    height: 100%;
+    float: left;
+    background-color: #ffffff;
+    padding: 10rem 2rem 0 2rem;
+}
+
+.description h1{
+    margin-bottom: 2rem;
+    color: #5E96CF;
+}
+
+.description p{
+    font-size: 19px;
+    padding: 0 20px;
+    font-weight: 300;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 100;
+    text-align: center;
+    margin: 2.5rem 3rem;
+}
+
+.imageSide{
+    width: 50%;
+    height: 100%;
+    float: right;
+    background-color: #ffffff;
+}
+
+.landingPageImage{
+    height: 50vh;
+    width: 60%;
+    margin: 10% 20%;
+}
+
+#getStartedBtn{
+    width: 59%;
+    font-family: 'Roboto', sans-serif;
+    margin:auto;
+    display:block;
+    padding: 0.5rem 6rem !important;
+    background-color: #5e96cf;
+    border: 1px solid #5e96cf;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    text-decoration: center;
+    text-align: center;
+    list-style: none;
+    color: #ffffff;
+}
+
+#getStartedBtn:hover{
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #2a75c0;
+}
+
+
+
+
+
