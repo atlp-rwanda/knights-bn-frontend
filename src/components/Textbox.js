@@ -1,5 +1,6 @@
 import React from 'react';
 import { Form } from 'react-bootstrap';
+import '../assets/styles/components/textBox.scss';
 
 const TextBox = (props) => (
   <Form.Group>
@@ -11,7 +12,13 @@ const TextBox = (props) => (
       onChange={(event) => props.onChange(event.target)}
       aria-label={props.label}
       value={props.value}
+      className={props.isValid === 'is-invalid' ? 'is-invalid' : ''}
     />
+    <Form.Control.Feedback type="invalid" className={`feedback ${(props.isValid === 'is-valid') ? 'hide' : 'show'}`}>
+      {' '}
+      {props.errorMsg}
+      {' '}
+    </Form.Control.Feedback>
   </Form.Group>
 );
 export default TextBox;

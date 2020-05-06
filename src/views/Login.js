@@ -3,7 +3,7 @@ import { Form, Spinner } from 'react-bootstrap';
 import '../assets/styles/containers/loginPage.scss';
 import { connect } from 'react-redux';
 import {
-  validateInput,
+  validateLoginInput,
   loginUsersSuccess,
   handleError,
   setLoadingStatus,
@@ -32,7 +32,7 @@ export class Login extends Component {
       (field) => validatedFields[field] === 'is-invalid'
     );
     let validatedFieldsToArray = Object.keys(validatedFields);
-    if (validatedFieldsToArray.length > 1 && invalidFields.length === 0) {
+    if (validatedFieldsToArray.length === 2 && invalidFields.length === 0) {
       this.props.setLoadingStatus(true);
       await this.props.thunk(
         'post',
@@ -71,7 +71,7 @@ export class Login extends Component {
         />
         <Form className="form">
           <h1>Sign in</h1>
-          <AlertComponent isError={error ? true : false} errorMsg={error} />
+          <AlertComponent isError={error ? true : false} message={error} />
           <p>Login with social media</p>
           <SocialLogin
             googleAction="Sign in with Google"
@@ -122,7 +122,7 @@ export const mapStateToProps = (state) => {
   return {
     token: state.user.token,
     error: state.errorHandler.error,
-    validations: state.eventHandler.validations,
+    validations: state.eventHandler.validations.login,
     user: state.eventHandler.user,
     userData: state.user.data,
     isLoading: state.eventHandler.isLoading,
@@ -130,7 +130,7 @@ export const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  validateInput,
+  validateInput: validateLoginInput,
   thunk,
   handleError,
   setLoadingStatus,

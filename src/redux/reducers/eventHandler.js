@@ -1,20 +1,38 @@
-import { VALIDATE_INPUT, SET_LOADING_STATUS } from '../actions/actionTypes';
-import inputValidation from '../../util/validations';
+import {
+  VALIDATE_LOGIN_INPUT,
+  VALIDATE_SIGNUP_INPUT,
+  SET_LOADING_STATUS,
+  RESET_INPUT_FIELDS,
+  VALIDATE_FORM,
+} from '../actions/actionTypes';
+import loginValidations from '../../util/loginValidations';
+import signupValidations from '../../util/signupValidations';
 
 const initialState = {
   user: {},
-  validations: {},
+  validations: {
+    login: {},
+    signup: {
+      firstName: 'is-invalid',
+      lastName: 'is-invalid',
+      email: 'is-invalid',
+      password: 'is-invalid',
+      confirmPassword: 'is-invalid',
+      gender: 'is-invalid',
+    },
+  },
   isLoading: false,
+  isValidated: false,
 };
 export default (state = initialState, action) => {
   switch (action.type) {
-    case VALIDATE_INPUT: {
+    case VALIDATE_LOGIN_INPUT: {
       let validationStatus;
       if (action.payload.key === 'confirmPassword') {
         const password = { key: 'password', value: state.user.password };
         const confirmPassword = action.payload;
-        validationStatus = inputValidation(password, confirmPassword);
-      } else validationStatus = inputValidation(action.payload);
+        validationStatus = loginValidations(password, confirmPassword);
+      } else validationStatus = loginValidations(action.payload);
       return {
         ...state,
         user: {
@@ -23,16 +41,52 @@ export default (state = initialState, action) => {
         },
         validations: {
           ...state.validations,
-          [action.payload.key]: validationStatus,
+          login: {
+            ...state.validations.login,
+            [action.payload.key]: validationStatus,
+          },
         },
       };
     }
+    case VALIDATE_SIGNUP_INPUT: {
+      let validationStatus;
+      if (action.payload.key === 'confirmPassword') {
+        const password = { key: 'password', value: state.user.password };
+        const confirmPassword = action.payload;
+        validationStatus = signupValidations(password, confirmPassword);
+      } else validationStatus = signupValidations(action.payload);
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          [action.payload.key]: action.payload.value,
+        },
+        validations: {
+          ...state.validations,
+          signup: {
+            ...state.validations.signup,
+            [action.payload.key]: validationStatus,
+          },
+        },
+      };
+    }
+
     case SET_LOADING_STATUS: {
       return {
         ...state,
         isLoading: action.status,
       };
     }
-    default: return state;
+    case RESET_INPUT_FIELDS: {
+      return initialState;
+    }
+    case VALIDATE_FORM: {
+      return {
+        ...state,
+        isValidated: action.status,
+      };
+    }
+    default:
+      return state;
   }
 };

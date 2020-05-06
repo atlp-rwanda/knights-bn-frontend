@@ -1,5 +1,5 @@
-import userReducer from '../../../../src/redux/reducers/userReducer';
-import * as types from '../../../../src/redux/actions/actionTypes';
+import userReducer from '../../../src/redux/reducers/userReducer';
+import * as types from '../../../src/redux/actions/actionTypes';
 
 describe('Test userReducer test', () => {
   it('should be able test errorHandle', () => {

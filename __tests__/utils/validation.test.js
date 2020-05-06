@@ -1,4 +1,4 @@
-import validationStatus from '../src/util/validations';
+import validationStatus from '../../src/util/loginValidations';
 
 describe(' test validation', () => {
   it('Should throw an error for invalid email', () => {

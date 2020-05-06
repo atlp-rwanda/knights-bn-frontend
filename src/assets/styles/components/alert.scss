@@ -1,0 +1,15 @@
+@import '../base.scss';
+
+.alert{
+  padding: 7px !important;
+  border-radius: 5px;
+  font-size: 14px;
+}
+.alert__success{
+  background-color: #ceeed5;
+  border-left: 3px solid #28a745;
+}
+.alert__error{
+    background-color: #FBEFF0;
+    border-left: 3px solid #D36969;
+  }

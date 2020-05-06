@@ -66,6 +66,7 @@
     "image-config-webpack-plugin": "^2.0.0",
     "jest-css-modules-transform": "^4.0.0",
     "jest-dom": "^4.0.0",
+    "jest-enzyme": "^7.1.2",
     "js-config-webpack-plugin": "^2.0.0",
     "localStorage": "^1.0.4",
     "prettier": "^2.0.4",
