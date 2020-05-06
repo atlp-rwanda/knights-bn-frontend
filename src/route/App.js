@@ -7,6 +7,8 @@ import HomePage from '../views/Home';
 import UserInfo from '../helpers/UserInfo';
 import Lost from '../components/Lost';
 import Signup from '../views/Signup';
+import ResetPassword from '../components/resetPassword/restPasswordPage';
+import ModifyPasswordPage from '../components/resetPassword/ModifyPasswordPage';
 
 const App = () => (
   <div>
@@ -18,6 +20,8 @@ const App = () => (
         <Route path="/Home" exact component={HomePage} />
         <Route path="/userinfo" exact component={UserInfo} />
         <Route path="/lost" exact component={Lost} />
+        <Route path="/password/reset/" exact component={ModifyPasswordPage} />
+        <Route path="/forgetpassword" exact component={ResetPassword} />
       </Switch>
       <Footer />
     </BrowserRouter>

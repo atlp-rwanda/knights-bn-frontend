@@ -4,7 +4,7 @@ const axiosInstance = axios.create({
   baseURL: 'https://knights-bn-backnd.herokuapp.com/api/v1',
 });
 
-const thunk = (
+const callApiThunk = (
   method,
   path,
   action,
@@ -19,5 +19,5 @@ const thunk = (
 
 
 export {
-  axiosInstance, thunk,
+  axiosInstance, callApiThunk,
 };

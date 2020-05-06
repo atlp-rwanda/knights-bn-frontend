@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`testing Social Login Login should render correctly in "debug" mode without 1`] = `
+<ContextConsumer>
+  <Component />
+</ContextConsumer>
+`;
+
+exports[`testing Social Login SocialLogin should render correctly in "debug" mode 1`] = `
+<div>
+  <SocialLoginIcon
+    action="https://knights-bn-backnd.herokuapp.com/api/v1/auth/login/google"
+    buttonClass="btnStyle "
+    class="mr-2 "
+    formClass="social-login-btn"
+    icon={[Function]}
+  />
+  <SocialLoginIcon
+    action="https://knights-bn-backnd.herokuapp.com/api/v1/auth/login/facebook"
+    buttonClass="btnStyle"
+    class="mr-2 ml-3 text-light SocialFacebook"
+    formClass="social-login-btn"
+    icon={[Function]}
+  />
+</div>
+`;
+
+exports[`testing Social Login UserInfo should render correctly in "debug" mode 1`] = `
+<div>
+  <h1>
+    Loading ...
+  </h1>
+</div>
+`;
+
+exports[`testing Social Login should filter the user informaation from search and save it correctly  1`] = `
+<div>
+  <h1>
+    Loading ...
+  </h1>
+</div>
+`;

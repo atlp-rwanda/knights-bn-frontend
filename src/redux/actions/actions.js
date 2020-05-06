@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import * as types from './actionTypes';
 
 export const validateLoginInput = (target) => ({
@@ -49,4 +49,8 @@ export const clearErrorMsg = () => ({
 });
 export const clearSuccessMsg = () => ({
   type: types.CLEAR_SUCCESS_MSG,
+});
+export const resetUserPassword = (message) => ({
+  type: types.RESET_PASSWORD,
+  payload: message,
 });
