@@ -24,11 +24,11 @@ describe('Test modify password', () => {
       </Provider>,
     );
     const newPassword = wrapper.find('input#newPassword');
-    const confirm = wrapper.find('input#confirmPassword');
+    const confirm = wrapper.find('input#confirm');
     newPassword.simulate('change', { target: { name: 'newPassword', value: 'eugene2@gmail' } });
     confirm.simulate('change', { target: { name: 'confirmPassword', value: 'eugene2@gmail' } });
     expect(wrapper.find('input#newPassword').props().value).toEqual('eugene2@gmail');
-    expect(wrapper.find('input#confirmPassword').props().value).toEqual('eugene2@gmail');
+    expect(wrapper.find('input#confirm').props().value).toEqual('eugene2@gmail');
     expect(wrapper.props().store.getState()).toEqual({ user: { message: 'hello' } });
 
   });
