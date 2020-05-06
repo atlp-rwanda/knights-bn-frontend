@@ -28,6 +28,6 @@ describe('Change passwordForm', () => {
     await act(async () => {
       wrapper.find('button#submitBtn').simulate('click');
     });
-    expect(wrapper.find('input#confirmPassword').props().value).toEqual('');
+    expect(wrapper.find('input#confirm').props().value).toEqual('');
   });
 });

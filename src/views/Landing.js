@@ -12,7 +12,7 @@ const Landing = () => (
         savvy members of staff, by leveraging the modern web.
       </p>
       <ul>
-        <Link to="/login" id="getStartedBtn">
+        <Link to="/signup" id="getStartedBtn">
           GET STARTED NOW
         </Link>
       </ul>

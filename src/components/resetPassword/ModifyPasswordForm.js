@@ -66,7 +66,7 @@ const PasswordReset = ({
         palceholder="Confirm password"
         onchenge={inputChanging}
         type="password"
-        id="confirmPassword"
+        id="confirm"
       />
       <ButtonElememnt
         id="submitBtn"

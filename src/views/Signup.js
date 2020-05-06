@@ -198,7 +198,7 @@ class Signup extends Component {
             label="SIGN UP"
             className="btn"
           ></Button>
-          <a id="forgotPassword" href="#">
+          <a id="forgotPassword" href="/login">
             <p>Already have an account? Login here</p>
           </a>
         </Form>
