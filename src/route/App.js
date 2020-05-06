@@ -9,6 +9,7 @@ import Lost from '../components/Lost';
 import Signup from '../views/Signup';
 import ResetPassword from '../components/resetPassword/restPasswordPage';
 import ModifyPasswordPage from '../components/resetPassword/ModifyPasswordPage';
+import LandingPage from '../views/Landing';
 
 const App = () => (
   <div>
@@ -16,6 +17,7 @@ const App = () => (
       <Nav />
       <Switch>
         <Route path="/signup" exact component={Signup} />
+        <Route path="/" exact component={LandingPage} />
         <Route path="/login" exact component={Login} />
         <Route path="/Home" exact component={HomePage} />
         <Route path="/userinfo" exact component={UserInfo} />
