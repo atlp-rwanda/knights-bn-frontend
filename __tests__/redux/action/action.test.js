@@ -9,6 +9,9 @@ import {
   clearErrorMsg,
   clearSuccessMsg,
   validateForm,
+  viewAllUsers,
+  viewOneUser,
+  updateUserRole,
 } from '../../../src/redux/actions';
 import * as types from '../../../src/redux/actions/actionTypes';
 
@@ -76,7 +79,7 @@ describe(' test loginUsersSuccess actions', () => {
       status: true,
     };
     expect(validateForm(true)).toEqual(expectedAction);
-  })
+  });
   it('resetInputFields should return type', () => {
     const expectedAction = {
       type: types.RESET_INPUT_FIELDS,
@@ -94,5 +97,32 @@ describe(' test loginUsersSuccess actions', () => {
       type: types.CLEAR_SUCCESS_MSG,
     };
     expect(clearSuccessMsg()).toEqual(expectedAction);
+  });
+  it('test view all action', () => {
+    const expectedAction1 = {
+      type: types.GET_ALL_USERS,
+      payload: {
+        allUsers: {},
+      },
+    };
+    expect(viewAllUsers({ allUsers: {} })).toEqual(expectedAction1);
+  });
+  it('it should test view on action', () => {
+    const expectedAction2 = {
+      type: types.GET_ONE_USER,
+      payload: {
+        oneUser: {},
+      },
+    };
+    expect(viewOneUser({ oneUser: {} })).toEqual(expectedAction2);
+  });
+  it('it should test view on action', () => {
+    const expectedAction3 = {
+      type: types.UPDATE_ROLE,
+      payload: {
+        data: {},
+      },
+    };
+    expect(updateUserRole({ data: {} })).toEqual(expectedAction3);
   });
 });

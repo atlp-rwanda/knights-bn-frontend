@@ -9,3 +9,6 @@ export const VALIDATE_FORM = 'VALIDATE_FORM';
 export const CLEAR_ERROR_MSG = 'CLEAR_ERROR_MSG';
 export const CLEAR_SUCCESS_MSG = 'CLEAR_SUCCESS_MSG';
 export const RESET_PASSWORD = 'RESET_PASSWORD';
+export const GET_ALL_USERS = 'GET_ALL_USERS';
+export const GET_ONE_USER = 'GET_ONE_USER';
+export const UPDATE_ROLE = 'UPDATE_ROLE';

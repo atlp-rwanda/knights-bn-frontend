@@ -2,6 +2,21 @@ import * as types from '../actions/actionTypes';
 
 const reduce = (state, action) => {
   switch (action.type) {
+    case types.GET_ALL_USERS:
+      return {
+        ...state,
+        data: action.payload,
+      };
+    case types.GET_ONE_USER:
+      return {
+        ...state,
+        datas: action.payload,
+      };
+    case types.UPDATE_ROLE:
+      return {
+        ...state,
+        data: action.payload,
+      };
     case types.USER_LOGIN_SUCCESS:
       return {
         ...state,
@@ -16,6 +31,9 @@ const reduce = (state, action) => {
       loading: false,
       token: '',
       error: '',
+      data: {
+        message: '',
+      },
     };
   }
 };

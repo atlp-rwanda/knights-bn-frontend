@@ -30,6 +30,5 @@ describe('Test modify password', () => {
     expect(wrapper.find('input#newPassword').props().value).toEqual('eugene2@gmail');
     expect(wrapper.find('input#confirm').props().value).toEqual('eugene2@gmail');
     expect(wrapper.props().store.getState()).toEqual({ user: { message: 'hello' } });
-
   });
 });

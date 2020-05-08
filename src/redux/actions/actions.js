@@ -17,6 +17,21 @@ export const validateSignupInput = (target) => ({
   },
 });
 
+export const viewAllUsers = (allUsers) => ({
+  type: types.GET_ALL_USERS,
+  payload: allUsers,
+});
+
+export const viewOneUser = (oneUser) => ({
+  type: types.GET_ONE_USER,
+  payload: oneUser,
+});
+
+export const updateUserRole = (data) => ({
+  type: types.UPDATE_ROLE,
+  payload: data,
+});
+
 export const loginUsersSuccess = (users) => ({
   type: types.USER_LOGIN_SUCCESS,
   payload: users,

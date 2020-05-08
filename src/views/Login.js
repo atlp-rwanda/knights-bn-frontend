@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import { useTranslation } from 'react-i18next';
+import jwt from 'jsonwebtoken';
+import dotenv from 'dotenv';
 import {
   validateLoginInput,
   loginUsersSuccess,
@@ -18,6 +20,8 @@ import { callApiThunk as thunk } from '../redux/thunk/index';
 import AlertComponent from '../components/Alert';
 import SocialLogin from '../components/SocialLogin';
 import 'react-universal-hooks';
+
+dotenv.config();
 
 export class Login extends Component {
   async handleClick(translate) {
@@ -36,10 +40,16 @@ export class Login extends Component {
         this.props.user,
       );
       this.props.setLoadingStatus(false);
-      const { isLoggedIn } = this.props.userData;
-      isLoggedIn
-        ? this.props.history.push('/home')
-        : this.props.handleError(translate('Incorrect email or password, please try again.1'));
+
+      const { isLoggedIn, token } = this.props.userData;
+      localStorage.setItem('user-token', token);
+
+      if (isLoggedIn === false) return this.props.handleError('Incorrect email or password. Please try again.');
+      const userRole = jwt.decode(token).role;
+      const isSuperAdmin = (userRole === 'superAdmin');
+      isLoggedIn && isSuperAdmin
+        ? this.props.history.push('/admin')
+        : this.props.history.push('/home');
     } else {
       const errorMsg = (validatedFieldsToArray.length === 0)
         ? translate('Please fill in the required fields.1')
