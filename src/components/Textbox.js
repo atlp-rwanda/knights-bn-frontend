@@ -9,12 +9,17 @@ const TextBox = (props) => (
       placeholder={props.placeholder}
       id={props.id}
       name={props.name}
-      onChange={(event) => props.onChange(event.target)}
+      onChange={props.isProfile ? props.onChange : (event) => props.onChange(event.target)}
       aria-label={props.label}
       value={props.value}
       className={props.isValid === 'is-invalid' ? 'is-invalid' : ''}
+      disabled={props.disabled}
+
     />
-    <Form.Control.Feedback type="invalid" className={`feedback ${(props.isValid === 'is-valid') ? 'hide' : 'show'}`}>
+    <Form.Control.Feedback
+      type="invalid"
+      className={`feedback ${props.isValid === 'is-valid' ? 'hide' : 'show'}`}
+    >
       {' '}
       {props.errorMsg}
       {' '}

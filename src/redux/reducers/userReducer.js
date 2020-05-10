@@ -27,14 +27,27 @@ const reduce = (state, action) => {
         ...state,
         message: action.payload,
       };
-    default: return state || {
-      loading: false,
-      token: '',
-      error: '',
-      data: {
-        message: '',
-      },
-    };
+    case types.USER_PROFILE:
+      return {
+        ...state,
+        data: action.payload,
+      };
+    case types.UPDATE_USER_PROFILE:
+      return {
+        ...state,
+        updatedUser: action.payload,
+      };
+    default:
+      return (
+        state || {
+          loading: false,
+          token: '',
+          error: '',
+          data: {
+            message: '',
+          },
+        }
+      );
   }
 };
 export default reduce;

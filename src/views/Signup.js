@@ -89,13 +89,12 @@ class Signup extends Component {
     );
     if (
       returnedEmailVerificationQueryString['?message']
-			=== 'Email has already taken.'
-    ) this.props.handleError(`${translate('Email already exists.1')}`);
-    if (returnedEmailVerificationQueryString['?token']) window.location.href = '/home';
-
-    const token = localStorage.getItem('token');
-    if (token) {
-      this.props.history.push('/home');
+      === 'Email already exists.'
+    ) this.props.handleError('Email already exists.');
+    if (returnedEmailVerificationQueryString['?token']) {
+      const token = returnedEmailVerificationQueryString['?token'];
+      localStorage.setItem('user-token', token);
+      window.location.href = '/home';
     }
     return (
       <div className="signup-page loginContainer">

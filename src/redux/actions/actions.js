@@ -37,6 +37,14 @@ export const loginUsersSuccess = (users) => ({
   payload: users,
 });
 
+export const userProfile = (user) => ({
+  type: types.USER_PROFILE,
+  payload: user,
+});
+export const updateUserProfile = (user) => ({
+  type: types.UPDATE_USER_PROFILE,
+  payload: user,
+});
 export const handleError = (error) => ({
   type: types.HANDLE_ERROR,
   error,
