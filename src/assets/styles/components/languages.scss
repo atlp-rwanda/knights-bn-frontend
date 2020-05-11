@@ -7,7 +7,6 @@
     color: red;
 }
 .lang{
-    background-color: white;
     color: green;
     border: none;
     font-size: 13px;
@@ -21,4 +20,16 @@
     position: relative;
     right: .5rem;
     height: 13px;
+}
+
+@media screen and (max-width:600px){
+    .lang{
+       margin-top: 5%;
+       margin-right: 10%;
+       width: 200px;
+       text-align-last:center;
+
+    }
+
+        
 }

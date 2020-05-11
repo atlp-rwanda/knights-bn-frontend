@@ -6,13 +6,14 @@ import {
   updateUserProfile,
 } from '../../../src/redux/actions/actions';
 
+
 describe('Test userReducer test', () => {
-  it('should be able test errorHandle', () => {
-    const state = {
-      data: {},
+  it('should return current state by default', () => {
+    const initialState = {
       loading: false,
-      token: 'abc',
+      token: '',
       error: '',
+      data: { message: '' },
     };
     const action = {
       payload: {
@@ -20,16 +21,24 @@ describe('Test userReducer test', () => {
       },
       type: types.USER_LOGIN_SUCCESS,
     };
-    expect(userReducer(state, action).data.token).toBe('abc');
+    expect(userReducer(initialState, action).data.token).toBe('abc');
   });
+
+
   it('reset password', () => {
-    expect(userReducer({}, resetUserPassword('successfully'))).toEqual({
-      message: 'successfully',
+    expect(userReducer({}, resetUserPassword({ message: 'successfully' }))).toEqual({
+      data: {
+        message: 'successfully',
+      },
+      error: '',
+      loading: false,
+      token: '',
     });
   });
+
   it('Update User Profile', () => {
     const action = {
-      type: types.USER_PROFILE,
+      type: types.UPDATE_USER_PROFILE,
       data: {
         isLoggedIn: true,
         status: 200,
@@ -43,10 +52,18 @@ describe('Test userReducer test', () => {
       },
     };
     expect(userReducer({}, updateUserProfile({ action }))).toBeTruthy();
-    expect(
-      userReducer({}, updateUserProfile({ action })).updatedUser.action.data
-        .user.biography,
-    ).toEqual('Catch Me If You Can');
+  });
+
+  it('should return current state by default', () => {
+    const initialState = {
+      loading: false,
+      token: '',
+      error: '',
+      data: {
+        message: '',
+      },
+    };
+    expect(userReducer(undefined, {})).toEqual(initialState);
   });
 
   it('View user profile', () => {

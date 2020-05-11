@@ -1,6 +1,14 @@
 import * as types from '../actions/actionTypes';
 
-const reduce = (state, action) => {
+const initialState = {
+  loading: false,
+  token: '',
+  error: '',
+  data: {
+    message: '',
+  },
+};
+const reduce = (state = initialState, action) => {
   switch (action.type) {
     case types.GET_ALL_USERS:
       return {
@@ -24,8 +32,9 @@ const reduce = (state, action) => {
       };
     case types.RESET_PASSWORD:
       return {
-        ...state,
-        message: action.payload,
+        ...initialState,
+        data: { ...action.payload },
+
       };
     case types.USER_PROFILE:
       return {

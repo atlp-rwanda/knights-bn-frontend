@@ -1,28 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { callApiThunk } from '../../redux/thunk/index';
-import { checkOnchange, onServerMessage, onSuccessFullyChanged } from '../../util/eventListeners';
+import { resetPassword } from '../../redux/thunk/index';
 import ModifyPassword from './ModifyPasswordForm';
 
 const ModifyPasswordContainer = ({
-  location, callApiThunk, displayMessage, history,
+  resetPassword, displayMessage,
 }) => (
-
   <div className="layout">
     <ModifyPassword
-      callApiThunk={callApiThunk}
-      location={location}
-      history={history}
-      checkOnchange={checkOnchange}
-      isSuccess={onSuccessFullyChanged(displayMessage)}
-      displayMessage={onServerMessage(displayMessage)}
+      resetPassword={resetPassword}
+      displayMessage={displayMessage.message}
+      errorMessage={displayMessage.error}
+      isLoading={displayMessage.loading}
+      isAuthenticated={displayMessage.isAuthenticated}
     />
   </div>
 
 );
 const mapStateToProps = (state) => ({
-  displayMessage: state.user.message,
+  displayMessage: state.AuthReducer,
 });
 
-export default withRouter(connect(mapStateToProps, { callApiThunk })(ModifyPasswordContainer));
+export default connect(mapStateToProps, { resetPassword })(ModifyPasswordContainer);

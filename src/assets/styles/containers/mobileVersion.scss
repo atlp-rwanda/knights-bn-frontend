@@ -1,0 +1,155 @@
+
+@media screen and (max-width:1208px){
+    .loginform{
+        width:45%; 
+    }
+
+    .loginform input{
+        width:90%;
+       }
+       .loginform button{
+         width: 90%;
+       }
+       .divider::before{
+        position: absolute;
+        height: 0.1em;
+        background-color: #797b7d;
+        width: 16%;
+        content: ' ';
+         margin-top: 1%;
+         margin-right: 2%;
+        right: 50%;
+    }
+    .divider::after{
+        position: absolute;
+        height: 0.1em;
+        background-color: #797b7d;
+        width: 16%;
+        content: ' ';
+        left: 50%;
+        margin-left: 2%;
+        margin-top: 1%;
+    
+    }
+       
+}
+@media screen and (max-width:800px){
+    .loginform{
+        width:50%;  
+    }
+
+    .loginform input{
+        width:100%;
+       }
+       .loginform button{
+        width: 90%;
+      }
+       .loginform a{
+           width: 90%;
+       }
+       .divider::before{
+        position: absolute;
+        height: 0.1em;
+        background-color: #797b7d;
+        width: 20%;
+        content: ' ';
+         margin-top: 1%;
+         margin-right: 1.5%;
+        right: 50%;
+    }
+    .divider::after{
+        position: absolute;
+        height: 0.1em;
+        background-color: #797b7d;
+        width: 20%;
+        content: ' ';
+        left: 50%;
+        margin-left: 1.5%;
+        margin-top: 1%;
+    
+    }
+       
+}
+@media screen and (max-width:700px){
+    .loginform{
+        width:60%;  
+    }
+
+    .loginform input{
+        width:100%;
+       }
+       .loginform button{
+        width: 90%;
+      }
+       .loginform a{
+        width: 90%;
+    }
+
+    .divider::before{
+        position: absolute;
+        height: 0.1em;
+        background-color: #797b7d;
+        width: 20%;
+        content: ' ';
+         margin-top: 1.5%;
+         margin-right: 2%;
+        right: 50%;
+    }
+    .divider::after{
+        position: absolute;
+        height: 0.1em;
+        background-color: #797b7d;
+        width: 20%;
+        content: ' ';
+        left: 50%;
+        margin-left: 2%;
+        margin-top: 1.5%;
+    
+    }
+       
+}
+
+@media screen and (max-width:600px){
+    .loginform{
+        width:100%; 
+    }
+    .loginform a{
+        width: 90%;
+    }
+    .loginform input{
+        width:100%;
+       }
+       .loginform button{
+         width: 90%;
+       }
+
+       .divider::before{
+        position: absolute;
+        height: 0.1em;
+        background-color: #797b7d;
+        width: 40%;
+        content: ' ';
+         margin-top: 1.5%;
+         margin-right: 2%;
+        right: 50%;
+    }
+    .divider::after{
+        position: absolute;
+        height: 0.1em;
+        background-color: #797b7d;
+        width: 40%;
+        content: ' ';
+        left: 50%;
+        margin-left: 2%;
+        margin-top: 1.5%;
+    
+    }
+    .loginform .input .input-error{
+      text-align: center;  
+      margin-right: 5px;
+  }
+
+       
+}
+
+

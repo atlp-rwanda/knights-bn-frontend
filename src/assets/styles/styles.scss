@@ -18,22 +18,27 @@ body {
   background-color: #F0F0F0;
   height: 90vh;
 }
-.footer {
-  position: fixed;
-  height: 40px;
-  bottom: 0;
-  width: 100%;
-}
 
 .logo{
   height: 2.5rem;
   width: 6rem;
   margin: 0rem 14rem 1rem 0rem;
 }
+.footer{
+  height: auto;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+ position: absolute;
+ bottom: -100px; 
 
+}
 .footer h3{
-  font-size: 13px;
+  font-size: 18px;
   color: #5890CC;
+
+
 }
 
 .nav-link {
@@ -78,4 +83,13 @@ h3 {
   padding-top: 8%;
   color: black;
   font-weight: bold;
+}
+@media screen and (max-width:600px){
+  .footer{
+    text-align: center;
+    width: 100%;
+    display: flex;
+   position: relative;
+  
+  }
 }

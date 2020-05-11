@@ -9,7 +9,6 @@ const SubmitButton = ({
   name,
   onClick,
   label,
-  countryCode,
   disabled,
   className,
   variant,
@@ -26,7 +25,6 @@ const SubmitButton = ({
       variant={variant}
       disabled={disabled}
     >
-      <CountryFlag countryCode={countryCode} />
       <span>{label}</span>
     </Button>
   </div>

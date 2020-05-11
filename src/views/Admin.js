@@ -46,8 +46,8 @@ export class Admin extends Component {
         ...this.state,
         data: allUsers.Users
     })  
-  }
 
+  }
   async componentDidUpdate() {
     if(this.state.formSubmitted){
         await this.props.thunk("get", `/users/${this.state.datas.email}`, viewOneUser)
@@ -64,6 +64,7 @@ export class Admin extends Component {
         });  
     }
   }
+
 
    handleChange = (event) => {
     this.setState({
@@ -122,7 +123,8 @@ export class Admin extends Component {
     const { message, data, currentPage,usersPerPage,  } = this.state;
     const indexOfLastUser = currentPage * usersPerPage;
     const indexOfFirstUser = indexOfLastUser - usersPerPage;
-    const currentUser = data.slice(indexOfFirstUser, indexOfLastUser);
+
+    const currentUser = (data.length)?data.slice(indexOfFirstUser, indexOfLastUser):[];
      const paginate = (pageNumber) => this.setState({
        ...this.state,
        currentPage: pageNumber
@@ -208,10 +210,10 @@ export class Admin extends Component {
 
 export const mapStateToProps = (state) => {
   return {
+    test:state,
     userData: state.user.data,
     userInfo: state.user.datas,
     UpdateInfo: state.user.data.message,
-    user: state.eventHandler.user,
   };
 };
 

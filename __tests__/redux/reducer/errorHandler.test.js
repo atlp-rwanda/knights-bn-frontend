@@ -8,6 +8,16 @@ describe('Error handler reducer', () => {
     };
     expect(errorHandler({}, action)).toEqual({ error: '' });
   });
+  it('HANDLE_ERROR', () => {
+    const initialState = {
+      error: '',
+    };
+    const action = {
+      error:'Not foundError',
+      type: types.HANDLE_ERROR,
+    };
+    expect(errorHandler(initialState, action).error).toEqual('Not foundError');
+  });
   it('should return  current state by default', () => {
     const action = {};
     const initialState = {

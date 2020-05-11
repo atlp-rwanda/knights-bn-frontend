@@ -1,27 +1,28 @@
 import React from 'react';
-import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
+import '../../../src/i18next';
+import { render, cleanup, fireEvent } from '@testing-library/react';
 import ResetPaswordForm from '../../../src/components/resetPassword/ResetPasswordForm';
 
-describe('Test reset password', () => {
-  it('form test', async () => {
+describe('ResetPassword form test', () => {
+  afterEach(cleanup);
+  it('restPassword', async () => {
     const mockProps = {
-      displayMessage: '',
-      checkOnsubmit: jest.fn(),
+      isValid: jest.fn(),
+      isLoading: true,
       callApiThunk: jest.fn(),
-      location: jest.fn(),
-      checkOnchange: jest.fn(),
+
     };
-    let wrapper;
+
+
+    const { getByTestId } = render(
+      <ResetPaswordForm {...mockProps} />,
+    );
+    const newPassword = getByTestId('user-email');
+    const sbmtBtn = getByTestId('user-email-reset');
+    fireEvent.change(newPassword, { target: { value: 'eugene@gmail.com' } });
     await act(async () => {
-      wrapper = mount(
-        <ResetPaswordForm {...mockProps} />,
-      );
+      fireEvent.click(sbmtBtn);
     });
-    await act(async () => {
-      wrapper.find('button#submitBtn').simulate('click');
-    });
-    expect(wrapper.find('input#user-email').props().value).toEqual('');
-    expect(wrapper.find('span').props().children).toEqual('.1');
   });
 });

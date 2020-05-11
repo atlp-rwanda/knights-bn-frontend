@@ -1,34 +1,32 @@
+
+import { Provider } from 'react-redux';
 import React from 'react';
 import { mount } from 'enzyme';
-import { Provider } from 'react-redux';
+import { act } from 'react-dom/test-utils';
+import { BrowserRouter } from 'react-router-dom';
 import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import { BrowserRouter } from 'react-router-dom';
-import ModifyPassWordPage from '../../../src/components/resetPassword/ModifyPasswordPage';
+import '../../../src/i18next';
+import ModifyPage from '../../../src/components/resetPassword/ModifyPasswordPage';
 
 const middlewares = [thunk];
 const mockStore = configureMockStore(middlewares);
 const store = mockStore({
-  user: {
-    message: 'hello',
-  },
+  AuthReducer: { message: '' },
 });
-
-describe('Test modify password', () => {
-  it('resetPassword', async () => {
+describe('Reset password Test', () => {
+  it('Reset', async () => {
     const wrapper = mount(
       <Provider store={store}>
         <BrowserRouter>
-          <ModifyPassWordPage />
+          <ModifyPage />
         </BrowserRouter>
       </Provider>,
     );
-    const newPassword = wrapper.find('input#newPassword');
-    const confirm = wrapper.find('input#confirm');
-    newPassword.simulate('change', { target: { name: 'newPassword', value: 'eugene2@gmail' } });
-    confirm.simulate('change', { target: { name: 'confirmPassword', value: 'eugene2@gmail' } });
-    expect(wrapper.find('input#newPassword').props().value).toEqual('eugene2@gmail');
-    expect(wrapper.find('input#confirm').props().value).toEqual('eugene2@gmail');
-    expect(wrapper.props().store.getState()).toEqual({ user: { message: 'hello' } });
+    await act(async () => {
+      wrapper.find('button#submitBtn').props().onClick({
+        preventDefault: () => {},
+      });
+    });
   });
 });

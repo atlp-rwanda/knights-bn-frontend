@@ -21,14 +21,18 @@
     "last name": {"1": "izina rya nyuma"},
     "last name can't be empty": {"1": "izina rya nyuma ntirishobora kuba ubusa."},
     "email": {"1": "imeri"},
+    "email-required": {"1": "imeri irakenewe"},
     "invalid email" : {"1": "imeri ntiyuzuye."},
     "password": {"1": "ijambo ry' ibanga "},
+    "password-required": {"1": "ijambo ry' ibanga rirakenewe "},
     "invalid-email error message": {"1": "Inyuguti 8 zifite byibuze inyuguti ntoya, inyuguti nkuru, umubare nikimenyetso."},
     "confirm password": {"1": "emeza ijambo ry'ibanga"},
     "password confirmation has to match password": {"1": "kwemeza ijambo ryibanga bigomba guhuza n' ijambo ryibanga"},
+    "choose": {"1": "Hitamo uwo uriwe"},
     "Male": {"1": "Umugabo"},
     "Female": {"1": "Umugore"},
-    "Already have an account? Login here": {"1": "Ufite konti? Injira hano"},
+    "Already have an account? Login here": {"1": "Ufitekonti?Injirahano"},
+    "no-account": {"1": "nta konti ufite? kandahano"},
     "Incorrect email or password, please try again": {"1": "Wibeshye imeri cyangwa ijambo ry'ibanga, ongera ugerageze."},
     "Please fill in the required fields": {"1": "Nyamuneka, uzuza ahabugenewe hose."},
     "Please enter your password": {"1": "Injiza umubare w'ibanga."},
@@ -41,8 +45,4 @@
     "Submit": {"1": "Ohereza"},
     "invalid user email": {"1": "imeri ntibaho."},
     "Choose language": {"1": "Hitamo ururimi"}
-
-
-    
-    
 }

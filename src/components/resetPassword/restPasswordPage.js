@@ -1,19 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { callApiThunk } from '../../redux/thunk/index';
-import { checkOnchange, onServerMessage } from '../../util/eventListeners';
+import { authThunk } from '../../redux/thunk/index';
 import ResetPassword from './ResetPasswordForm';
 
-const ResetPasswordPage = ({ displayMessage, callApiThunk }) => (
+const ResetPasswordPage = ({ displayMessage, authThunk }) => (
   <div className="layout">
     <ResetPassword
-      checkOnchange={checkOnchange}
-      callApiThunk={callApiThunk}
-      displayMessage={onServerMessage(displayMessage)}
+      callApiThunk={authThunk}
+      displayMessage={displayMessage.message}
+      isLoading={displayMessage.loading}
+      errorMessage={displayMessage.error}
     />
   </div>
 );
 const mapStateToProps = (state) => ({
-  displayMessage: state.user.message,
+  displayMessage: state.AuthReducer,
 });
-export default connect(mapStateToProps, { callApiThunk })(ResetPasswordPage);
+export default connect(mapStateToProps, { authThunk })(ResetPasswordPage);

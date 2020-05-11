@@ -1,17 +1,31 @@
 export const regexPatterns = {
-  password: /^[\d\w@-]{8,}$/i,
+  password: /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
   email: /^([a-z\d\.-]+)@([a-z\d-]+)\.([a-z]{2,8})(\.[a-z]{2,8})?$/,
-  newPassword: /^[\d\w@-]{8,}$/i,
-  confirmPassword: /^[\d\w@-]{8,}$/i,
+  newPassword: /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
+  confirmPassword: /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z]).{8,}$/,
 
 };
 
-export const validateInput = (field, regex) => {
-  let calassName = '';
-  if (regex.test(field.value) && field.value !== '') {
-    calassName = 'valid';
-    return calassName;
+export const validateReset = (fields, regex, setSingState, translate) => {
+  let newPasswordError = '';
+  let confirmError = '';
+  if (fields.newPassword === '') {
+    newPasswordError = translate('password-required.1');
+  } else if (fields.confirmPassword === '') {
+    confirmError = translate('password-required.1');
+  } else if (fields.newPassword !== fields.confirmPassword) {
+    confirmError = translate('password confirmation has to match password.1');
+  } else if (!regex.password.test(fields.newPassword) && fields.newPassword !== '') {
+    newPasswordError = translate('invalid-email error message.1');
   }
-  calassName = 'invalid';
-  return calassName;
+
+  if (newPasswordError || confirmError) {
+    setSingState((data) => ({
+      ...data,
+      newPasswordError,
+      confirmError,
+    }));
+    return false;
+  }
+  return true;
 };

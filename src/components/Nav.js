@@ -1,30 +1,50 @@
 import React from 'react';
-import '../assets/styles/styles.scss';
+import '../assets/styles/components/navigationlinks.scss';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import logo from '../assets/images/logo@2x.png';
+import { connect } from 'react-redux';
 import Languages from './Languages';
+import logo from '../assets/images/logo@2x.png';
+import { logout } from '../redux/thunk/index';
 
-const Nav = () => {
+const Nav = ({ isLoggedIn, logout, role }) => {
   const { t } = useTranslation();
-  return (
-    <div className="nav ">
+  const notAuth = (
+    <ul>
+      <li><Link to="/login" className="nav-link">{t('Login.1')}</Link></li>
+      <li><Link to="/signup" className="nav-link">{t('Sign up.1')}</Link></li>
+    </ul>
+  );
+  const isAuth = (
+    <ul>
+      <li><Link to="/" id="logout-link" onClick={logout} className="nav-link">logout</Link></li>
+      <li><Link to="/admin" id="users-link" className="nav-link">{(role === 'superAdmin') ? 'AllUsers' : ''}</Link></li>
+      <li><Link to="/profile" id="logout-link" className="nav-link">Profile</Link></li>
       <Languages />
-      <Link to="/">
-        <h3 className="text-center pt-2 li">
-          <img className="logo" src={logo} />
-        </h3>
-      </Link>
-      <ul className="nav-link">
-        <Link to="/login">
-          <li className="li">{t('Login.1')}</li>
-        </Link>
-        <Link to="/signup">
-          <li className="li">{t('Sign up.1')}</li>
-        </Link>
-      </ul>
+    </ul>
+  );
+  return (
+    <div className="main-navigation">
+      <div className="nav-menu">
+        <div className="web-logo">
+          <Link to="/" className="nav-link-img">
+            <img className="logo-img" src={logo} />
+          </Link>
+        </div>
+        <div className="right-menu">
+          <Languages />
+          {isLoggedIn ? isAuth : notAuth}
+
+        </div>
+
+      </div>
     </div>
   );
 };
 
-export default Nav;
+const mapStateToProps = (state) => ({
+  isLoggedIn: state.AuthReducer.isAuthenticated,
+  role: state.AuthReducer.role,
+});
+
+export default connect(mapStateToProps, { logout })(Nav);

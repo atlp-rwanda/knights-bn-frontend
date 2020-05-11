@@ -43,6 +43,13 @@ export const userProfile = (user) => ({
 });
 export const updateUserProfile = (user) => ({
   type: types.UPDATE_USER_PROFILE,
+});
+export const userSignUp = (user) => ({
+  type: types.USER_SIGNUP,
+  payload: user,
+});
+export const setCurentUser = (user) => ({
+  type: types.CURRENT_USER,
   payload: user,
 });
 export const handleError = (error) => ({
@@ -60,6 +67,7 @@ export const handleSuccess = (message) => ({
   message,
 });
 
+
 export const resetInputFields = () => ({ type: types.RESET_INPUT_FIELDS });
 
 export const validateForm = (status) => ({
@@ -75,5 +83,9 @@ export const clearSuccessMsg = () => ({
 });
 export const resetUserPassword = (message) => ({
   type: types.RESET_PASSWORD,
+  payload: message,
+});
+export const verifyAccount = (message) => ({
+  type: types.VERIFY_ACCOUNT,
   payload: message,
 });

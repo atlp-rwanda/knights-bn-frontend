@@ -157,7 +157,6 @@ export class Profile extends Component {
 }
 
 export const mapStateToProps = (state) => ({
-  user: state.eventHandler.user,
   userInformation: state.user.data,
   updatedInfo: state.user.updatedUser,
 });

@@ -1,29 +1,25 @@
-*{
-    margin: 0;
-    padding: 0;
-    text-decoration: none;
+.landing-page{
+    display: flex;
+    margin-top: 8%;
+    width: 90%;
+    margin: auto;
 }
-
-.loginContainer{
-    height: 85vh;
-    width: 100%;
-    position: absolute;
-    margin-top: 2.9vh;
-}
-
 .description{
-    width: 50%;
-    height: 100%;
-    float: left;
-    background-color: #ffffff;
-    padding: 10rem 2rem 0 2rem;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 70px 70px 0px 0px;
+    
 }
-
+.description ul{
+    display: flex;
+    justify-content: center;
+}
 .description h1{
     margin-bottom: 2rem;
     color: #5E96CF;
 }
-
 .description p{
     font-size: 19px;
     padding: 0 20px;
@@ -33,26 +29,14 @@
     text-align: center;
     margin: 2.5rem 3rem;
 }
-
 .imageSide{
-    width: 50%;
-    height: 100%;
-    float: right;
-    background-color: #ffffff;
+    flex: 1;
 }
-
-.landingPageImage{
-    height: 50vh;
-    width: 60%;
-    margin: 10% 20%;
-}
-
 #getStartedBtn{
-    width: 59%;
+    width: 57%;
     font-family: 'Roboto', sans-serif;
-    margin:auto;
+    height: 40px;
     display:block;
-    padding: 0.5rem 6rem !important;
     background-color: #5e96cf;
     border: 1px solid #5e96cf;
     text-transform: uppercase;
@@ -63,19 +47,80 @@
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
-    text-decoration: center;
-    text-align: center;
     list-style: none;
+    margin-right: 10%;
     color: #ffffff;
+    text-align: center;
+    
 }
 
 #getStartedBtn:hover{
     text-decoration: none;
-    color: #ffffff;
-    background-color: #2a75c0;
+    color:  #2a75c0;
+    background-color: #fff;
+}
+ul #getStartedBtn {
+   padding: 9px;
+   width: 100%;
+   background-color: #2a75c0;
+   
 }
 
+@media screen and (max-width:800px){
+    .landing-page{
+        margin-top: 12%;
+       flex-direction: column-reverse;
+    }
+    .imageSide img{
+    width: 350px;
+    margin-left: 200px;
+    }
+ .description{
+    padding: 0px;
+ }
 
+    #getStartedBtn {
+        color: white;
+        padding: 0px;
+       border-radius: 4px;
+       text-align: center;
+       border: solid #2a75c0 1px;
+      box-shadow: 0px 0px 0px;
+       
+    }
+    #getStartedBtn:hover{
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #2a75c0;
+    }
 
+}
 
+@media screen and (max-width:600px){
+    .landing-page{
+       flex-direction: column-reverse;
+    }
+    .imageSide img{
+    width: 350px;
+    margin-left: 40px;
+    }
+ .description{
+    padding: 0px;
+ }
 
+    #getStartedBtn{
+        color: white;
+        padding: 0px;
+       border-radius: 4px;
+       text-align: center;
+       border: solid #2a75c0 1px;
+      box-shadow: 0px 0px 0px;
+       
+    }
+    #getStartedBtn:hover{
+        text-decoration: none;
+        color: #ffffff;
+        background-color: #2a75c0;
+    }
+
+}

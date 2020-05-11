@@ -1,33 +1,33 @@
 
 import React from 'react';
+import { render, cleanup, fireEvent } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
-import { mount } from 'enzyme';
 import { BrowserRouter } from 'react-router-dom';
+import '../../../src/i18next';
 import ModifyPassWordForm from '../../../src/components/resetPassword/ModifyPasswordForm';
 
-describe('Change passwordForm', () => {
-  it('form test', async () => {
+describe('ResetPassword form test', () => {
+  afterEach(cleanup);
+  it('modify password', async () => {
     const mockProps = {
-      isSuccess: true,
-      checkOnsubmit: jest.fn(),
-      callApiThunk: jest.fn(),
-      location: jest.fn(),
-      checkOnchange: jest.fn(),
-      history: [],
+      validateReset: jest.fn(),
+      resetPassword: jest.fn(),
+      isLoading: true,
+      displayMessage: true,
+      isAuthenticated: true,
     };
-    let wrapper;
+    const { getByTestId } = render(
+      <BrowserRouter>
+        <ModifyPassWordForm {...mockProps} />
+      </BrowserRouter>,
+    );
+    const newPassword = getByTestId('newPassword');
+    const confirm = getByTestId('confirm-reset');
+    const sbmtBtn = getByTestId('submitBtn-reset');
+    fireEvent.change(newPassword, { target: { value: 'sad@123A' } });
+    fireEvent.change(confirm, { target: { value: 'sad@123A' } });
     await act(async () => {
-      wrapper = mount(
-
-        <BrowserRouter>
-          <ModifyPassWordForm {...mockProps} />
-        </BrowserRouter>,
-
-      );
+      fireEvent.click(sbmtBtn);
     });
-    await act(async () => {
-      wrapper.find('button#submitBtn').simulate('click');
-    });
-    expect(wrapper.find('input#confirm').props().value).toEqual('');
   });
 });

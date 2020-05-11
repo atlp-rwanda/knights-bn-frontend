@@ -5,8 +5,10 @@ import { useTranslation } from 'react-i18next';
 
 const Landing = () => {
   const { t } = useTranslation();
+
   return (
-    <div className="loginContainer">
+
+    <div className="landing-page">
       <div className="description">
         <h1>Barefoot Nomad</h1>
         <p>
@@ -20,6 +22,7 @@ const Landing = () => {
       </div>
       <div className="imageSide">
         <img
+          width="600"
           className="landingPageImage"
           src={require('../assets/images/frontend image.png')}
         />

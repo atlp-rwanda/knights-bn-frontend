@@ -1,0 +1,175 @@
+@import './loginElements.scss';
+
+
+$color: lightgray;
+.layout{
+   width: 100%;
+   height: 100%;
+   display: flex;
+   flex-flow: row wrap;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   
+}
+.loginform{
+    display: flex;
+    flex-flow: column;
+    border: solid 1px $color;
+    align-items: center;
+    width: 400px;
+    height: 500px;
+    margin-top: 2%;
+    padding-top: 10px;
+    background-color: rgb(255, 255, 255);
+    justify-content: center;
+    border-radius: 5px;
+    font-weight: 700;
+    font-family:Arial, Helvetica, sans-serif;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+
+}
+.loginform a{
+    display: flex;
+    width: 90%;
+    height: 30px;
+    margin-top: 10px;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    flex-direction: row-reverse;
+    justify-content: center;
+    
+}
+.facebook-btn{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: rgba(146, 150, 153, 1);
+    border-radius: 4px;
+    border: 1px solid rgba($color: #d1d1d1, $alpha: 1);
+    background-color: transparent;
+}
+.facebook-btn img{
+    margin-left: 12px;
+}
+.google-btn{
+    background-color: transparent;
+    color: rgba(146, 150, 153, 1);
+    border-radius: 4px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    border: 1px solid rgba($color: #d1d1d1, $alpha: 1);
+}
+.gender-err{
+margin-left: 20px;
+}
+
+.google-btn:hover{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: rgba(146, 150, 153, 1);
+    border-radius: 5px;
+}
+.facebook-btn:hover{
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: rgba(146, 150, 153, 1);
+    border-radius: 5px;
+}
+.loginform a img{
+    height: 13px;
+    display: flex;
+    margin-right: 30px;
+}
+.loginform .input{
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+.loginform .input .input-error{
+    font-size: 10px;
+    color: red;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    height: 15px;
+    padding-bottom: 10px;
+    text-align: left;
+     margin-left: 10px;
+}
+.loginform input{
+    text-align: left;
+    padding: 10px;
+    border-radius: 2px;
+    width: 100%;
+    height: 35px;
+    outline: none;
+    border: 1px solid #9da3a6;
+    color: #000;
+    font-weight: 400;
+    margin-top: 2px;
+    white-space: nowrap;
+    font-family:Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    border-radius: 5px;
+}
+.gender{
+    width: 100%;
+}
+.loginform .select-el{
+    font-family:Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    border-radius: 2px;
+    font-weight: 400;
+    border: 1px solid #9da3a6;
+    outline: none;
+    display: flex;
+    width: 90%;
+    margin: auto;
+    height: 35px;
+    margin-top: 2px;
+}
+.loginform button{
+    text-align: center;
+    border-radius: 4px;
+    width: 90%;
+    height: 40px;
+    cursor: pointer; 
+    margin-top: 10px;
+    background-color: #5890cc;
+    color: #fff;
+    font-size: 1em;
+    outline: none;
+    border-radius: 5px;
+}
+.validation-message{
+    color: #8c6d8f;
+    margin-bottom: 20px;
+    font-size: .8375rem;
+    background-color: rgb(255, 247, 247);
+    padding: 3px;
+    border-radius: 4px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+
+}
+.invalid{
+    color: #d20000;
+    font-size: .8375rem;
+    margin-bottom: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+.invalid{
+    color: #d20000;
+    font-size: .8375rem;
+    margin-bottom: 20px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+.valid{
+    display: none;
+}
+@import './mobileVersion.scss';

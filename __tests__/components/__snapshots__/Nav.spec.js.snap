@@ -1,0 +1,180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Test Nav component should render Nav component 1`] = `
+<div
+  className="main-navigation"
+>
+  <div
+    className="nav-menu"
+  >
+    <div
+      className="web-logo"
+    >
+      <a
+        className="nav-link-img"
+        href="/"
+        onClick={[Function]}
+      >
+        <img
+          className="logo-img"
+          src=""
+        />
+      </a>
+    </div>
+    <div
+      className="right-menu"
+    >
+      <select
+        className="lang lang--list"
+        onChange={[Function]}
+      >
+        <option>
+          Choose language.1
+        </option>
+        <option
+          value="ki"
+        >
+          ikinyarwanda 
+        </option>
+        <option
+          value="en"
+        >
+          english
+        </option>
+        <option
+          value="fr"
+        >
+          français
+        </option>
+      </select>
+      <ul>
+        <li>
+          <a
+            className="nav-link"
+            href="/login"
+            onClick={[Function]}
+          >
+            Login.1
+          </a>
+        </li>
+        <li>
+          <a
+            className="nav-link"
+            href="/signup"
+            onClick={[Function]}
+          >
+            Sign up.1
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Test Nav component should render Nav component 2`] = `
+<div
+  className="main-navigation"
+>
+  <div
+    className="nav-menu"
+  >
+    <div
+      className="web-logo"
+    >
+      <a
+        className="nav-link-img"
+        href="/"
+        onClick={[Function]}
+      >
+        <img
+          className="logo-img"
+          src=""
+        />
+      </a>
+    </div>
+    <div
+      className="right-menu"
+    >
+      <select
+        className="lang lang--list"
+        onChange={[Function]}
+      >
+        <option>
+          Choose language.1
+        </option>
+        <option
+          value="ki"
+        >
+          ikinyarwanda 
+        </option>
+        <option
+          value="en"
+        >
+          english
+        </option>
+        <option
+          value="fr"
+        >
+          français
+        </option>
+      </select>
+      <ul>
+        <li>
+          <a
+            className="nav-link"
+            href="/"
+            id="logout-link"
+            onClick={[Function]}
+          >
+            logout
+          </a>
+        </li>
+        <li>
+          <a
+            className="nav-link"
+            href="/admin"
+            id="users-link"
+            onClick={[Function]}
+          >
+            AllUsers
+          </a>
+        </li>
+        <li>
+          <a
+            className="nav-link"
+            href="/profile"
+            id="logout-link"
+            onClick={[Function]}
+          >
+            Profile
+          </a>
+        </li>
+        <select
+          className="lang lang--list"
+          onChange={[Function]}
+        >
+          <option>
+            Choose language.1
+          </option>
+          <option
+            value="ki"
+          >
+            ikinyarwanda 
+          </option>
+          <option
+            value="en"
+          >
+            english
+          </option>
+          <option
+            value="fr"
+          >
+            français
+          </option>
+        </select>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
