@@ -1,0 +1,24 @@
+.lang:hover, .lang:link{
+    background-color: inherit;
+    color: green;
+    border: none;
+}
+.lang:active{
+    color: red;
+}
+.lang{
+    background-color: white;
+    color: green;
+    border: none;
+    font-size: 13px;
+}
+.lang--list{
+    position: absolute;
+    right: 6rem;
+    top: 2.1rem;
+}
+.lang__flag{
+    position: relative;
+    right: .5rem;
+    height: 13px;
+}

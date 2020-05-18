@@ -8,26 +8,26 @@ import {
 import loginValidations from '../../util/loginValidations';
 import signupValidations from '../../util/signupValidations';
 
-const initialState = {
-  user: {},
-  validations: {
-    login: {},
-    signup: {
-      firstName: 'is-invalid',
-      lastName: 'is-invalid',
-      email: 'is-invalid',
-      password: 'is-invalid',
-      confirmPassword: 'is-invalid',
-      gender: 'is-invalid',
+export default (state, action) => {
+  let validationStatus;
+  const initialState = {
+    user: {},
+    validations: {
+      login: {},
+      signup: {
+        firstName: 'is-invalid',
+        lastName: 'is-invalid',
+        email: 'is-invalid',
+        password: 'is-invalid',
+        confirmPassword: 'is-invalid',
+        gender: 'is-invalid',
+      },
     },
-  },
-  isLoading: false,
-  isValidated: false,
-};
-export default (state = initialState, action) => {
+    isLoading: false,
+    isValidated: false,
+  };
   switch (action.type) {
-    case VALIDATE_LOGIN_INPUT: {
-      let validationStatus;
+    case VALIDATE_LOGIN_INPUT:
       if (action.payload.key === 'confirmPassword') {
         const password = { key: 'password', value: state.user.password };
         const confirmPassword = action.payload;
@@ -47,9 +47,7 @@ export default (state = initialState, action) => {
           },
         },
       };
-    }
-    case VALIDATE_SIGNUP_INPUT: {
-      let validationStatus;
+    case VALIDATE_SIGNUP_INPUT:
       if (action.payload.key === 'confirmPassword') {
         const password = { key: 'password', value: state.user.password };
         const confirmPassword = action.payload;
@@ -69,24 +67,20 @@ export default (state = initialState, action) => {
           },
         },
       };
-    }
 
-    case SET_LOADING_STATUS: {
+    case SET_LOADING_STATUS:
       return {
         ...state,
         isLoading: action.status,
       };
-    }
-    case RESET_INPUT_FIELDS: {
+    case RESET_INPUT_FIELDS:
       return initialState;
-    }
-    case VALIDATE_FORM: {
+    case VALIDATE_FORM:
       return {
         ...state,
         isValidated: action.status,
       };
-    }
     default:
-      return state;
+      return state || initialState;
   }
 };

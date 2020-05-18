@@ -1,7 +1,11 @@
-import React, { Component } from "react";
-import { Form, Spinner } from "react-bootstrap";
-import "../assets/styles/containers/loginPage.scss";
-import { connect } from "react-redux";
+import React, { Component } from 'react';
+import { Form, Spinner } from 'react-bootstrap';
+import '../assets/styles/containers/loginPage.scss';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router';
+import queryString from 'querystring';
+import { useTranslation } from 'react-i18next';
 import {
   validateSignupInput,
   loginUsersSuccess,
@@ -11,54 +15,66 @@ import {
   resetInputFields,
   validateForm,
   clearErrorMsg,
-  clearSuccessMsg
-} from "../redux/actions/index";
-import { Redirect } from "react-router-dom";
-import TextBox from "../components/Textbox";
-import Button from "../components/Button";
-import Line from "../components/line";
-import { callApiThunk as thunk } from "../redux/thunk/index";
-import { withRouter } from "react-router";
-import AlertComponent from "../components/Alert";
-import queryString from "querystring";
+  clearSuccessMsg,
+} from '../redux/actions/index';
+import TextBox from '../components/Textbox';
+import Button from '../components/Button';
+import Line from '../components/line';
+import { callApiThunk as thunk } from '../redux/thunk/index';
+import AlertComponent from '../components/Alert';
 import SocialLogin from '../components/SocialLogin';
 
 class Signup extends Component {
-  signup = async (e) => {
-    e.preventDefault();
-    this.props.handleError("");
-    this.props.handleSuccess("");
+  constructor(props) {
+    super(props);
+    this.renderingCounter;
+  }
+
+  componentDidMount() {
+    this.renderingCounter = 0;
+  }
+
+  async handleClick(translate) {
+    this.renderingCounter += 1;
+    this.props.handleError('');
+    this.props.handleSuccess('');
     this.props.validateForm(false);
     const { validations: validatedFields } = this.props;
     const invalidFields = Object.keys(validatedFields).filter(
-      (field) => validatedFields[field] === "is-invalid"
+      (field) => validatedFields[field] === 'is-invalid',
     );
-    let validatedFieldsToArray = Object.keys(validatedFields); 
-    
+    const validatedFieldsToArray = Object.keys(validatedFields);
+
     if (validatedFieldsToArray.length === 6 && invalidFields.length === 0) {
       this.props.setLoadingStatus(true);
       await this.props.thunk(
-        "post",
-        "/auth/signup",
+        'post',
+        '/auth/signup',
         loginUsersSuccess,
-        this.props.user
+        this.props.user,
       );
       this.props.setLoadingStatus(false);
       this.props.userData.error
-        ? this.props.handleError(this.props.userData.error)
+        ? this.props.handleError(translate(`${this.props.userData.error}.1`))
         : this.props.handleSuccess(
-            "Please check the email sent to your inbox to finish registration.")
+          translate(
+            'Please check the email sent to your inbox to finish registration.1',
+          ),
+				  );
       this.props.resetInputFields();
       this.props.validateForm(false);
     } else if (invalidFields.length === 6) {
-      this.props.handleError("Please fill in the required fields.");
+      this.props.handleError(
+        `${translate('Please fill in the required fields.1')}`,
+      );
     } else {
       this.props.validateForm(true);
     }
-  };
-  
+  }
+
   render() {
-    
+    const { t: translate } = useTranslation();
+    if (this.renderingCounter > 0) this.handleClick(translate);
     const {
       validateInput,
       error,
@@ -68,107 +84,108 @@ class Signup extends Component {
       success,
       isValidated,
     } = this.props;
-
     const returnedEmailVerificationQueryString = queryString.decode(
-      this.props.location.search
+      this.props.location.search,
     );
     if (
-      returnedEmailVerificationQueryString["?message"] ===
-      "Email already exists."
-    )
-      this.props.handleError("Email already exists.");
-    if (returnedEmailVerificationQueryString["?token"])
-      window.location.href = "/home";
+      returnedEmailVerificationQueryString['?message']
+			=== 'Email has already taken.'
+    ) this.props.handleError(`${translate('Email already exists.1')}`);
+    if (returnedEmailVerificationQueryString['?token']) window.location.href = '/home';
 
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem('token');
     if (token) {
-      this.props.history.push("/home");
+      this.props.history.push('/home');
     }
-
     return (
       <div className="signup-page loginContainer">
         <Spinner
           animation="border"
           variant="primary"
-          className={isLoading ? "spinner--position__center" : "hide"}
+          className={isLoading ? 'spinner--position__center' : 'hide'}
         />
         <Form>
-          <h1>Sign up</h1>
-          <AlertComponent isError={error ? true : false} message={error} />
+          <h1>{translate('Sign up.1')}</h1>
+          <AlertComponent isError={!!error} message={error} />
           <AlertComponent
-            isSuccess={success ? true : false}
+            isSuccess={!!success}
             message={success}
           />
-          <p>Sign up with social media</p>
+          <p>{translate('Sign up with social media.1')}</p>
           <SocialLogin
-            googleAction="Sign up with Google"
-            facebookAction="Sign up with Facebook"
+            googleAction={translate('Sign up with Google.1')}
+            facebookAction={translate('Sign up with Facebook.1')}
           />
           <div id="or">
-            <Line className="Line" />{" "}
+            <Line className="Line" />
+            {' '}
             <div id="or_">
-              {" "}
-              <span>or</span>{" "}
-            </div>{" "}
+              {' '}
+              <span>or</span>
+              {' '}
+            </div>
+            {' '}
             <Line className="Line_" />
           </div>
           <div className="flex--items">
             <TextBox
               type="text"
-              placeholder="first name"
+              placeholder={translate('first name.1')}
               id="firstName"
               name="firstName"
               onChange={validateInput}
               label="firstName"
-              value={user.firstName || ""}
-              isValid={isValidated ? validations.firstName : ""}
-              errorMsg="first name can't be empty."
+              value={user.firstName || ''}
+              isValid={isValidated ? validations.firstName : ''}
+              errorMsg={translate("first name can't be empty.1")}
             />
             <TextBox
               type="text"
-              placeholder="last name"
+              placeholder={translate('last name.1')}
               id="lastName"
               name="lastName"
               onChange={validateInput}
               label="lastName"
-              value={user.lastName || ""}
-              isValid={isValidated ? validations.lastName : ""}
-              errorMsg="last name can't be empty."
+              value={user.lastName || ''}
+              isValid={isValidated ? validations.lastName : ''}
+              errorMsg={translate("last name can't be empty.1")}
             />
           </div>
           <TextBox
             type="email"
-            placeholder="email"
+            placeholder={translate('email.1')}
             id="email"
             name="email"
             onChange={validateInput}
             label="email"
-            value={user.email || ""}
-            isValid={isValidated ? validations.email : ""}
-            errorMsg="invalid email."
+            value={user.email || ''}
+            isValid={isValidated ? validations.email : ''}
+            errorMsg={translate('invalid email.1')}
           />
           <div className="flex--items">
             <TextBox
               type="password"
-              placeholder="password"
+              placeholder={translate('password.1')}
               id="password"
               name="password"
               onChange={validateInput}
               label="password"
-              value={user.password || ""}
-              isValid={isValidated ? validations.password : ""}
-              errorMsg="8 characters with at least a small case letter, upper case letter, a number and a symbol."
+              value={user.password || ''}
+              isValid={isValidated ? validations.password : ''}
+              errorMsg={translate('invalid-email error message.1')}
             />
             <TextBox
               type="password"
-              placeholder="confirm password"
+              placeholder={translate('confirm password.1')}
               id="confirmPassword"
               name="confirmPassword"
               onChange={validateInput}
               label="confirmPassword"
-              value={user.confirmPassword || ""}
-              isValid={isValidated ? validations.confirmPassword : ""}
-              errorMsg="Has to match password."
+              value={user.confirmPassword || ''}
+              isValid={isValidated ? validations.confirmPassword : ''}
+              errorMsg={translate(
+							  'password confirmation has to match password.1',
+              )}
             />
           </div>
           <div className="position--center">
@@ -177,7 +194,7 @@ class Signup extends Component {
               name="gender"
               id="male"
               value="male"
-              label="Male"
+              label={translate('Male.1')}
               onChange={(event) => validateInput(event.target)}
               inline
             />
@@ -186,20 +203,20 @@ class Signup extends Component {
               name="gender"
               id="female"
               value="female"
-              label="Female"
+              label={translate('Female.1')}
               onChange={(event) => validateInput(event.target)}
               inline
             />
           </div>
           <Button
             aria-label="signup"
-            onClick={(e) => this.signup(e)}
+            label={translate('Sign up.2')}
             id="loginBtn"
-            label="SIGN UP"
             className="btn"
-          ></Button>
+            onClick={() => this.handleClick(translate)}
+          />
           <a id="forgotPassword" href="/login">
-            <p>Already have an account? Login here</p>
+            <p>{translate('Already have an account? Login here.1')}</p>
           </a>
         </Form>
       </div>
@@ -207,18 +224,16 @@ class Signup extends Component {
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-    token: state.user.token,
-    error: state.errorHandler.error,
-    validations: state.eventHandler.validations.signup,
-    user: state.eventHandler.user,
-    userData: state.user.data,
-    isLoading: state.eventHandler.isLoading,
-    isValidated: state.eventHandler.isValidated,
-    success: state.successHandler.message,
-  };
-};
+const mapStateToProps = (state) => ({
+  token: state.user.token,
+  error: state.errorHandler.error,
+  validations: state.eventHandler.validations.signup,
+  user: state.eventHandler.user,
+  userData: state.user.data,
+  isLoading: state.eventHandler.isLoading,
+  isValidated: state.eventHandler.isValidated,
+  success: state.successHandler.message,
+});
 
 const mapDispatchToProps = {
   validateInput: validateSignupInput,
@@ -229,7 +244,7 @@ const mapDispatchToProps = {
   resetInputFields,
   validateForm,
   clearErrorMsg,
-  clearSuccessMsg
+  clearSuccessMsg,
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Signup));

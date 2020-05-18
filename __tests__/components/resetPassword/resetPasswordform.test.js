@@ -22,6 +22,6 @@ describe('Test reset password', () => {
       wrapper.find('button#submitBtn').simulate('click');
     });
     expect(wrapper.find('input#user-email').props().value).toEqual('');
-    expect(wrapper.find('span').props().children).toEqual('');
+    expect(wrapper.find('span').props().children).toEqual('.1');
   });
 });

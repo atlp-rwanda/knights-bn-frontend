@@ -1,17 +1,20 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import '../assets/styles/components/languages.scss';
+import CountryFlag from 'react-country-flag';
 
 const SubmitButton = ({
-  size, id, label, onClick,
+  size, id, name, onClick, label, countryCode,
 }) => (
   <Button
     size={size}
     id={id}
-    label={label}
-    onClick={onClick}
-    aria-label={label}
+    onClick={(event) => onClick(event.target)}
+    name={name}
+    className="btn"
   >
-    {label}
+    <CountryFlag countryCode={countryCode} />
+    <span>{label}</span>
   </Button>
 );
 

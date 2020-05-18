@@ -180,4 +180,24 @@ describe('test eventHandler', () => {
     };
     expect(eventHandler({}, action).isValidated).toEqual(true);
   });
+  it('should return current state by default', () => {
+    const action = {};
+    const initialState = {
+      user: {},
+      validations: {
+        login: {},
+        signup: {
+          firstName: 'is-invalid',
+          lastName: 'is-invalid',
+          email: 'is-invalid',
+          password: 'is-invalid',
+          confirmPassword: 'is-invalid',
+          gender: 'is-invalid',
+        },
+      },
+      isLoading: false,
+      isValidated: false,
+    };
+    expect(eventHandler(null, action)).toEqual(initialState);
+  });
 });
