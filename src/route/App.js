@@ -10,12 +10,14 @@ import Signup from '../views/Signup';
 import ResetPassword from '../components/resetPassword/restPasswordPage';
 import ModifyPasswordPage from '../components/resetPassword/ModifyPasswordPage';
 import LandingPage from '../views/Landing';
+import AdminPage from '../views/Admin';
 
 const App = () => (
   <div>
     <BrowserRouter>
       <Nav />
       <Switch>
+        <Route path="/admin" exact component={AdminPage} />
         <Route path="/signup" exact component={Signup} />
         <Route path="/" exact component={LandingPage} />
         <Route path="/login" exact component={Login} />

@@ -1,5 +1,6 @@
 module.exports = {
   verbose: false,
+  setupFiles: ['dotenv/config'],
   clearMocks: true,
   coverageDirectory: 'coverage',
   moduleFileExtensions: ['js', 'jsx', 'scss'],
@@ -15,5 +16,4 @@ module.exports = {
     '\\.(css|less|scss)$': '<rootDir>/__mocks__/index.js',
   },
   setupFilesAfterEnv: ['<rootDir>/setupTests.js', './node_modules/jest-enzyme/lib/index.js'],
-
 };
