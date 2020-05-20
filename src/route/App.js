@@ -11,6 +11,7 @@ import ResetPassword from '../components/resetPassword/restPasswordPage';
 import ModifyPasswordPage from '../components/resetPassword/ModifyPasswordPage';
 import LandingPage from '../views/Landing';
 import AdminPage from '../views/Admin';
+import Profile from '../views/Profile';
 
 const App = () => (
   <div>
@@ -26,6 +27,7 @@ const App = () => (
         <Route path="/lost" exact component={Lost} />
         <Route path="/password/reset/" exact component={ModifyPasswordPage} />
         <Route path="/forgetpassword" exact component={ResetPassword} />
+        <Route path="/profile" exact component={Profile} />
       </Switch>
       <Footer />
     </BrowserRouter>

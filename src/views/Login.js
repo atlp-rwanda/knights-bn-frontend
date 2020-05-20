@@ -51,10 +51,11 @@ export class Login extends Component {
         ? this.props.history.push('/admin')
         : this.props.history.push('/home');
     } else {
-      const errorMsg = (validatedFieldsToArray.length === 0)
+      const errorMsg = validatedFieldsToArray.length === 0
         ? translate('Please fill in the required fields.1')
-        : (this.props.validations.email === 'is-valid') && (!this.props.validations.password)
-			  ? translate('Please enter your password.1')
+        : this.props.validations.email === 'is-valid'
+            && !this.props.validations.password
+          ? translate('Please enter your password.1')
           : translate('Wrong email address.1');
       this.props.handleError(errorMsg);
     }

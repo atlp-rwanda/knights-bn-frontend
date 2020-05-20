@@ -1,6 +1,10 @@
 import userReducer from '../../../src/redux/reducers/userReducer';
 import * as types from '../../../src/redux/actions/actionTypes';
-import { resetUserPassword } from '../../../src/redux/actions/actions';
+import {
+  resetUserPassword,
+  userProfile,
+  updateUserProfile,
+} from '../../../src/redux/actions/actions';
 
 describe('Test userReducer test', () => {
   it('should be able test errorHandle', () => {
@@ -19,7 +23,64 @@ describe('Test userReducer test', () => {
     expect(userReducer(state, action).data.token).toBe('abc');
   });
   it('reset password', () => {
-    expect(userReducer({}, resetUserPassword('successfully'))).toEqual({ message: 'successfully' });
+    expect(userReducer({}, resetUserPassword('successfully'))).toEqual({
+      message: 'successfully',
+    });
+  });
+  it('Update User Profile', () => {
+    const action = {
+      type: types.USER_PROFILE,
+      data: {
+        isLoggedIn: true,
+        status: 200,
+        user: {
+          biography: 'Catch Me If You Can',
+          currency: 'Rwf',
+          homeTown: 'Gisozi',
+          language: 'Frensh',
+          lastName: 'Rwibutso',
+        },
+      },
+    };
+    expect(userReducer({}, updateUserProfile({ action }))).toBeTruthy();
+    expect(
+      userReducer({}, updateUserProfile({ action })).updatedUser.action.data
+        .user.biography,
+    ).toEqual('Catch Me If You Can');
+  });
+
+  it('View user profile', () => {
+    const action = {
+      type: types.USER_PROFILE,
+      data: {
+        isLoggedIn: true,
+        status: 200,
+        user: {
+          biography: 'Live at gisoxi',
+          birthDay: '1999-01-01T00:00:00.000Z',
+          currency: 'Rwf',
+          department: 'IT',
+          email: 'superadmin@barefootnomad.com',
+          firstName: 'Moise',
+          gender: 'male',
+          homeTown: 'Gisozi',
+          language: 'Frensh',
+          lastName: 'Rwibutso',
+          lineManager: 'william.ishimwe@andela.com',
+          passport: 'ws846522',
+          profileImage:
+          'https://res.cloudinary.com/niyo/image/upload/v1589269369/znmfuyjn8y5xwbhaz5ci.jpg',
+          role: 'superAdmin',
+          updatedAt: '2020-05-12T07:43:06.523Z',
+          createdAt: '2020-04-18T09:58:51.478Z',
+        },
+      },
+    };
+    expect(userReducer({}, userProfile({ action }))).toBeTruthy();
+    expect(
+      userReducer({}, userProfile({ action })).data.action.data.user
+        .language,
+    ).toBe('Frensh');
   });
   it('should return current state by default', () => {
     const action = {};

@@ -4,18 +4,32 @@ import '../assets/styles/components/languages.scss';
 import CountryFlag from 'react-country-flag';
 
 const SubmitButton = ({
-  size, id, name, onClick, label, countryCode,
+  size,
+  id,
+  name,
+  onClick,
+  label,
+  countryCode,
+  disabled,
+  className,
+  variant,
 }) => (
-  <Button
-    size={size}
-    id={id}
-    onClick={(event) => onClick(event.target)}
-    name={name}
-    className="btn"
-  >
-    <CountryFlag countryCode={countryCode} />
-    <span>{label}</span>
-  </Button>
+  <div className="form-group mr-2">
+    <Button
+      size={size}
+      name={name}
+      id={id}
+      label={label}
+      onClick={onClick}
+      aria-label={label}
+      className={className}
+      variant={variant}
+      disabled={disabled}
+    >
+      <CountryFlag countryCode={countryCode} />
+      <span>{label}</span>
+    </Button>
+  </div>
 );
 
 export default SubmitButton;
