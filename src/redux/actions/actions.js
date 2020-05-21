@@ -77,3 +77,8 @@ export const resetUserPassword = (message) => ({
   type: types.RESET_PASSWORD,
   payload: message,
 });
+
+export const createAccommodation = (accommodation) => ({
+  type: types.CREATE_ACCOMMODATION,
+  payload: accommodation,
+});

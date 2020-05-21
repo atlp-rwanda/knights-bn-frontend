@@ -35,7 +35,7 @@ exports[`Test Nav component should render Nav component 1`] = `
       className="text-center pt-2 li"
     >
       <img
-        className="logo"
+        className="logo_Auth"
         src=""
       />
     </h3>

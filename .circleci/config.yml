@@ -43,7 +43,7 @@ jobs:
       #       curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
       #       chmod +x ./cc-test-reporter
       
-      # - run: npm run lint
+      - run: npm run lint
       # run tests!
       - run:
           name: coveralls

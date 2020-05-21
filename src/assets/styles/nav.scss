@@ -1,0 +1,75 @@
+.nav-auth{
+    position: absolute;
+    right: 20rem;
+    top: 1.6rem;
+    display: inline-block;
+    color: black;
+  }
+  
+  .nav-auth li{
+    display: inline-block;
+    margin-left: 1rem;
+    a{
+        color: black;
+    }
+  }
+  .nav__background{
+   background: white;
+  }
+  .logo{
+    height: 2.5rem;
+    width: 6rem;
+    margin: 2rem 14rem 1rem 5rem;
+  }
+
+  .logo_Auth{
+    height: 2.5rem;
+    width: 6rem;
+    margin: 0 14rem 1rem -6.5rem;
+  }
+
+.notification__icon{
+    height: 1.5rem;
+    width: 1.5rem;
+}
+.notification{
+    position: relative;
+    left: 1rem;
+}
+.notification__message{
+    color: white;
+    position: absolute;
+    bottom: .01rem;
+    left:.8rem;
+    background: #5790cc;
+    border-radius: 50%;
+    padding: .1rem .2rem .1rem .2rem;
+}
+.avatar--small{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    position: relative;
+    bottom: .1rem;
+}
+.icon__menu{
+    width: 1.2rem;
+    height: 1.2rem;
+    position: absolute;
+    top: .1rem;
+}
+
+.profile{
+    position: relative;
+    left: 2rem;
+    img:first-child{
+        margin-left: .5rem;
+        margin-right: .2rem;
+    }
+}
+
+.dropdown{
+    position: absolute;
+    left: 6rem;
+    top: .2rem;
+}

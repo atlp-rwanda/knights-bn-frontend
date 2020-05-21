@@ -40,7 +40,13 @@
     "Type your email": {"1": "Tapez votre email"},
     "Submit": {"1": "Soumettre"},
     "invalid user email": {"1": "e-mail non valide."},
-    "Choose language": {"1": "Choisir la langue"}
-
-    
+    "Choose language": {"1": "Choisir la langue"},
+    "Home": {"1": "Page d'accueil"},
+    "Requests": {"1": "Demandes"},
+    "Bookings": {"1": "Réservations"},
+    "Stats": {"1": "Stats"},
+    "View profile": {"1": "Voir le profil"},
+    "Logout": {"1": "Se déconnecter"},
+    "Add Accommodation": {"1": "créer un logement"},
+    "Accommodations": {"1": "Logements"}
 }

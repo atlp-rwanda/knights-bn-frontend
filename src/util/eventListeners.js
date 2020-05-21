@@ -11,15 +11,16 @@ export const onServerMessage = (messageObject) => {
     validationMassage = error;
     return validationMassage;
   }
+  return undefined;
 };
 export const onSuccessFullyChanged = (serverData) => {
-  if (serverData) {
-    const { isLoggedIn } = serverData;
-    if (isLoggedIn) {
-      return true;
-    }
-    return false;
+  // if (serverData) {
+  const { isLoggedIn } = serverData;
+  if (isLoggedIn) {
+    return true;
   }
+  return false;
+  // }
 };
 
 export const checkOnchange = (eveNt, displayMessage, setCredentials) => {

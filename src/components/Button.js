@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import '../assets/styles/components/languages.scss';
-import CountryFlag from 'react-country-flag';
 
 const SubmitButton = ({
   size,
@@ -9,7 +8,6 @@ const SubmitButton = ({
   name,
   onClick,
   label,
-  countryCode,
   disabled,
   className,
   variant,
@@ -26,7 +24,6 @@ const SubmitButton = ({
       variant={variant}
       disabled={disabled}
     >
-      <CountryFlag countryCode={countryCode} />
       <span>{label}</span>
     </Button>
   </div>

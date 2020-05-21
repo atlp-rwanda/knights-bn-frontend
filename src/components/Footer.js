@@ -8,7 +8,6 @@ const Footer = () => {
       <h3>
         &copy; Copyright
         {date.getFullYear()}
-        {' '}
         knights-barefoot-nomad.com
       </h3>
     </footer>

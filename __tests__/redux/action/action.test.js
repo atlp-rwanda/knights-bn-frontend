@@ -16,6 +16,7 @@ import {
   updateUserProfile,
   pendingRequests,
   requestAction,
+  createAccommodation,
 } from '../../../src/redux/actions';
 import * as types from '../../../src/redux/actions/actionTypes';
 
@@ -291,5 +292,17 @@ describe(' test loginUsersSuccess actions', () => {
       type: 'APPROVE_REQUESTS',
       message,
     }).message.message.message).toEqual('The request successfully approved');
+  });
+  it('create accommodation', () => {
+    const accommodation = {
+      name: 'Serena',
+    };
+    const expectedResults = {
+      type: types.CREATE_ACCOMMODATION,
+      payload: {
+        name: 'Serena',
+      },
+    };
+    expect(createAccommodation(accommodation)).toEqual(expectedResults);
   });
 });

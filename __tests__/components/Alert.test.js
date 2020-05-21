@@ -10,4 +10,11 @@ describe('Testing alert component', () => {
     const wrapper = mount(<Alert {...props} />);
     expect(wrapper.find('p')).toHaveClassName('alert alert__success text-success');
   });
+  it('Should turn fade on animation', () => {
+    const props = {
+      isAnimated: true,
+    };
+    const wrapper = mount(<Alert {...props} />);
+    expect(wrapper.find('p')).toHaveClassName('alert--animated');
+  });
 });

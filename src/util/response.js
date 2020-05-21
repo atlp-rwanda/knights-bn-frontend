@@ -18,7 +18,7 @@ async function handleResponse(response) {
   }
   if (response.status === 404) {
     const error = await response.text();
-    toast.info("You don't have an account yet. Please sign up");
+    toast.info('You don\'t have an account yet. Please sign up');
     return error;
   }
   return 'Network response was not ok.';

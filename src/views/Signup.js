@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Form, Spinner } from 'react-bootstrap';
 import '../assets/styles/containers/loginPage.scss';
 import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router';
 import queryString from 'querystring';
 import { useTranslation } from 'react-i18next';
@@ -19,10 +18,11 @@ import {
 } from '../redux/actions/index';
 import TextBox from '../components/Textbox';
 import Button from '../components/Button';
-import Line from '../components/line';
 import { callApiThunk as thunk } from '../redux/thunk/index';
 import AlertComponent from '../components/Alert';
 import SocialLogin from '../components/SocialLogin';
+import NavAuth from '../components/NavAuth';
+import LineDivider from '../components/lineDivider';
 
 class Signup extends Component {
   constructor(props) {
@@ -60,7 +60,7 @@ class Signup extends Component {
           translate(
             'Please check the email sent to your inbox to finish registration.1',
           ),
-				  );
+        );
       this.props.resetInputFields();
       this.props.validateForm(false);
     } else if (invalidFields.length === 6) {
@@ -97,127 +97,117 @@ class Signup extends Component {
       window.location.href = '/home';
     }
     return (
-      <div className="signup-page loginContainer">
-        <Spinner
-          animation="border"
-          variant="primary"
-          className={isLoading ? 'spinner--position__center' : 'hide'}
-        />
-        <Form>
-          <h1>{translate('Sign up.1')}</h1>
-          <AlertComponent isError={!!error} message={error} />
-          <AlertComponent
-            isSuccess={!!success}
-            message={success}
+      <div>
+        <NavAuth />
+        <div className="signup-page loginContainer">
+          <Spinner
+            animation="border"
+            variant="primary"
+            className={isLoading ? 'spinner--position__center' : 'hide'}
           />
-          <p>{translate('Sign up with social media.1')}</p>
-          <SocialLogin
-            googleAction={translate('Sign up with Google.1')}
-            facebookAction={translate('Sign up with Facebook.1')}
-          />
-          <div id="or">
-            <Line className="Line" />
-            {' '}
-            <div id="or_">
-              {' '}
-              <span>or</span>
-              {' '}
+          <Form>
+            <h1>{translate('Sign up.1')}</h1>
+            <AlertComponent isError={!!error} message={error} />
+            <AlertComponent isSuccess={!!success} message={success} />
+            <p>{translate('Sign up with social media.1')}</p>
+            <SocialLogin
+              googleAction={translate('Sign up with Google.1')}
+              facebookAction={translate('Sign up with Facebook.1')}
+            />
+            <LineDivider />
+            <div className="flex--items">
+              <TextBox
+                type="text"
+                placeholder={translate('first name.1')}
+                id="firstName"
+                name="firstName"
+                onChange={validateInput}
+                label="firstName"
+                value={user.firstName || ''}
+                isValid={isValidated ? validations.firstName : ''}
+                errorMsg={translate('first name can\'t be empty.1')}
+              />
+              <TextBox
+                type="text"
+                placeholder={translate('last name.1')}
+                id="lastName"
+                name="lastName"
+                onChange={validateInput}
+                label="lastName"
+                value={user.lastName || ''}
+                isValid={isValidated ? validations.lastName : ''}
+                errorMsg={translate('last name can\'t be empty.1')}
+              />
             </div>
-            {' '}
-            <Line className="Line_" />
-          </div>
-          <div className="flex--items">
             <TextBox
-              type="text"
-              placeholder={translate('first name.1')}
-              id="firstName"
-              name="firstName"
+              type="email"
+              placeholder={translate('email.1')}
+              id="email"
+              name="email"
               onChange={validateInput}
-              label="firstName"
-              value={user.firstName || ''}
-              isValid={isValidated ? validations.firstName : ''}
-              errorMsg={translate("first name can't be empty.1")}
+              label="email"
+              value={user.email || ''}
+              isValid={isValidated ? validations.email : ''}
+              errorMsg={translate('invalid email.1')}
             />
-            <TextBox
-              type="text"
-              placeholder={translate('last name.1')}
-              id="lastName"
-              name="lastName"
-              onChange={validateInput}
-              label="lastName"
-              value={user.lastName || ''}
-              isValid={isValidated ? validations.lastName : ''}
-              errorMsg={translate("last name can't be empty.1")}
+            <div className="flex--items">
+              <TextBox
+                type="password"
+                placeholder={translate('password.1')}
+                id="password"
+                name="password"
+                onChange={validateInput}
+                label="password"
+                value={user.password || ''}
+                isValid={isValidated ? validations.password : ''}
+                errorMsg={translate('invalid-email error message.1')}
+              />
+              <TextBox
+                type="password"
+                placeholder={translate('confirm password.1')}
+                id="confirmPassword"
+                name="confirmPassword"
+                onChange={validateInput}
+                label="confirmPassword"
+                value={user.confirmPassword || ''}
+                isValid={isValidated ? validations.confirmPassword : ''}
+                errorMsg={translate(
+                  'password confirmation has to match password.1',
+                )}
+              />
+            </div>
+            <div className="position--center">
+              <Form.Check
+                type="radio"
+                name="gender"
+                id="male"
+                value="male"
+                label={translate('Male.1')}
+                onChange={(event) => validateInput(event.target)}
+                inline
+              />
+              <Form.Check
+                type="radio"
+                name="gender"
+                id="female"
+                value="female"
+                label={translate('Female.1')}
+                onChange={(event) => validateInput(event.target)}
+                inline
+              />
+            </div>
+            <Button
+              aria-label="signup"
+              label={translate('Sign up.2')}
+              id="loginBtn"
+              className="btn"
+              onClick={() => this.handleClick(translate)}
             />
-          </div>
-          <TextBox
-            type="email"
-            placeholder={translate('email.1')}
-            id="email"
-            name="email"
-            onChange={validateInput}
-            label="email"
-            value={user.email || ''}
-            isValid={isValidated ? validations.email : ''}
-            errorMsg={translate('invalid email.1')}
-          />
-          <div className="flex--items">
-            <TextBox
-              type="password"
-              placeholder={translate('password.1')}
-              id="password"
-              name="password"
-              onChange={validateInput}
-              label="password"
-              value={user.password || ''}
-              isValid={isValidated ? validations.password : ''}
-              errorMsg={translate('invalid-email error message.1')}
-            />
-            <TextBox
-              type="password"
-              placeholder={translate('confirm password.1')}
-              id="confirmPassword"
-              name="confirmPassword"
-              onChange={validateInput}
-              label="confirmPassword"
-              value={user.confirmPassword || ''}
-              isValid={isValidated ? validations.confirmPassword : ''}
-              errorMsg={translate(
-							  'password confirmation has to match password.1',
-              )}
-            />
-          </div>
-          <div className="position--center">
-            <Form.Check
-              type="radio"
-              name="gender"
-              id="male"
-              value="male"
-              label={translate('Male.1')}
-              onChange={(event) => validateInput(event.target)}
-              inline
-            />
-            <Form.Check
-              type="radio"
-              name="gender"
-              id="female"
-              value="female"
-              label={translate('Female.1')}
-              onChange={(event) => validateInput(event.target)}
-              inline
-            />
-          </div>
-          <Button
-            aria-label="signup"
-            label={translate('Sign up.2')}
-            id="loginBtn"
-            className="btn"
-            onClick={() => this.handleClick(translate)}
-          />
-          <a id="forgotPassword" href="/login">
-            <p>{translate('Already have an account? Login here.1')}</p>
-          </a>
-        </Form>
+            <a id="forgotPassword" href="/login">
+              <p>{translate('Already have an account? Login here.1')}</p>
+            </a>
+          </Form>
+        </div>
       </div>
     );
   }

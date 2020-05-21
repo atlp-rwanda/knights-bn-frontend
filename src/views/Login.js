@@ -15,11 +15,12 @@ import {
 } from '../redux/actions/index';
 import TextBox from '../components/Textbox';
 import Button from '../components/Button';
-import Line from '../components/line';
 import { callApiThunk as thunk } from '../redux/thunk/index';
 import AlertComponent from '../components/Alert';
 import SocialLogin from '../components/SocialLogin';
 import 'react-universal-hooks';
+import NavAuth from '../components/NavAuth';
+import LineDivider from '../components/lineDivider';
 
 dotenv.config();
 
@@ -46,6 +47,10 @@ export class Login extends Component {
 
       if (isLoggedIn === false) return this.props.handleError('Incorrect email or password. Please try again.');
       const userRole = jwt.decode(token).role;
+
+      const isAccomodationCreator = (userRole === 'traveladmin' || userRole === 'supplier');
+      if (isAccomodationCreator) { return this.props.history.push('/accommodation'); }
+
       const isSuperAdmin = (userRole === 'superAdmin');
       isLoggedIn && isSuperAdmin
         ? this.props.history.push('/admin')
@@ -65,56 +70,53 @@ export class Login extends Component {
     const { t: translate } = useTranslation();
     const { validateInput, error, isLoading } = this.props;
     return (
-      <div className="login-page loginContainer">
-        <Spinner
-          animation="border"
-          variant="primary"
-          className={isLoading ? 'spinner--position__center' : 'hide'}
-        />
-        <Form className="form">
-          <h1>{translate('Sign in.1')}</h1>
-          <AlertComponent isError={!!error} message={error} />
-          <p>{translate('Login with social media.1')}</p>
-          <SocialLogin
-            googleAction={translate('Sign in with Google.1')}
-            facebookAction={translate('Sign in with Facebook.1')}
+      <div>
+        <NavAuth />
+        <div className="login-page loginContainer">
+          <Spinner
+            animation="border"
+            variant="primary"
+            className={isLoading ? 'spinner--position__center' : 'hide'}
           />
-          <div id="or">
-            <Line className="Line" />
-            <div id="or_">
-              <span>or</span>
-            </div>
-            <Line className="Line_" />
-          </div>
-          <TextBox
-            type="email"
-            placeholder={translate('email.1')}
-            id="email"
-            name="email"
-            onChange={validateInput}
-            label="email"
-            value={this.props.user.email}
-          />
-          <TextBox
-            type="password"
-            placeholder={translate('password.1')}
-            id="password"
-            name="password"
-            onChange={validateInput}
-            label="password"
-            value={this.props.user.password}
-          />
-          <p>{this.props.token ? <Redirect to="home" /> : null}</p>
-          <Button
-            aria-label="login"
-            onClick={() => this.handleClick(translate)}
-            id="loginBtn"
-            label={translate('Login.1')}
-          />
-          <a id="forgotPassword" href="/forgetpassword">
-            <p>{translate('Forgot Password.1')}</p>
-          </a>
-        </Form>
+          <Form className="form">
+            <h1>{translate('Sign in.1')}</h1>
+            <AlertComponent isError={!!error} message={error} />
+            <p>{translate('Login with social media.1')}</p>
+            <SocialLogin
+              googleAction={translate('Sign in with Google.1')}
+              facebookAction={translate('Sign in with Facebook.1')}
+            />
+            <LineDivider />
+            <TextBox
+              type="email"
+              placeholder={translate('email.1')}
+              id="email"
+              name="email"
+              onChange={validateInput}
+              label="email"
+              value={this.props.user.email}
+            />
+            <TextBox
+              type="password"
+              placeholder={translate('password.1')}
+              id="password"
+              name="password"
+              onChange={validateInput}
+              label="password"
+              value={this.props.user.password}
+            />
+            <p>{this.props.token ? <Redirect to="home" /> : null}</p>
+            <Button
+              aria-label="login"
+              onClick={() => this.handleClick(translate)}
+              id="loginBtn"
+              label={translate('Login.1')}
+            />
+            <a id="forgotPassword" href="/forgetpassword">
+              <p>{translate('Forgot Password.1')}</p>
+            </a>
+          </Form>
+        </div>
       </div>
     );
   }
