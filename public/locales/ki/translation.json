@@ -40,9 +40,13 @@
     "Type your email": {"1": "Injiza imeri yawe"},
     "Submit": {"1": "Ohereza"},
     "invalid user email": {"1": "imeri ntibaho."},
-    "Choose language": {"1": "Hitamo ururimi"}
-
-
-    
-    
+    "Choose language": {"1": "Hitamo ururimi"},
+    "Home": {"1": "Ahabanza"},
+    "Requests": {"1": "Ubusabe bwatanzwe"},
+    "Bookings": {"1": "Amacumbi"},
+    "Stats": {"1": "Ibarurisha mibare"},
+    "View profile": {"1": "Imyirondoro yanjye"},
+    "Logout": {"1": "Gusohoka"},
+    "Add Accommodation": {"1": "Ongeramo icumbi"},
+    "Accommodations": {"1": "Amacumbi"}
 }

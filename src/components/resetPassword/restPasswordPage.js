@@ -4,7 +4,7 @@ import { callApiThunk } from '../../redux/thunk/index';
 import { checkOnchange, onServerMessage } from '../../util/eventListeners';
 import ResetPassword from './ResetPasswordForm';
 
-const ResetPasswordPage = ({ displayMessage, callApiThunk }) => (
+const ResetPasswordPage = ({ displayMessage }) => (
   <div className="layout">
     <ResetPassword
       checkOnchange={checkOnchange}

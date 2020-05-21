@@ -14,19 +14,54 @@ export const TableData = (props) => {
     cities, createdAt, Comments,
   } = props;
 
-  const action = (message, path) => { window.confirm(message)
-  ? props.thunk('patch', path, requestAction )
-  : '';};
+  const action = (message, path) => {
+    window.confirm(message)
+      ? props.thunk('patch', path, requestAction)
+      : '';
+  };
   return (
-    <tr key={id}> <td>{type}</td> <td>{reason}</td> <td>{origin}</td>
-    <td>{destination}</td> <td>{status}</td> <td>{convertDate(departureDate)}</td> <td>{convertDate(returnDate)}</td>
-    <td>{Array.isArray(cities) ? cities.map(({ name }) => `${name} - `) : `${origin} - ${destination}`} </td>
-      <td>{convertDate(createdAt)}</td> <td>{Comments}</td>
-      <td><a href="#" className="text-success" onClick={() => {
-action('Are you sure you want to approve this request?', `/trips/approve/${id}` );}}> Approve</a>
-      <a href="#" className="text-danger" onClick={() => {
-action('Are you sure you want to reject this request?', `/trips/reject?requestId=${id}` );
-          }} > Reject</a>
+    <tr key={id}>
+
+      <td>{type}</td>
+
+      <td>{reason}</td>
+
+      <td>{origin}</td>
+      <td>{destination}</td>
+
+      <td>{status}</td>
+
+      <td>{convertDate(departureDate)}</td>
+
+      <td>{convertDate(returnDate)}</td>
+      <td>
+        {Array.isArray(cities) ? cities.map(({ name }) => `${name} - `) : `${origin} - ${destination}`}
+
+      </td>
+      <td>{convertDate(createdAt)}</td>
+
+      <td>{Comments}</td>
+      <td>
+        <a
+          href="#"
+          className="text-success"
+          onClick={() => {
+            action('Are you sure you want to approve this request?', `/trips/approve/${id}`);
+          }}
+        >
+
+          Approve
+        </a>
+        <a
+          href="#"
+          className="text-danger"
+          onClick={() => {
+            action('Are you sure you want to reject this request?', `/trips/reject?requestId=${id}`);
+          }}
+        >
+
+          Reject
+        </a>
       </td>
     </tr>
   );

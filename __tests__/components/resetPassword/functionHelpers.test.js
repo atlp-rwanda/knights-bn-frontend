@@ -1,5 +1,5 @@
 import { regexPatterns, validateInput } from '../../../src/util/regExPatterns';
-import { onServerMessage, onSuccessFullyChanged } from '../../../src/util/eventListeners';
+import { onServerMessage, onSuccessFullyChanged as onChange } from '../../../src/util/eventListeners';
 
 describe('Test ResetPassword', () => {
   const displayMessage = {
@@ -24,7 +24,9 @@ describe('Test ResetPassword', () => {
     expect(onServerMessage(onServerMessage({}))).toEqual(undefined);
   });
   it('format message from server', () => {
-    expect(onSuccessFullyChanged(displayMessage)).toEqual(true);
-    expect(onSuccessFullyChanged(onServerMessage({ ...displayMessage, isLoggedIn: false }))).toEqual(undefined);
+    const onSuccess = onChange(displayMessage);
+    const onFailure = onChange(onServerMessage({ ...displayMessage, isLoggedIn: false }));
+    expect(onSuccess).toEqual(true);
+    expect(onFailure).toEqual(false);
   });
 });

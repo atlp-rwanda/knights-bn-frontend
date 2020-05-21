@@ -38,6 +38,13 @@
     "Type your email": {"1": "Type your email"},
     "Submit": {"1": "Submit"},
     "invalid user email": {"1": "invalid user email"},
-    "Choose language": {"1": "Choose language"}
-    
+    "Choose language": {"1": "Choose language"},
+    "Home": {"1": "Home"},
+    "Requests": {"1": "Requests"},
+    "Bookings": {"1": "Bookings"},
+    "Stats": {"1": "Stats"},
+    "View profile": {"1": "View profile"},
+    "Logout": {"1": "Logout"},
+    "Add Accommodation": {"1": "Add Accommodation"},
+    "Accommodations": {"1": "Accommodations"}
 }

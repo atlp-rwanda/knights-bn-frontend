@@ -23,7 +23,7 @@ describe('test thunk', () => {
     axiosMock.onPost('/auth/login').reply(201, data);
     store
       .dispatch(reduxThunk('post', '/auth/login', loginUsersSuccess, {}))
-      .then((d) => {
+      .then(() => {
       });
   });
   it('test get thunk error', async () => {
@@ -33,7 +33,7 @@ describe('test thunk', () => {
     axiosMock.onPost('/auth/login').reply(404, data);
     store
       .dispatch(reduxThunk('post', '/auth/login', loginUsersSuccess, {}))
-      .then((d) => {
+      .then(() => {
       });
   });
 });

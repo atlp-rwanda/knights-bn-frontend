@@ -6,7 +6,7 @@ import { checkOnchange, onServerMessage, onSuccessFullyChanged } from '../../uti
 import ModifyPassword from './ModifyPasswordForm';
 
 const ModifyPasswordContainer = ({
-  location, callApiThunk, displayMessage, history,
+  location, displayMessage, history,
 }) => (
 
   <div className="layout">

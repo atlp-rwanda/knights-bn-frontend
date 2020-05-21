@@ -1,7 +1,6 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Login from '../views/Login';
-import Nav from '../components/Nav';
 import Footer from '../components/Footer';
 import HomePage from '../views/Home';
 import UserInfo from '../helpers/UserInfo';
@@ -13,11 +12,11 @@ import LandingPage from '../views/Landing';
 import AdminPage from '../views/Admin';
 import Profile from '../views/Profile';
 import PendingRequests from '../views/PendingRequests';
+import Accommodation from '../views/Accommodation';
 
 const App = () => (
   <div>
     <BrowserRouter>
-      <Nav />
       <Switch>
         <Route path="/admin" exact component={AdminPage} />
         <Route path="/signup" exact component={Signup} />
@@ -30,6 +29,7 @@ const App = () => (
         <Route path="/forgetpassword" exact component={ResetPassword} />
         <Route path="/profile" exact component={Profile} />
         <Route path="/pending" exact component={PendingRequests} />
+        <Route path="/accommodation" exact component={Accommodation} />
       </Switch>
       <Footer />
     </BrowserRouter>
