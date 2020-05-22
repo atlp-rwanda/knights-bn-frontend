@@ -43,6 +43,10 @@ module.exports = {
     "react/no-did-update-set-state": 0,
     "consistent-return": 0,
     "no-unused-vars": 0,
-    "no-alert": 0
+    "no-alert": 0,
+    "eqeqeq": 0,
+    "react/forbid-prop-types": 0,
+    "react/state-in-constructor": 0,
+    "no-shadow": 0
   },
 };

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../assets/styles/landingPage.scss';
 import { useTranslation } from 'react-i18next';
 import NavAuth from '../components/NavAuth';
+import Footer from '../components/Footer';
 
 const Landing = () => {
   const { t } = useTranslation();
@@ -27,6 +28,7 @@ const Landing = () => {
             src={require('../assets/images/frontend image.png')}
           />
         </div>
+        <Footer />
       </div>
     </div>
   );

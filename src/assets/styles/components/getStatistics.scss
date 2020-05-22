@@ -1,0 +1,81 @@
+
+.history{
+    display: flex;
+}
+.total{
+    display: flex;
+    background-color:#5690cc;
+    flex:1;
+    justify-content: center;
+    height: 100px;
+    align-items: center;
+    color: #fff;
+}
+.total span{
+    padding-bottom: 6px;
+}
+.rejected{
+    display: flex;
+    background-color:#de4aa3;
+    flex:1;
+    justify-content: center;
+    height: 100px;
+    align-items: center;
+    margin-left: 10px;
+    color: #fff;
+}
+.rejected span{
+    padding-bottom: 6px;
+}
+.pending{
+    background-color:#1abc9c ;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    margin-left: 10px;
+    align-items: center;
+    color: #fff;
+}
+.pending span{
+    padding-bottom: 5px;
+}
+.stats{
+    display: flex;
+   border: 1px solid #000;
+   margin-top: 10px;
+   padding-left: 1px;
+}
+.trips-from{
+    display: flex;
+}
+.trips-from span{
+    padding-left: 20px;
+}
+.trips-to{
+    display: flex;
+    flex: 1;
+    margin-left: 90px;
+}
+.trips-to span{
+    padding-left: 20px;
+}
+.trip-interval{
+    display: flex;
+    flex: 1;   
+}
+.trip-interval span{
+   padding-left: 10px;
+}
+.trip-made{
+    display: flex;
+    flex: 1;
+}
+.trip-made span{
+    padding-left: 10px;
+}
+.trip-details{
+    border-bottom: solid 1px #000;
+}
+.stats-layout{
+    margin-top: 50px;
+}

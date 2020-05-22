@@ -1,9 +1,12 @@
 import requestReducer from '../../../src/redux/reducers/requestReducer';
+import statsReducer from '../../../src/redux/reducers/statsReducer';
+
 import * as types from '../../../src/redux/actions/actionTypes';
 
 import {
   pendingRequests,
   requestAction,
+  allMyrequests,
 } from '../../../src/redux/actions/requestActions';
 
 describe('Test requestsReducer test', () => {
@@ -115,5 +118,33 @@ describe('Test requestsReducer test', () => {
       },
     };
     expect(requestReducer(null, action)).toEqual(initialState);
+  });
+  it('Return initial state', () => {
+    const initialState = {
+      myRequests: {
+        message: '',
+        allMyRequest: [],
+      },
+    };
+    expect(statsReducer(undefined, {})).toEqual(initialState);
+  });
+  it('Return all requests action', () => {
+    const initialState = {
+      myRequests: {
+        message: '',
+        allMyRequest: [],
+      },
+    };
+    const action = {
+      type: types.MY_REQUESTS,
+      data: {
+        allMyRequest: [
+          {
+            origin: 'kigali',
+          },
+        ],
+      },
+    };
+    expect(statsReducer(initialState, allMyrequests(action)).data.allMyRequest[0].origin).toEqual('kigali');
   });
 });

@@ -2,6 +2,7 @@ import React from 'react';
 import '../assets/styles/nav.scss';
 import { Dropdown } from 'react-bootstrap';
 import PropTypes from 'prop-types';
+import logOut from '../util/logOut';
 
 const ProfileInfo = ({ firstName, profileImage, translate }) => (
   <li className="profile">
@@ -17,7 +18,7 @@ const ProfileInfo = ({ firstName, profileImage, translate }) => (
         <Dropdown.Item href="/profile">
           {translate('View profile.1')}
         </Dropdown.Item>
-        <Dropdown.Item href="#/action-2">{translate('Logout.1')}</Dropdown.Item>
+        <Dropdown.Item href="/" onClick={logOut}>{translate('Logout.1')}</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   </li>

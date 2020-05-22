@@ -42,6 +42,26 @@ const reduce = (state, action) => {
         ...state,
         createdAccommodation: action.payload,
       };
+    case types.GET_ACCOMMODATIONS:
+      return {
+        ...state,
+        accommodations: action.payload,
+      };
+    case types.BOOK_ACCOMMODATION:
+      return {
+        ...state,
+        bookedAccommodation: action.payload,
+      };
+    case types.GET_NOTIFICATION:
+      return {
+        ...state,
+        notification: action.payload.notifications,
+      };
+    case types.MARK_READ:
+      return {
+        ...state,
+        message: action.payload,
+      };
     default:
       return (
         state || {
@@ -51,6 +71,7 @@ const reduce = (state, action) => {
           data: {
             message: '',
           },
+          accommodations: '',
         }
       );
   }

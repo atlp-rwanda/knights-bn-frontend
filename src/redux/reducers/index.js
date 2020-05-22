@@ -4,6 +4,7 @@ import requestReducer from './requestReducer';
 import eventHandler from './eventHandler';
 import errorHandler from './errorHandler';
 import successHandler from './successHandler';
+import statsReducer from './statsReducer';
 
 const rootReduce = combineReducers({
   user: userReducer,
@@ -11,6 +12,7 @@ const rootReduce = combineReducers({
   eventHandler,
   errorHandler,
   successHandler,
+  statsReducer,
 });
 
 export default rootReduce;

@@ -1,4 +1,3 @@
-
 import * as types from './actionTypes';
 
 export const validateLoginInput = (target) => ({
@@ -81,4 +80,21 @@ export const resetUserPassword = (message) => ({
 export const createAccommodation = (accommodation) => ({
   type: types.CREATE_ACCOMMODATION,
   payload: accommodation,
+});
+export const getAccommodations = (accommodations) => ({
+  type: types.GET_ACCOMMODATIONS,
+  payload: accommodations,
+});
+
+export const bookAccommodation = (payload) => ({
+  type: types.BOOK_ACCOMMODATION,
+  payload,
+});
+export const getNotifications = (notification) => ({
+  type: types.GET_NOTIFICATION,
+  payload: notification,
+});
+export const markAllAsRead = (message) => ({
+  type: types.MARK_READ,
+  message,
 });

@@ -13,6 +13,8 @@ import AdminPage from '../views/Admin';
 import Profile from '../views/Profile';
 import PendingRequests from '../views/PendingRequests';
 import Accommodation from '../views/Accommodation';
+import BookAccommodation from '../views/BookAccommodation';
+import MyStats from '../components/getStats/getStats';
 
 const App = () => (
   <div>
@@ -30,6 +32,9 @@ const App = () => (
         <Route path="/profile" exact component={Profile} />
         <Route path="/pending" exact component={PendingRequests} />
         <Route path="/accommodation" exact component={Accommodation} />
+        <Route path="/book" exact component={BookAccommodation} />
+        <Route path="/stats" exact component={MyStats} />
+        <Footer />
       </Switch>
       <Footer />
     </BrowserRouter>

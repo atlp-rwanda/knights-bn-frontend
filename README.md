@@ -1,7 +1,7 @@
 # Barefoot Nomad Front-end
 [![CircleCI](https://circleci.com/gh/Stackup-Rwanda/knights-bn-frontend/tree/develop.svg?style=svg)](https://circleci.com/gh/Stackup-Rwanda/knights-bn-frontend/tree/develop)
 [![Coverage Status](https://coveralls.io/repos/github/Stackup-Rwanda/knights-bn-frontend/badge.svg?branch=develop)](https://coveralls.io/github/Stackup-Rwanda/knights-bn-frontend?branch=develop)
-[![Maintainability](https://api.codeclimate.com/v1/badges/cec0c3f45dcf5c65408e/maintainability)](https://codeclimate.com/github/Stackup-Rwanda/knights-bn-frontend/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/1888bfa4742f61b38d4f/maintainability)](https://codeclimate.com/github/Stackup-Rwanda/knights-bn-frontend/maintainability)
 ## Vision :telescope:
 #### Making company travel and accommodation easy and convenient.
 
@@ -13,24 +13,33 @@ Make company global travel and accommodation easy and convenient for the strong 
 
 ## Technologies used :gear:
 - React JS
+- Bootstrap
 - Webpack
 - Redux
 - SASS
 - Node JS
+- Express
 - Jest
-- React-testing-library
+- Enzyme
+- Circle ci
+- Code-climate
+- Heroku
+- ESLint
+- PivotalTracker
+- Github
+- Cloudinary
 
 ## Setting up the application :wrench:
 
 ##### A. Clone the project
 1. From your computer, open terminal. 
-2. Run `git clone https://github.com/andela/knights-bn-frontend.git` to clone the repository OR [Download](https://codeload.github.com/andela/knights-bn-frontend/zip/develop) the project.
+2. Run `git clone https://github.com/Stackup-Rwanda/knights-bn-frontend.git` to clone the repository OR [Download](https://codeload.github.com/Stackup-Rwanda/knights-bn-frontend/zip/develop) the project.
 
 ### Run commands
 
 1. Run `npm install` to install all dependencies.
-2. Run `npm test` to test automatically if the app is functioning properly as expected.
-3. Run `npm start` to run the app in development environment. 
+2. Run `npm run test` to test automatically if the app is functioning properly as expected.
+3. Run `npm run dev-start` to run the app in development environment. 
 
 ### Deployment 🚀
 
@@ -38,7 +47,7 @@ Make company global travel and accommodation easy and convenient for the strong 
 
 
 ### Raising an issue
-Click [here](https://github.com/andela/knights-bn-frontend/issues/new) to create an issue about this app.
+Click [here](https://github.com/Stackup-Rwanda/knights-bn-frontend/issues/new) to create an issue about this app.
 
 # Author
  ### code-knights-12

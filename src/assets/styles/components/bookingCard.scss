@@ -1,0 +1,39 @@
+@import '../base.scss';
+
+.card__container{
+    font-size: .9rem;
+    width: 30rem;
+    border: 1px solid rgba($color: #000000, $alpha: 0.1);
+    background-color: white;
+    border-radius: 4%;
+    box-shadow: 3px 3px 2px rgba($color: #000000, $alpha: 0.1);
+    padding-top: 1rem;
+    position: relative;
+    bottom: 21.5rem;
+    left: 55rem;
+    .btn{
+        width: 20rem;
+        margin-left: 4rem;
+        background-color: #5790CC;
+    }
+    input{
+        display: block;
+    }
+    .card__header{
+        font-weight: bolder;
+        font-size: 1.2rem;
+        margin-left: 3rem;
+    }
+    .card__body{
+        margin: 1rem auto;
+       display: flex;
+       justify-content: space-evenly;
+    }
+}
+
+.card__alert{
+    position: relative ;
+    bottom: 38rem;
+    left: 25rem;
+    width: 32rem;
+}
