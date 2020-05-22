@@ -17,6 +17,8 @@ import {
   pendingRequests,
   requestAction,
   createAccommodation,
+  getAccommodations,
+  bookAccommodation,
 } from '../../../src/redux/actions';
 import * as types from '../../../src/redux/actions/actionTypes';
 
@@ -304,5 +306,33 @@ describe(' test loginUsersSuccess actions', () => {
       },
     };
     expect(createAccommodation(accommodation)).toEqual(expectedResults);
+  });
+  it('returns accommodations', () => {
+    const accommodations = {
+      accommodationName: 'Star apart',
+      pricePerNight: '20',
+    };
+    const expectedResults = {
+      type: types.GET_ACCOMMODATIONS,
+      payload: {
+        accommodationName: 'Star apart',
+        pricePerNight: '20',
+      },
+    };
+    expect(getAccommodations(accommodations)).toEqual(expectedResults);
+  });
+  it('returns response after booking', () => {
+    const payload = {
+      message: 'Successfully booked',
+      statusCode: '200',
+    };
+    const expectedResults = {
+      type: types.BOOK_ACCOMMODATION,
+      payload: {
+        message: 'Successfully booked',
+        statusCode: '200',
+      },
+    };
+    expect(bookAccommodation(payload)).toEqual(expectedResults);
   });
 });

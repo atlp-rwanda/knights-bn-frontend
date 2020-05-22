@@ -1,0 +1,36 @@
+@import '../base.scss';
+
+.card{
+    width: 19rem;
+    font-size: 0.813rem;
+    margin-bottom: 2rem;
+}
+
+.card__img{
+    width: auto;
+    height: 12rem;
+}
+.card__title{
+    font-weight:100;
+    img:first-child{
+        margin-left: 2rem;
+        margin-right: .8rem;
+    }
+}
+.card__title:hover,.card__img{
+    cursor: pointer;
+}
+.card__text{
+    text-align: left;
+}
+
+.card__img--small{
+    width: 18px;
+    height: 17px;
+}
+
+.card__likes{
+    position: relative;
+    bottom: 1.6rem;
+    left: 10rem;
+}

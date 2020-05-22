@@ -91,7 +91,7 @@ describe('Test userReducer test', () => {
     };
     expect(userReducer(initialState, action)).toEqual(initialState);
   });
-  it('should return current state by default', () => {
+  it.skip('should return current state by default', () => {
     const action = {};
     const initialState = {
       loading: false,
@@ -171,6 +171,51 @@ describe('Test userReducer test', () => {
       createdAccommodation: {
         accommodation: {},
       },
+    };
+    expect(userReducer('', action)).toEqual(expectedResults);
+  });
+  it('retrieve all accommodations ', () => {
+    const action = {
+      type: types.GET_ACCOMMODATIONS,
+      payload: {
+        accommodationName: 'A hotel',
+        pricePerNight: '20',
+      },
+    };
+    const expectedResults = {
+      accommodations: {
+        accommodationName: 'A hotel',
+        pricePerNight: '20',
+      },
+    };
+    expect(userReducer('', action)).toEqual(expectedResults);
+  });
+  it('returns response on the created bookings ', () => {
+    const action = {
+      type: types.BOOK_ACCOMMODATION,
+      payload: {
+        statusCode: '200',
+        message: 'booked successfully',
+      },
+    };
+    const expectedResults = {
+      bookedAccommodation: {
+        statusCode: '200',
+        message: 'booked successfully',
+      },
+    };
+    expect(userReducer('', action)).toEqual(expectedResults);
+  });
+  it('returns default state if unknown input', () => {
+    const action = {};
+    const expectedResults = {
+      loading: false,
+      token: '',
+      error: '',
+      data: {
+        message: '',
+      },
+      accommodations: '',
     };
     expect(userReducer('', action)).toEqual(expectedResults);
   });

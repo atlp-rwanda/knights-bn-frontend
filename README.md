@@ -1,7 +1,7 @@
 # Barefoot Nomad Front-end
 [![CircleCI](https://circleci.com/gh/Stackup-Rwanda/knights-bn-frontend/tree/develop.svg?style=svg)](https://circleci.com/gh/Stackup-Rwanda/knights-bn-frontend/tree/develop)
 [![Coverage Status](https://coveralls.io/repos/github/Stackup-Rwanda/knights-bn-frontend/badge.svg?branch=develop)](https://coveralls.io/github/Stackup-Rwanda/knights-bn-frontend?branch=develop)
-[![Maintainability](https://api.codeclimate.com/v1/badges/cec0c3f45dcf5c65408e/maintainability)](https://codeclimate.com/github/Stackup-Rwanda/knights-bn-frontend/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/1888bfa4742f61b38d4f/maintainability)](https://codeclimate.com/github/Stackup-Rwanda/knights-bn-frontend/maintainability)
 ## Vision :telescope:
 #### Making company travel and accommodation easy and convenient.
 

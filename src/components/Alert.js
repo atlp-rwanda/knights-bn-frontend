@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import '../assets/styles/components/alert.scss';
 
 const AlertComponent = ({
-  isError, message, isSuccess, isAnimated,
+  isError, message, isSuccess, isAnimated, className,
 }) => (
   <span>
     <p
-      className={` ${isAnimated ? 'alert--animated' : 'alert'}
+      className={`${className} ${isAnimated ? 'alert--animated' : 'alert'}
       ${isError ? 'alert__error text-danger'
         : isSuccess ? 'alert__success text-success '
           : 'hide'
@@ -24,6 +24,7 @@ AlertComponent.propTypes = {
   message: PropTypes.string,
   isSuccess: PropTypes.bool,
   isAnimated: PropTypes.bool,
+  className: PropTypes.string,
 };
 
 AlertComponent.defaultProps = {
@@ -31,5 +32,6 @@ AlertComponent.defaultProps = {
   isError: false,
   message: '',
   isSuccess: false,
+  className: '',
 };
 export default AlertComponent;

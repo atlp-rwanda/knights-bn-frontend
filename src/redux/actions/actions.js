@@ -82,3 +82,12 @@ export const createAccommodation = (accommodation) => ({
   type: types.CREATE_ACCOMMODATION,
   payload: accommodation,
 });
+export const getAccommodations = (accommodations) => ({
+  type: types.GET_ACCOMMODATIONS,
+  payload: accommodations,
+});
+
+export const bookAccommodation = (payload) => ({
+  type: types.BOOK_ACCOMMODATION,
+  payload,
+});
