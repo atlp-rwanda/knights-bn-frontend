@@ -14,6 +14,8 @@ import {
   updateUserRole,
   userProfile,
   updateUserProfile,
+  pendingRequests,
+  requestAction,
 } from '../../../src/redux/actions';
 import * as types from '../../../src/redux/actions/actionTypes';
 
@@ -27,7 +29,7 @@ describe(' test loginUsersSuccess actions', () => {
       loginUsersSuccess({
         type: 'USER_LOGIN_SUCCESS',
         payload,
-      }).payload.payload.email
+      }).payload.payload.email,
     ).toEqual('alain.maxime@gmail.com');
   });
 
@@ -40,7 +42,7 @@ describe(' test loginUsersSuccess actions', () => {
       validateLoginInput({
         type: 'VALIDATE_LOGIN_INPUT',
         target,
-      }).payload.key
+      }).payload.key,
     ).toEqual(undefined);
   });
 
@@ -49,7 +51,7 @@ describe(' test loginUsersSuccess actions', () => {
       handleError({
         type: 'VALIDATE_LOGIN_INPUT',
         error: 'error',
-      }).error.error
+      }).error.error,
     ).toEqual('error');
   });
 
@@ -58,7 +60,7 @@ describe(' test loginUsersSuccess actions', () => {
       setLoadingStatus({
         type: 'SET_LOADING_STATUS',
         status: '',
-      }).status.status
+      }).status.status,
     ).toEqual('');
   });
   it('handleSuccess should return success type and message', () => {
@@ -80,7 +82,7 @@ describe(' test loginUsersSuccess actions', () => {
       validateSignupInput({
         name: 'email',
         value: 'noname@gmail.com',
-      })
+      }),
     ).toEqual(expectedAction);
   });
   it('validateForm should return type and status', () => {
@@ -168,7 +170,7 @@ describe(' test loginUsersSuccess actions', () => {
       userProfile({
         type: 'USER_PROFILE',
         user,
-      }).payload.user.data.user.email
+      }).payload.user.data.user.email,
     ).toEqual('superadmin@barefootnomad.com');
   });
   it('should be able to update the user', () => {
@@ -204,7 +206,90 @@ describe(' test loginUsersSuccess actions', () => {
       updateUserProfile({
         type: 'UPDATE_USER_PROFILE',
         user,
-      }).payload.user.data.updatedUser.homeTown
+      }).payload.user.data.updatedUser.homeTown,
     ).toEqual('Gisozi');
+  });
+
+  it('should be able view pending request', () => {
+    const requests = {
+      isLoggedIn: true,
+      message: 'Pending requests',
+      data: [
+        {
+          id: 2,
+          requesterId: 4,
+          managerId: 2,
+          type: 'two_way',
+          reason: 'partner engagment',
+          origin: 'Kigali',
+          destination: 'Kampala',
+          status: 'pending',
+          departureDate: '2020-05-01T00:00:00.000Z',
+          returnDate: '2020-07-01T00:00:00.000Z',
+          cities: null,
+          createdAt: '2020-04-18T09:58:51.511Z',
+          updatedAt: '2020-04-18T09:58:51.511Z',
+          Comments: [],
+        },
+        {
+          id: 6,
+          requesterId: 12,
+          managerId: 2,
+          type: 'multi_way',
+          reason: 'Having fun',
+          origin: 'New york',
+          destination: 'East Africa',
+          status: 'pending',
+          departureDate: '2020-07-04T00:00:00.000Z',
+          returnDate: '2020-08-31T00:00:00.000Z',
+          cities: [
+            {
+              name: 'kigali',
+              from: '2020-07-04',
+              to: '2020-08-31',
+            },
+            {
+              name: 'Nairobi',
+              from: '2020-07-04',
+              to: '2020-08-31',
+            },
+          ],
+          createdAt: '2020-05-24T08:17:07.387Z',
+          updatedAt: '2020-05-24T08:17:07.387Z',
+          Comments: [],
+        },
+        {
+          id: 1,
+          requesterId: 1,
+          managerId: 2,
+          type: 'one_way',
+          reason: 'partner engagment',
+          origin: 'Kigali',
+          destination: 'Lagos',
+          status: 'pending',
+          departureDate: '2020-04-01T00:00:00.000Z',
+          returnDate: '2020-06-01T00:00:00.000Z',
+          cities: null,
+          createdAt: '2020-04-18T09:58:51.511Z',
+          updatedAt: '2020-04-18T09:58:51.511Z',
+          Comments: [],
+        },
+      ],
+    };
+    expect(pendingRequests({
+      type: 'GET_PENDING_REQUESTS',
+      requests,
+    }).payload.requests.data[0].reason).toEqual('partner engagment');
+  });
+  it('should be able to take an action on request', () => {
+    const message = {
+      isLoggedIn: true,
+      requestId: '6',
+      message: 'The request successfully approved',
+    };
+    expect(requestAction({
+      type: 'APPROVE_REQUESTS',
+      message,
+    }).message.message.message).toEqual('The request successfully approved');
   });
 });

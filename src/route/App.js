@@ -12,6 +12,7 @@ import ModifyPasswordPage from '../components/resetPassword/ModifyPasswordPage';
 import LandingPage from '../views/Landing';
 import AdminPage from '../views/Admin';
 import Profile from '../views/Profile';
+import PendingRequests from '../views/PendingRequests';
 
 const App = () => (
   <div>
@@ -28,6 +29,7 @@ const App = () => (
         <Route path="/password/reset/" exact component={ModifyPasswordPage} />
         <Route path="/forgetpassword" exact component={ResetPassword} />
         <Route path="/profile" exact component={Profile} />
+        <Route path="/pending" exact component={PendingRequests} />
       </Switch>
       <Footer />
     </BrowserRouter>
