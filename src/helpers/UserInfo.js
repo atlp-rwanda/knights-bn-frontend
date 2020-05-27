@@ -12,6 +12,10 @@ export default class UserInfo extends Component {
       localStorage.setItem('user-info', JSON.stringify(user));
       window.location.href = '/home';
     } catch (error) {
+      localStorage.setItem(
+        'lost-message',
+        'Something went wrong',
+      );
       window.location.href = '/lost';
     }
   }
