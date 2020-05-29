@@ -4,11 +4,15 @@ module.exports = {
     es6: true,
     jest: true,
   },
-  extends: ['plugin:react/recommended', 'airbnb'],
+  extends: ['plugin:react/recommended',
+    'airbnb-base',
+    'airbnb/rules/react'
+  ],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
+  parser: "babel-eslint", 
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -30,6 +34,15 @@ module.exports = {
     'no-nested-ternary': 0,
     'react/jsx-props-no-spreading': 0,
     "no-unused-expressions": 0,
-    "no-useless-return": 0
+    "no-useless-return": 0,
+    "jsx-a11y/anchor-is-valid": 0,
+    "react/button-has-type": 0,
+    "no-undef": 0,
+    "import/no-extraneous-dependencies": 0,
+    "react/no-access-state-in-setstate": 0,
+    "react/no-did-update-set-state": 0,
+    "consistent-return": 0,
+    "no-unused-vars": 0,
+    "no-alert": 0
   },
 };

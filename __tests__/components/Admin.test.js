@@ -1,10 +1,10 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import configureMockStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
 import jwt from 'jsonwebtoken';
-import { mount, shallow } from '../../setupTests';
-import Login, { mapStateToProps, Login as View } from '../../src/views/Login';
+import { I18nextProvider } from 'react-i18next';
+import { mount } from '../../setupTests';
+import { Login as View } from '../../src/views/Login';
+import i18n from '../../src/i18next';
 
 let wrapper;
 
@@ -27,9 +27,11 @@ describe('Admin Test', () => {
 
   it('Should login as a super Admin', () => {
     wrapper = mount(
-      <MemoryRouter>
-        <View {...props} />
-      </MemoryRouter>,
+      <I18nextProvider i18n={i18n}>
+        <MemoryRouter>
+          <View {...props} />
+        </MemoryRouter>
+      </I18nextProvider>,
     );
     wrapper.props();
     wrapper.find('Button').simulate('click');
@@ -53,11 +55,12 @@ describe('Admin Test', () => {
           password: 'is-valid',
         },
       };
-
       wrapper = mount(
-        <MemoryRouter>
-          <View {...props1} />
-        </MemoryRouter>,
+        <I18nextProvider i18n={i18n}>
+          <MemoryRouter>
+            <View {...props1} />
+          </MemoryRouter>
+        </I18nextProvider>,
       );
       wrapper.props();
       wrapper.find('Button').simulate('click');

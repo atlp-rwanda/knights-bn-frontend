@@ -160,4 +160,18 @@ describe('Test userReducer test', () => {
     };
     expect(userReducer(state, action)).toEqual(expectedResult);
   });
+  it('create accommodation', () => {
+    const action = {
+      type: types.CREATE_ACCOMMODATION,
+      payload: {
+        accommodation: {},
+      },
+    };
+    const expectedResults = {
+      createdAccommodation: {
+        accommodation: {},
+      },
+    };
+    expect(userReducer('', action)).toEqual(expectedResults);
+  });
 });

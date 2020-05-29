@@ -37,6 +37,11 @@ const reduce = (state, action) => {
         ...state,
         updatedUser: action.payload,
       };
+    case types.CREATE_ACCOMMODATION:
+      return {
+        ...state,
+        createdAccommodation: action.payload,
+      };
     default:
       return (
         state || {

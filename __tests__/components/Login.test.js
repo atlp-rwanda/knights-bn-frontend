@@ -1,9 +1,9 @@
 import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
-import configureMockStore from 'redux-mock-store';
-import { Provider } from 'react-redux';
+import { I18nextProvider } from 'react-i18next';
 import { mount } from '../../setupTests';
 import { mapStateToProps, Login as View } from '../../src/views/Login';
+import i18n from '../../src/i18next';
 
 let wrapper;
 
@@ -24,9 +24,11 @@ describe('Empty Inputs', () => {
 
   it('Should not pass, empty inputs', () => {
     wrapper = mount(
-      <MemoryRouter>
-        <View {...props} />
-      </MemoryRouter>,
+      <I18nextProvider i18n={i18n}>
+        <MemoryRouter>
+          <View {...props} />
+        </MemoryRouter>
+      </I18nextProvider>,
     );
     wrapper.find('Button').simulate('click');
     expect(wrapper.find('AlertComponent').text()).toBe(
@@ -55,9 +57,11 @@ describe('Missing Password', () => {
 
   it('Should not pass, empty password', () => {
     wrapper = mount(
-      <MemoryRouter>
-        <View {...props} />
-      </MemoryRouter>,
+      <I18nextProvider i18n={i18n}>
+        <MemoryRouter>
+          <View {...props} />
+        </MemoryRouter>
+      </I18nextProvider>,
     );
     wrapper.props();
     wrapper.find('Button').simulate('click');
@@ -87,9 +91,11 @@ describe('Missing Password', () => {
 
   it('Should not pass, empty email', () => {
     wrapper = mount(
-      <MemoryRouter>
-        <View {...props} />
-      </MemoryRouter>,
+      <I18nextProvider i18n={i18n}>
+        <MemoryRouter>
+          <View {...props} />
+        </MemoryRouter>
+      </I18nextProvider>,
     );
     wrapper.props();
     wrapper.find('Button').simulate('click');
@@ -120,9 +126,11 @@ describe('<Login />....', () => {
   };
   it('Should render <LoginComponet />  component', () => {
     wrapper = mount(
-      <MemoryRouter>
-        <View {...props} />
-      </MemoryRouter>,
+      <I18nextProvider i18n={i18n}>
+        <MemoryRouter>
+          <View {...props} />
+        </MemoryRouter>
+      </I18nextProvider>,
     );
     wrapper.props();
     wrapper.find('Button').simulate('click');
@@ -149,9 +157,11 @@ describe('<Login />....', () => {
     };
 
     wrapper = mount(
-      <MemoryRouter>
-        <View {...props1} />
-      </MemoryRouter>,
+      <I18nextProvider i18n={i18n}>
+        <MemoryRouter>
+          <View {...props1} />
+        </MemoryRouter>
+      </I18nextProvider>,
     );
     wrapper.props();
     wrapper.find('Button').simulate('click');
@@ -198,15 +208,50 @@ describe('<Login />....', () => {
   };
   it('Should render <LoginComponet />  component', () => {
     wrapper = mount(
-      <MemoryRouter>
-        <View {...props} />
-      </MemoryRouter>,
+      <I18nextProvider i18n={i18n}>
+        <MemoryRouter>
+          <View {...props} />
+        </MemoryRouter>
+      </I18nextProvider>,
     );
     wrapper.props();
     wrapper.find('Button').simulate('click');
     expect(wrapper.find('AlertComponent').text()).toBe(
       'Wrong email address.',
     );
+    wrapper.unmount();
+  });
+});
+
+describe('<Login />....', () => {
+  const props = {
+    handleError: jest.fn(),
+    setLoadingStatus: jest.fn(),
+    token: 'abc',
+    user: {
+      email: 'efwhjh@bmwef.com',
+      password: 'Fofo188',
+    },
+    userData: {
+      isLoggedIn: false,
+    },
+    thunk: jest.fn(async () => ({})),
+    validations: {
+      email: 'is-valid',
+      password: 'is-valid',
+    },
+  };
+  it('Should render <LoginComponet />  component', () => {
+    wrapper = mount(
+      <I18nextProvider i18n={i18n}>
+        <MemoryRouter>
+          <View {...props} />
+        </MemoryRouter>
+      </I18nextProvider>,
+    );
+    wrapper.props();
+    wrapper.find('Button').simulate('click');
+    expect(wrapper.find('TextBox').length).toBe(2);
     wrapper.unmount();
   });
 });

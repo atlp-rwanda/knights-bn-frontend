@@ -1,5 +1,11 @@
 @import '../base.scss';
 
+.alert--animated{
+  padding: 7px !important;
+  border-radius: 5px;
+  font-size: 14px;
+  animation: alert-fade 7s forwards;
+}
 .alert{
   padding: 7px !important;
   border-radius: 5px;
@@ -13,3 +19,8 @@
     background-color: #FBEFF0;
     border-left: 3px solid #D36969;
   }
+
+@keyframes alert-fade {
+0% {visibility: visible;}
+100%{visibility: hidden;}
+}

@@ -15,10 +15,14 @@ const reduce = (state, action) => {
     default:
       return (
         state || {
-          approvalData: { message: '',
-          }, loading: false, token: '', error: '',
+          approvalData: { message: '' },
+          loading: false,
+          token: '',
+          error: '',
           data: {
             message: '',
-          }, });}
+          },
+        });
+  }
 };
 export default reduce;
