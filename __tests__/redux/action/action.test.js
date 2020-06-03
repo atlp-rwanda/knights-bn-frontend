@@ -19,6 +19,8 @@ import {
   createAccommodation,
   getAccommodations,
   bookAccommodation,
+  getNotifications,
+  markAllAsRead,
 } from '../../../src/redux/actions';
 import * as types from '../../../src/redux/actions/actionTypes';
 
@@ -279,10 +281,12 @@ describe(' test loginUsersSuccess actions', () => {
         },
       ],
     };
-    expect(pendingRequests({
-      type: 'GET_PENDING_REQUESTS',
-      requests,
-    }).payload.requests.data[0].reason).toEqual('partner engagment');
+    expect(
+      pendingRequests({
+        type: 'GET_PENDING_REQUESTS',
+        requests,
+      }).payload.requests.data[0].reason,
+    ).toEqual('partner engagment');
   });
   it('should be able to take an action on request', () => {
     const message = {
@@ -290,10 +294,12 @@ describe(' test loginUsersSuccess actions', () => {
       requestId: '6',
       message: 'The request successfully approved',
     };
-    expect(requestAction({
-      type: 'APPROVE_REQUESTS',
-      message,
-    }).message.message.message).toEqual('The request successfully approved');
+    expect(
+      requestAction({
+        type: 'APPROVE_REQUESTS',
+        message,
+      }).message.message.message,
+    ).toEqual('The request successfully approved');
   });
   it('create accommodation', () => {
     const accommodation = {
@@ -334,5 +340,53 @@ describe(' test loginUsersSuccess actions', () => {
       },
     };
     expect(bookAccommodation(payload)).toEqual(expectedResults);
+  });
+  it('should be able view non read notifications', () => {
+    const requests = {
+      isLoggedIn: true,
+      message: 'Your notifications',
+      notifications: [
+        {
+          id: 6,
+          requesterId: 12,
+          managerId: 2,
+          status: 'non_read',
+          owner: 'requester',
+          message: 'The request has been approved.',
+          type: 'approved_request',
+          createdAt: '2020-05-26T16:27:37.756Z',
+          updatedAt: '2020-05-26T16:27:37.756Z',
+        },
+        {
+          id: 10,
+          requesterId: 12,
+          managerId: 2,
+          status: 'non_read',
+          owner: 'requester',
+          message: 'The request has been approved.',
+          type: 'approved_request',
+          createdAt: '2020-05-26T16:58:20.381Z',
+          updatedAt: '2020-05-26T16:58:20.381Z',
+        },
+      ],
+    };
+    expect(
+      getNotifications({
+        type: 'GET_NOTIFICATION',
+        requests,
+      }).payload.requests.message,
+    ).toEqual('Your notifications');
+  });
+  it('should be able to mark all notifications as read', () => {
+    const response = {
+      isLoggedIn: true,
+      message: 'You have no unread notification',
+    };
+    expect(
+      markAllAsRead({
+        type: 'MARK_READ',
+        response,
+      }).message.response.message,
+    ).toEqual('You have no unread notification');
   });
 });

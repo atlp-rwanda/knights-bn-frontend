@@ -17,7 +17,7 @@ const ProfileInfo = ({ firstName, profileImage, translate }) => (
         <Dropdown.Item href="/profile">
           {translate('View profile.1')}
         </Dropdown.Item>
-        <Dropdown.Item href="#/action-2">{translate('Logout.1')}</Dropdown.Item>
+        <Dropdown.Item href="/">{translate('Logout.1')}</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   </li>

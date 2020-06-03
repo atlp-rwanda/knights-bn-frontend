@@ -4,6 +4,8 @@ import {
   resetUserPassword,
   userProfile,
   updateUserProfile,
+  getNotifications,
+  markAllAsRead,
 } from '../../../src/redux/actions/actions';
 
 describe('Test userReducer test', () => {
@@ -69,7 +71,7 @@ describe('Test userReducer test', () => {
           lineManager: 'william.ishimwe@andela.com',
           passport: 'ws846522',
           profileImage:
-          'https://res.cloudinary.com/niyo/image/upload/v1589269369/znmfuyjn8y5xwbhaz5ci.jpg',
+            'https://res.cloudinary.com/niyo/image/upload/v1589269369/znmfuyjn8y5xwbhaz5ci.jpg',
           role: 'superAdmin',
           updatedAt: '2020-05-12T07:43:06.523Z',
           createdAt: '2020-04-18T09:58:51.478Z',
@@ -78,8 +80,7 @@ describe('Test userReducer test', () => {
     };
     expect(userReducer({}, userProfile({ action }))).toBeTruthy();
     expect(
-      userReducer({}, userProfile({ action })).data.action.data.user
-        .language,
+      userReducer({}, userProfile({ action })).data.action.data.user.language,
     ).toBe('Frensh');
   });
   it('should return current state by default', () => {
@@ -90,18 +91,6 @@ describe('Test userReducer test', () => {
       error: '',
     };
     expect(userReducer(initialState, action)).toEqual(initialState);
-  });
-  it.skip('should return current state by default', () => {
-    const action = {};
-    const initialState = {
-      loading: false,
-      token: '',
-      error: '',
-      data: {
-        message: '',
-      },
-    };
-    expect(userReducer(null, action)).toEqual(initialState);
   });
   it('test view all reducer', () => {
     const state = {
@@ -218,5 +207,43 @@ describe('Test userReducer test', () => {
       accommodations: '',
     };
     expect(userReducer('', action)).toEqual(expectedResults);
+  });
+  it('View notifications', () => {
+    const notifications = [
+      {
+        id: 6,
+        requesterId: 12,
+        managerId: 2,
+        status: 'non_read',
+        owner: 'requester',
+        message: 'The request has been approved.',
+        type: 'approved_request',
+        createdAt: '2020-05-26T16:27:37.756Z',
+        updatedAt: '2020-05-26T16:27:37.756Z',
+      },
+      {
+        id: 10,
+        requesterId: 12,
+        managerId: 2,
+        status: 'non_read',
+        owner: 'requester',
+        message: 'The request has been approved.',
+        type: 'approved_request',
+        createdAt: '2020-05-26T16:58:20.381Z',
+        updatedAt: '2020-05-26T16:58:20.381Z',
+      },
+    ];
+    expect(userReducer({}, getNotifications({ notifications }))).toBeTruthy();
+    expect(
+      userReducer({}, getNotifications({ notifications })).notification[0]
+        .message,
+    ).toEqual('The request has been approved.');
+  });
+  it('mark notifications as read', () => {
+    const response = {
+      isLoggedIn: true,
+      message: 'You have no unread notification',
+    };
+    expect(userReducer({}, markAllAsRead({ response }))).toBeTruthy();
   });
 });
