@@ -21,6 +21,7 @@ import {
   bookAccommodation,
   getNotifications,
   markAllAsRead,
+  chats,
 } from '../../../src/redux/actions';
 import * as types from '../../../src/redux/actions/actionTypes';
 
@@ -388,5 +389,19 @@ describe(' test loginUsersSuccess actions', () => {
         response,
       }).message.response.message,
     ).toEqual('You have no unread notification');
+  });
+  it('test chat action', () => {
+    const payload = {
+      message: 'Hello',
+      token: 'abc',
+    };
+    const expectedResults = {
+      type: types.USERS_CHATS,
+      payload: {
+        message: 'Hello',
+        token: 'abc',
+      },
+    };
+    expect(chats(payload)).toEqual(expectedResults);
   });
 });

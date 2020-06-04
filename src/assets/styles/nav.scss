@@ -1,3 +1,7 @@
+*{
+  outline: none;
+}
+
 .nav-auth {
   position: absolute;
   right: 20rem;
@@ -74,7 +78,7 @@ color: #5790cc;
 
 .dropdown {
   position: absolute;
-  left: 6rem;
+  left: 6.6rem;
   top: 0.2rem;
 }
 .dropdown-2 {
@@ -91,8 +95,7 @@ color: #5790cc;
 .notificationFooter {
   text-align: center;
   position: fixed;
-  //   height: 40px;
-  //   bottom: 0;
+
   width: 100%;
 }
 .markAll {
@@ -101,4 +104,9 @@ color: #5790cc;
 .notiftnBody {
   height: 500%;
   overflow: auto;
+}
+.dropdown-2{
+    position: absolute;
+    left: 1.1rem;
+    top: 0rem;
 }

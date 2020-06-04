@@ -14,10 +14,9 @@ import {
 } from '../redux/actions/index';
 import { callApiThunk as thunk } from '../redux/thunk/index';
 
-
-const searchFor = (term) => (x) => (x.firstName.toLowerCase().includes(term.toLowerCase())
+const searchFor = (term) => (x) => x.firstName.toLowerCase().includes(term.toLowerCase())
   || x.email.toLowerCase().includes(term.toLowerCase())
-  || x.lastName.toLowerCase().includes(term.toLowerCase()))
+  || x.lastName.toLowerCase().includes(term.toLowerCase())
   || !term;
 
 export class Admin extends Component {
@@ -49,12 +48,17 @@ export class Admin extends Component {
 
   async componentDidUpdate() {
     if (this.state.formSubmitted) {
-      await this.props.thunk('get', `/users/${this.state.datas.email}`, viewOneUser);
+      await this.props.thunk(
+        'get',
+        `/users/${this.state.datas.email}`,
+        viewOneUser,
+      );
       const updatedUser = this.props.userInfo;
       const updatedUsers = this.state.data.map((user) => {
         if (user.email === updatedUser.User.email) {
           return updatedUser.User;
-        } return user;
+        }
+        return user;
       });
       this.setState({
         ...this.state,
@@ -64,31 +68,31 @@ export class Admin extends Component {
     }
   }
 
-   handleChange = (event) => {
-     this.setState({
-       ...this.state,
-       term: event.target.value,
-     });
-   }
+  handleChange = (event) => {
+    this.setState({
+      ...this.state,
+      term: event.target.value,
+    });
+  };
 
-   handleSubmit = async (e) => {
-     e.preventDefault();
-     const userRole = {
-       role: this.state.role,
-     };
-     await this.props.thunk(
-       'patch',
-       `/users/setUserRole?email=${this.state.datas.email}`,
-       updateUserRole,
-       userRole,
-     );
-     const newRoleInfo = this.props.UpdateInfo;
-     this.setState({
-       ...this.state,
-       message: newRoleInfo,
-       formSubmitted: true,
-     });
-   }
+  handleSubmit = async (e) => {
+    e.preventDefault();
+    const userRole = {
+      role: this.state.role,
+    };
+    await this.props.thunk(
+      'patch',
+      `/users/setUserRole?email=${this.state.datas.email}`,
+      updateUserRole,
+      userRole,
+    );
+    const newRoleInfo = this.props.UpdateInfo;
+    this.setState({
+      ...this.state,
+      message: newRoleInfo,
+      formSubmitted: true,
+    });
+  };
 
   findOne = async (email) => {
     await this.props.thunk('get', `/users/${email}`, viewOneUser);
@@ -97,7 +101,7 @@ export class Admin extends Component {
       ...this.state,
       datas: onlyOneUser.User,
     });
-  }
+  };
 
   onSelectRole = (e) => {
     e.preventDefault();
@@ -105,7 +109,7 @@ export class Admin extends Component {
       ...this.state,
       role: e.target.value,
     });
-  }
+  };
 
   handleClose = () => this.setState({
     message: '',
@@ -114,8 +118,7 @@ export class Admin extends Component {
 
   handleShow = () => this.setState({
     showModal: true,
-  })
-
+  });
 
   render() {
     const { role } = this.state.datas;
@@ -175,12 +178,18 @@ export class Admin extends Component {
               : null}
           </tbody>
         </Table>
-        <Pagination usersPerPage={usersPerPage} totalUsers={data.length} paginate={paginate} />
-        <Modal className="Modal" show={this.state.showModal} onHide={this.handleClose} centered>
-          <Modal.Header
-            className="ModalHeader"
-            closeButton
-          >
+        <Pagination
+          usersPerPage={usersPerPage}
+          totalUsers={data.length}
+          paginate={paginate}
+        />
+        <Modal
+          className="Modal"
+          show={this.state.showModal}
+          onHide={this.handleClose}
+          centered
+        >
+          <Modal.Header className="ModalHeader" closeButton>
             <h1>Role Update</h1>
           </Modal.Header>
           <Modal.Body>

@@ -32,8 +32,8 @@ const App = () => (
         <Route path="/pending" exact component={PendingRequests} />
         <Route path="/accommodation" exact component={Accommodation} />
         <Route path="/book" exact component={BookAccommodation} />
+        <Footer />
       </Switch>
-      <Footer />
     </BrowserRouter>
   </div>
 );

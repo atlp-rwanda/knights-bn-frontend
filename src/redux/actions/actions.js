@@ -1,3 +1,5 @@
+/* eslint-disable no-shadow */
+
 import * as types from './actionTypes';
 
 export const validateLoginInput = (target) => ({
@@ -97,4 +99,9 @@ export const getNotifications = (notification) => ({
 export const markAllAsRead = (message) => ({
   type: types.MARK_READ,
   message,
+});
+
+export const chats = (chats) => ({
+  type: types.USERS_CHATS,
+  payload: chats,
 });
