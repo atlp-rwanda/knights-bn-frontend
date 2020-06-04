@@ -1,4 +1,3 @@
-
 import * as types from './actionTypes';
 
 export const validateLoginInput = (target) => ({
@@ -90,4 +89,12 @@ export const getAccommodations = (accommodations) => ({
 export const bookAccommodation = (payload) => ({
   type: types.BOOK_ACCOMMODATION,
   payload,
+});
+export const getNotifications = (notification) => ({
+  type: types.GET_NOTIFICATION,
+  payload: notification,
+});
+export const markAllAsRead = (message) => ({
+  type: types.MARK_READ,
+  message,
 });
