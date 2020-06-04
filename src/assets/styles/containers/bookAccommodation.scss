@@ -1,0 +1,30 @@
+@import '../base.scss';
+
+@mixin box {
+    background-color: white;
+    width: 43rem;
+    padding: 1rem;
+    border-radius: .5rem;
+}
+.booking__header{
+    position: relative;
+    left: 8.7rem;
+    top: 1rem;
+    @include box;
+    h5{
+        font-weight: bolder;
+    }
+    span{
+        font-weight: 200;
+    }
+}
+.booking__footer{
+    h5{
+        position: absolute;
+        bottom: 3rem;
+        left: 8.5rem;
+        font-size: 1rem;
+        line-height: 2rem;
+        @include box;
+    }
+}

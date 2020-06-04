@@ -21,6 +21,7 @@ import SocialLogin from '../components/SocialLogin';
 import 'react-universal-hooks';
 import NavAuth from '../components/NavAuth';
 import LineDivider from '../components/lineDivider';
+import Footer from '../components/Footer';
 
 dotenv.config();
 
@@ -117,6 +118,7 @@ export class Login extends Component {
             </a>
           </Form>
         </div>
+        <Footer className="auth__footer" />
       </div>
     );
   }

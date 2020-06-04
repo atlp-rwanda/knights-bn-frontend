@@ -23,6 +23,7 @@ import AlertComponent from '../components/Alert';
 import SocialLogin from '../components/SocialLogin';
 import NavAuth from '../components/NavAuth';
 import LineDivider from '../components/lineDivider';
+import Footer from '../components/Footer';
 
 class Signup extends Component {
   constructor(props) {
@@ -208,6 +209,7 @@ class Signup extends Component {
             </a>
           </Form>
         </div>
+        <Footer className="auth__footer" />
       </div>
     );
   }

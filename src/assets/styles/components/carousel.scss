@@ -1,0 +1,11 @@
+@import '../base.scss';
+
+.image__card{
+    width: 45rem !important;
+    position: relative;
+    right: 15rem;
+    margin: 2rem auto;
+    img{
+        height: 30rem;
+    }
+}

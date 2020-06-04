@@ -79,6 +79,7 @@ const Accommodation = (props) => {
       streetNumber,
       numberOfRooms: roomsNumber,
       description: otherInfo,
+      imageOfBuilding: image,
       availableRooms: [{ ...room }],
     };
     props.setLoadingStatus(true);

@@ -19,9 +19,9 @@ body {
   height: 90vh;
 }
 .footer {
-  position: fixed;
+  position: relative;
   height: 40px;
-  bottom: 0;
+  top: .5rem;
   width: 100%;
 }
 
@@ -78,4 +78,8 @@ h3 {
   padding-top: 8%;
   color: black;
   font-weight: bold;
+}
+.auth__footer{
+  position: absolute;
+  top: 94%;
 }
