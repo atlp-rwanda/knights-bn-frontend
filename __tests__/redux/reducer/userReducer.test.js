@@ -1,3 +1,4 @@
+import { act } from 'react-test-renderer';
 import userReducer from '../../../src/redux/reducers/userReducer';
 import * as types from '../../../src/redux/actions/actionTypes';
 import {
@@ -6,6 +7,7 @@ import {
   updateUserProfile,
   getNotifications,
   markAllAsRead,
+  chats,
 } from '../../../src/redux/actions/actions';
 
 describe('Test userReducer test', () => {
@@ -245,5 +247,19 @@ describe('Test userReducer test', () => {
       message: 'You have no unread notification',
     };
     expect(userReducer({}, markAllAsRead({ response }))).toBeTruthy();
+  });
+  it('test chat reducer', () => {
+    const action = {
+      type: types.USERS_CHATS,
+      payload: {
+        message: 'hello',
+      },
+    };
+    const expectedResult = {
+      chats: {
+        message: 'hello',
+      },
+    };
+    expect(userReducer('', action)).toEqual(expectedResult);
   });
 });
