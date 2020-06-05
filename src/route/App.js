@@ -36,7 +36,6 @@ const App = () => (
         <Route path="/stats" exact component={MyStats} />
         <Footer />
       </Switch>
-      <Footer />
     </BrowserRouter>
   </div>
 );

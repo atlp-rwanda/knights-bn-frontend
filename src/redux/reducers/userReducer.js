@@ -62,6 +62,11 @@ const reduce = (state, action) => {
         ...state,
         message: action.payload,
       };
+    case types.USERS_CHATS:
+      return {
+        ...state,
+        chats: action.payload,
+      };
     default:
       return (
         state || {

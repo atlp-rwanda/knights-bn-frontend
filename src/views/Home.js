@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { v4 as uniqueId } from 'uuid';
 import { withRouter, Redirect } from 'react-router';
@@ -10,6 +11,7 @@ import '../assets/styles/containers/loginPage.scss';
 import { getAccommodations } from '../redux/actions/actions';
 import { callApiThunk as thunk } from '../redux/thunk';
 import NavBar from '../components/Nav';
+import Chat from '../components/Chat';
 
 class Home extends React.Component {
   state = {
@@ -92,6 +94,7 @@ class Home extends React.Component {
     return (
       <div>
         <NavBar />
+        <Chat />
         <Spinner
           animation="border"
           variant="primary"

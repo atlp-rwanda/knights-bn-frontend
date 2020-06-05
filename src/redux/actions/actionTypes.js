@@ -24,3 +24,4 @@ export const BOOK_ACCOMMODATION = 'BOOK_ACCOMMODATION';
 export const GET_NOTIFICATION = 'GET_NOTIFICATION';
 export const MARK_READ = 'MARK_READ';
 export const MY_REQUESTS = 'MY_REQUESTS';
+export const USERS_CHATS = 'USERS_CHATS';

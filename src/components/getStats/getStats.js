@@ -10,32 +10,32 @@ import Nav from '../Nav';
 import { Stats, TableHeader } from '../../util/reusableTableHeader';
 
 class numberOfTrips extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      allRequests: [],
-      data: [],
-      upToNow: new Date(),
-      intervel: 0,
-      trips: 0,
-      pending: 0,
-      rejected: 0,
-      startDate: '',
-    };
-  }
+  state = {
+    allRequests: [],
+    data: [],
+    upToNow: new Date(),
+    intervel: 0,
+    trips: 0,
+    pending: 0,
+    rejected: 0,
+    startDate: '',
+  };
 
 
   async UNSAFE_componentWillMount() {
     await this.props.callApiThunk('get', '/trips/myrequest', allMyrequests);
     this.setState({
-      allRequests: this.props.userStats.allMyRequest,
-      data: this.props.userStats.allMyRequest.filter((trip) => trip.status === 'approved'),
-      pending: this.props.userStats.allMyRequest.filter((trip) => trip.status === 'pending'),
-      rejected: this.props.userStats.allMyRequest.filter((trip) => trip.status === 'rejected'),
-      trips: this.props.userStats.allMyRequest.filter((trip) => trip.status === 'approved').length,
-      startDate: (this.props.userStats.allMyRequest.filter((trip) => trip.status === 'approved').length)
-        ? this.props.userStats.allMyRequest.filter((trip) => trip.status === 'approved')[0].departureDate
+      allRequests: this.props.userStats,
+      data: this.props.userStats.filter((trip) => trip.status === 'approved'),
+      pending: this.props.userStats.filter((trip) => trip.status === 'pending'),
+      rejected: this.props.userStats.filter((trip) => trip.status === 'rejected'),
+      trips: this.props.userStats.filter((trip) => trip.status === 'approved').length,
+      startDate: (this.props.userStats.filter((trip) => trip.status === 'approved').length)
+        ? this.props.userStats.filter((trip) => trip.status === 'approved')[0].departureDate
         : '',
+      interval: (this.props.userStats.filter((trip) => trip.status === 'approved').length)
+        ? new Date(this.props.userStats.filter((trip) => trip.status === 'approved')[0].departureDate).getDate() - new Date().getDate()
+        : 0,
     });
   }
 
@@ -74,9 +74,7 @@ class numberOfTrips extends Component {
             <div className="trip-interval">
               <h6>Last</h6>
               <span>
-                {(this.state.data.length)
-                  ? new Date(this.state.data[0].departureDate).getDate() - new Date().getDate()
-                  : this.state.intervel}
+                {this.state.intervel}
                 {' '}
                 days
               </span>
@@ -85,9 +83,7 @@ class numberOfTrips extends Component {
               <h6>Trips you have made</h6>
               <span>
                 <Badge variant="secondary">
-                  {(this.state.data.length)
-                    ? this.state.trips
-                    : this.state.trips}
+                  { this.state.trips}
                 </Badge>
               </span>
               <p />
@@ -121,6 +117,6 @@ class numberOfTrips extends Component {
 }
 
 const mapStateToprops = (state) => ({
-  userStats: state.statsReducer,
+  userStats: state.statsReducer.allMyRequest,
 });
 export default connect(mapStateToprops, { callApiThunk })(numberOfTrips);
