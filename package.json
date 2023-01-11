@@ -78,7 +78,7 @@
     "jest-enzyme": "^7.1.2",
     "jquery": "^3.5.1",
     "js-config-webpack-plugin": "^2.0.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "jwt-decode": "^2.2.0",
     "localStorage": "^1.0.4",
     "moment": "^2.26.0",
